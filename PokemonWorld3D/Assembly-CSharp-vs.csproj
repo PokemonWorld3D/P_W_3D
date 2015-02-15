@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_2;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Scripts\DamageCalculation.cs" />
+     <Compile Include="Assets\Scripts\Ember.cs" />
+     <Compile Include="Assets\Scripts\EmptyPokeBall.cs" />
+     <Compile Include="Assets\Scripts\FINALGUISCRIPT.cs" />
+     <Compile Include="Assets\Scripts\Flight.cs" />
+     <Compile Include="Assets\Scripts\GUIHealthBar.cs" />
+     <Compile Include="Assets\Scripts\GUIs\MainMenuGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIs\SceneFadeInOut.cs" />
+     <Compile Include="Assets\Scripts\HateHolder.cs" />
+     <Compile Include="Assets\Scripts\Items\BattleItem.cs" />
+     <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
+     <Compile Include="Assets\Scripts\Items\Medicine.cs" />
+     <Compile Include="Assets\Scripts\Items\PokeBall.cs" />
+     <Compile Include="Assets\Scripts\Items\PotionEther.cs" />
+     <Compile Include="Assets\Scripts\Laser.cs" />
+     <Compile Include="Assets\Scripts\Mewtwo\MewtwoAI.cs" />
+     <Compile Include="Assets\Scripts\Mewtwo\MewtwoPhaseFour.cs" />
+     <Compile Include="Assets\Scripts\Mewtwo\MewtwoPhaseOne.cs" />
+     <Compile Include="Assets\Scripts\Mewtwo\MewtwoPhaseThree.cs" />
+     <Compile Include="Assets\Scripts\Mewtwo\MewtwoPhaseTwo.cs" />
+     <Compile Include="Assets\Scripts\MouseAimCamera.cs" />
+     <Compile Include="Assets\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\NPCs\NurseJoy.cs" />
+     <Compile Include="Assets\Scripts\NPCs\ProfessorOak.cs" />
+     <Compile Include="Assets\Scripts\Player\BasePlayer.cs" />
+     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Player\Movement.cs" />
+     <Compile Include="Assets\Scripts\Player\NEWPlayersPokemon.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayersInventory.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayersPokemon.cs" />
+     <Compile Include="Assets\Scripts\Player\PokeBallInventory.cs" />
+     <Compile Include="Assets\Scripts\Player\PokeBallThrow.cs" />
+     <Compile Include="Assets\Scripts\Player\PokemonInput.cs" />
+     <Compile Include="Assets\Scripts\PlayerInput.cs" />
+     <Compile Include="Assets\Scripts\Pokemon Moves\Move.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\BasePokemon.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\NEWPlayerPokemonData.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\NEWPokemon.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\PlayerPokemonData.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\Pokemon.cs" />
+     <Compile Include="Assets\Scripts\Pokemon\Sexes.cs" />
+     <Compile Include="Assets\Scripts\PokemonEvolveScript.cs" />
+     <Compile Include="Assets\Scripts\PokemonTypes.cs" />
+     <Compile Include="Assets\Scripts\RendererExtensions.cs" />
+     <Compile Include="Assets\Scripts\Status Effects\StatusEffect.cs" />
+     <Compile Include="Assets\Scripts\Tackle.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\BattleCalculations.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\BattleStateAddStatusEffects.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\BattleStateStart.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\BattleStateStatusEffectCheck.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\CalculateXP.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\IncreaseExperience.cs" />
+     <Compile Include="Assets\Scripts\Turn Based Combat\StatCalculations.cs" />
+     <Compile Include="Assets\Scripts\Unattached\CalculateCapture.cs" />
+     <Compile Include="Assets\Scripts\Unattached\ChooseSpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\Unattached\LastPlayerSighting.cs" />
+     <Compile Include="Assets\Scripts\Unattached\Tags.cs" />
+     <Compile Include="Assets\Scripts\Wild Pokemon\EnemyMoveChoice.cs" />
+     <Compile Include="Assets\Scripts\Wild Pokemon\FlyingPokemon.cs" />
+     <Compile Include="Assets\Scripts\Wild Pokemon\PokemonCry.cs" />
+     <Compile Include="Assets\Scripts\Wild Pokemon\ReSpawner.cs" />
+     <Compile Include="Assets\Scripts\Wild Pokemon\WildPokemonSpawner.cs" />
+     <None Include="Assets\Imports\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Imports\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicBlender.shader" />
+     <None Include="Assets\Imports\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Imports\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Imports\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Imports\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Imports\Fantasy Skybox FREE\Readme\Readme.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
