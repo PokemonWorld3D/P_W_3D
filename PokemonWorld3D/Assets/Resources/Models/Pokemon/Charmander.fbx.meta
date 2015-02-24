@@ -1,0 +1,1989 @@
+fileFormatVersion: 2
+guid: 3e30733362beb9141bad7dec867d8537
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: 004_charmander_body_001
+    100002: //RootNode
+    100004: chest
+    100006: chest_001
+    100008: foot_L
+    100010: foot_R
+    100012: forearm_L
+    100014: forearm_R
+    100016: head
+    100018: hips
+    100020: hips_001
+    100022: hips_002
+    100024: hips_003
+    100026: hips_004
+    100028: hips_005
+    100030: metarig
+    100032: neck
+    100034: root
+    100036: shin_L
+    100038: shin_R
+    100040: shoulder_L
+    100042: shoulder_R
+    100044: spine
+    100046: thigh_L
+    100048: thigh_R
+    100050: toe_L
+    100052: toe_R
+    100054: upper_arm_L
+    100056: upper_arm_R
+    100058: elbow_L_001
+    100060: elbow_R_001
+    100062: ikf_L
+    100064: ikf_R
+    400000: 004_charmander_body_001
+    400002: //RootNode
+    400004: chest
+    400006: chest_001
+    400008: foot_L
+    400010: foot_R
+    400012: forearm_L
+    400014: forearm_R
+    400016: head
+    400018: hips
+    400020: hips_001
+    400022: hips_002
+    400024: hips_003
+    400026: hips_004
+    400028: hips_005
+    400030: metarig
+    400032: neck
+    400034: root
+    400036: shin_L
+    400038: shin_R
+    400040: shoulder_L
+    400042: shoulder_R
+    400044: spine
+    400046: thigh_L
+    400048: thigh_R
+    400050: toe_L
+    400052: toe_R
+    400054: upper_arm_L
+    400056: upper_arm_R
+    400058: elbow_L_001
+    400060: elbow_R_001
+    400062: ikf_L
+    400064: ikf_R
+    4300000: 004_charmander_body_001
+    7400000: Default Take
+    7400002: Idle_Battle
+    7400004: Default
+    7400006: Faint
+    7400008: Falling
+    7400010: Fire_Fang
+    7400012: Hit
+    7400014: Idle_World
+    7400016: Jump
+    7400018: Landing
+    7400020: Long_Burst
+    7400022: Medium_Burst
+    7400024: Run
+    7400026: Scary_Face
+    7400028: Scratch
+    7400030: Short_Burst
+    7400032: Slash
+    7400034: Sleep
+    7400036: To_Sleep
+    7400038: Wake_Up
+    7400040: Walk
+    9500000: //RootNode
+    13700000: 004_charmander_body_001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle_Battle
+      takeName: Battle_idle
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Default
+      takeName: Default_Pose
+      firstFrame: 0
+      lastFrame: .100000001
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Faint
+      takeName: Faint
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Falling
+      takeName: falling
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Fire_Fang
+      takeName: Fire_Fang
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Hit
+      takeName: Hit
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_World
+      takeName: Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: jump
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Landing
+      takeName: landing
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Long_Burst
+      takeName: Long_Burst
+      firstFrame: 0
+      lastFrame: 99
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Medium_Burst
+      takeName: Medium_Burst
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Run
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Scary_Face
+      takeName: Scary_Face
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Scratch
+      takeName: Scratch
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Short_Burst
+      takeName: Short_Burst0
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Slash
+      takeName: Slash
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sleep
+      takeName: Sleep
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: To_Sleep
+      takeName: To_sleep
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Wake_Up
+      takeName: Wake_Up
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 004_charmander_body_001
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/root
+        weight: 1
+      - path: metarig/root/elbow_L_001
+        weight: 1
+      - path: metarig/root/elbow_R_001
+        weight: 1
+      - path: metarig/root/hips
+        weight: 1
+      - path: metarig/root/hips/hips_001
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004
+        weight: 1
+      - path: metarig/root/hips/hips_001/hips_002/hips_003/hips_004/hips_005
+        weight: 1
+      - path: metarig/root/hips/spine
+        weight: 1
+      - path: metarig/root/hips/spine/chest
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head
+        weight: 1
+      - path: metarig/root/hips/spine/chest/chest_001/head/neck
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R
+        weight: 1
+      - path: metarig/root/hips/spine/chest/shoulder_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: metarig/root/hips/thigh_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/root/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/root/hips/thigh_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/root/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/root/ikf_L
+        weight: 1
+      - path: metarig/root/ikf_R
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

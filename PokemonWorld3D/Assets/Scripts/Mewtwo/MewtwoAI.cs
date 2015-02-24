@@ -17,7 +17,7 @@ public class MewtwoAI : MonoBehaviour
 		target = Hate_List[0].player;
 	}
 
-	public void IncreaseHate(GameObject player, NEWPokemon pokemon, int hate_increase)
+	public void IncreaseHate(GameObject player, Pokemon pokemon, int hate_increase)
 	{
 		for(int i = 0; i < Hate_List.Count; i++)
 		{

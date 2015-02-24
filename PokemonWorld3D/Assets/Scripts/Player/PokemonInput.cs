@@ -4,139 +4,170 @@ using System.Collections.Generic;
 
 public class PokemonInput : MonoBehaviour
 {
-	public NEWPokemon this_pokemon;
-	public float speed = 10.0f;
-	public float rotate_speed = 10.0f;
-	public float gravity = 10.0f;
-	public float max_velocity_change = 10.0f;
-	public bool can_jump = true;
-	public float jump_height = 2.0f;
-	public bool grounded = false;
-	public float land_speed;
-
+	public float pokemon_speed;
+	public float run_multiplier = 2.0f;
+	public float gravity = 20.0f;
+	public float fall_time = 0.5f;
+	public float jump_height;
+	public float jump_time = 1.5f;
+	public Pokemon this_pokemon;
 	public GameObject target;
+	public Pokemon target_pokemon;
 	public List<GameObject> targets;
-	public Transform my_transform;
 
-	private Collider terrain_collider;
-	private Flight flight;
-	private Animator anim;
-	private float horizontal;
-	private float vertical;
-	private float rotation;
-	private float terrain_height;
-	private Vector3 spot_over_ground;
-	private Vector3 velocity;
-	
+	private Transform my_transform;
+	private CharacterController controller;
+	private Vector3 move_direction;
+	private CollisionFlags collision_flags;
+	private float air_time;
+	public bool jumping;
+
+	private FINALGUISCRIPT hud;
+
+	public bool using_a_move;
+
 	void Awake()
 	{
-		rigidbody.freezeRotation = true;
-		rigidbody.useGravity = false;
-	}
+		my_transform = transform;
+		controller = GetComponent<CharacterController>();
+ 	}
 	void Start()
 	{
+		this_pokemon = GetComponent<Pokemon>();
+		move_direction = Vector3.zero;
+		animation.Stop();
 		targets = new List<GameObject>();
 		target = null;
-		my_transform = transform;
-		flight = GetComponent<Flight>();
-		terrain_collider = GameObject.FindGameObjectWithTag("Terrain").GetComponent<TerrainCollider>();
-		anim = GetComponent<Animator>();
-		velocity = rigidbody.velocity;
-		AddAllTargets();
+		hud = this_pokemon.trainer.GetComponent<PlayerCharacter>().players_hud;
 	}
 	void Update()
 	{
-		horizontal = Input.GetAxis("Horizontal");
-		vertical = Input.GetAxis("Vertical");
-		rotation = Input.GetAxis("Rotation");
-		velocity = rigidbody.velocity;
-		terrain_height = Terrain.activeTerrain.SampleHeight (my_transform.position);
-		spot_over_ground = new Vector3(my_transform.position.x, terrain_height, my_transform.transform.position.z);
-		float altitude = Vector3.Distance(my_transform.position, spot_over_ground);
-		if(Input.GetKeyUp(KeyCode.Tab))
+		for(int i = 0; i < targets.Count; i++)
 		{
-			TargetPokemon();
+			if(targets[i].GetComponent<Pokemon>().cur_hp == 0)
+			{
+				targets.Remove(targets[i]);
+			}
 		}
-		if(Input.GetButtonDown("TakeFlight") && grounded)
-		{
-			flight.enabled = true;
-			StartCoroutine(flight.TakeOff());
-		}
-		if(Input.GetKey(KeyCode.LeftShift))
-		{
-			speed = 1.0f;
-
-		}
-		else
-		{
-			speed = 10.0f;
-		}
-		if (can_jump && Input.GetButtonDown("Jump"))
-		{
-			Jump();
-		}
-		if(Input.GetKeyDown(KeyCode.LeftControl))
+		if(Input.GetButtonDown("Swap"))
 		{
 			SwapToPlayer();
 		}
-		if(altitude > 0.5f)
+		if(Input.GetButtonUp("Targeting"))
 		{
-			anim.SetBool("Falling", true);
+			AddAllTargets();
+			TargetPokemon();
+		}
+		if(target_pokemon != null && target_pokemon.cur_hp == 0)
+		{
+			RemoveTarget(target);
+		}
+		Attack();
+		Vector3 forward = Camera.main.transform.TransformDirection(Vector3.forward);
+		forward.y = 0f;
+		forward = forward.normalized;
+		Vector3 right = new Vector3(forward.z, 0f, -forward.x);
+
+		if(controller.isGrounded && !jumping && !using_a_move)
+		{
+			air_time = 0.0f;
+
+			move_direction = (Input.GetAxis("Horizontal") * right + Input.GetAxis("Vertical") * forward);
+			if (move_direction != Vector3.zero)
+			{
+				my_transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move_direction), 10f * Time.smoothDeltaTime);
+				my_transform.eulerAngles = new Vector3(0f, my_transform.eulerAngles.y, 0f);
+			}
+			if (move_direction.sqrMagnitude > 1f)
+			{
+				move_direction = move_direction.normalized;
+			}
+			move_direction *= pokemon_speed;
+
+			if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+			{
+				if(Input.GetButton("Walk"))
+				{
+					Walk();
+				}
+				else
+				{
+					move_direction *= run_multiplier;
+					Run();
+				}
+			}
+			else
+			{
+				IdleWorld();
+			}
+
+			if(Input.GetButton("Jump"))
+			{
+				if(air_time < jump_time)
+				{
+					Jump();
+					jumping = true;
+				}
+			}
 		}
 		else
 		{
-			anim.SetBool("Falling", false);
-		}
-	}
-	void FixedUpdate ()
-	{
-		if (grounded)
-		{
-			// Calculates the slope of the ground beneath the object and matches the "lean" of the object to the angle of the slope.
-			RaycastHit hit;
-			Ray ray = new Ray(my_transform.position, Vector3.down);
-			if (terrain_collider.Raycast(ray, out hit, 1000.0f))
+			if((collision_flags & CollisionFlags.CollidedBelow) == 0)
 			{
-				my_transform.rotation = Quaternion.FromToRotation(my_transform.up, hit.normal) * my_transform.rotation;
+				air_time += Time.deltaTime;
+
+				if(air_time > fall_time)
+				{
+					Fall();
+				}
 			}
-
-			// Calculate how fast we should be moving
-			Vector3 target_velocity = new Vector3(horizontal, 0, vertical);
-			target_velocity = transform.TransformDirection(target_velocity);
-			target_velocity *= speed;
-			
-			// Apply a force that attempts to reach our target velocity
-			Vector3 velocity_change = (target_velocity - velocity);
-			velocity_change.x = Mathf.Clamp(velocity_change.x, -max_velocity_change, max_velocity_change);
-			velocity_change.z = Mathf.Clamp(velocity_change.z, -max_velocity_change, max_velocity_change);
-			velocity_change.y = 0;
-			rigidbody.AddForce(velocity_change, ForceMode.VelocityChange);
-			// Rotates on the Y axis.
-			transform.Rotate(0, rotation * rotate_speed, 0);
-
-			land_speed = vertical * speed;
-			anim.SetFloat("LandSpeed", land_speed);
 		}
 
-		// We apply gravity manually for more tuning control
-		rigidbody.AddForce(new Vector3 (0, -gravity * rigidbody.mass, 0));
-		
-		grounded = false;
+		move_direction.y -= gravity * Time.deltaTime;
+
+		collision_flags = controller.Move(move_direction * Time.deltaTime);
 	}
-	void OnCollisionStay(Collision col)
+
+	public void ActualJump()
 	{
-		grounded = true;
+		move_direction.y += jump_height;
 	}
-	
-	private float CalculateJumpVerticalSpeed()
+	public void NotJumping()
 	{
-		// From the jump height and gravity we deduce the upwards speed for the character to reach at the apex.
-		return Mathf.Sqrt(2 * jump_height * gravity);
+		jumping = false;
+	}
+	public void UsingMove()
+	{
+		using_a_move = true;
+	}
+	public void NotUsingMove()
+	{
+		using_a_move = false;
+	}
+
+	private void IdleWorld()
+	{
+		animation.CrossFade("Idle_World");
+	}
+	private void IdleBattle()
+	{
+		animation.CrossFade("Idle_Battle");
+	}
+	private void Walk()
+	{
+		animation.CrossFade("Walk");
+	}
+	private void Run()
+	{
+		animation.CrossFade("Run");
 	}
 	private void Jump()
 	{
-		anim.SetTrigger("Jump");
-		rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+		animation.CrossFade("Jump");
+	}
+	private void Fall()
+	{
+		animation.CrossFade("Falling");
 	}
 	private void SwapToPlayer()
 	{
@@ -152,7 +183,7 @@ public class PokemonInput : MonoBehaviour
 	private void AddAllTargets()
 	{
 		GameObject[] go = GameObject.FindGameObjectsWithTag("Pokemon");
-
+		
 		foreach(GameObject g in go)
 		{
 			AddTarget(g);
@@ -162,6 +193,12 @@ public class PokemonInput : MonoBehaviour
 	{
 		if(target.gameObject != this.gameObject)
 			targets.Add(target);
+	}
+	private void RemoveTarget(GameObject target)
+	{
+		targets.Remove(target);
+		target = null;
+		hud.NoTarget();
 	}
 	private void SortTargetsByDistance()
 	{
@@ -176,11 +213,13 @@ public class PokemonInput : MonoBehaviour
 		{
 			SortTargetsByDistance();
 			target = targets[0];
+			target_pokemon = target.GetComponent<Pokemon>();
+			hud.SetTarget(target_pokemon);
 		}
 		else
 		{
 			int index = targets.IndexOf(target);
-
+			
 			if(index < targets.Count - 1)
 			{
 				index++;
@@ -190,10 +229,81 @@ public class PokemonInput : MonoBehaviour
 				index = 0;
 			}
 			target = targets[index];
+			target_pokemon = targets[index].GetComponent<Pokemon>();
+			hud.SetTarget(target_pokemon);
 		}
 	}
-	/*public int SortByDistance(GameObject go)
+	private void Attack()
 	{
-		return Vector3.Distance(this.transform.position, my_transform.position).CompareTo(Vector3.Distance(go.transform.position, my_transform.position));
-	}*/
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha1) && this_pokemon.known_moves.Count >= 1
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[0].range
+		   && this_pokemon.known_moves[0].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[0].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[0].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha2) && this_pokemon.known_moves.Count >= 2
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[1].range
+		   && this_pokemon.known_moves[1].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[1].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[1].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha3) && this_pokemon.known_moves.Count >= 3
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[2].range
+		   && this_pokemon.known_moves[2].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[2].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[2].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha4) && this_pokemon.known_moves.Count >= 4
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[3].range
+		   && this_pokemon.known_moves[3].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[3].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[3].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha5) && this_pokemon.known_moves.Count >= 5
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[4].range
+		   && this_pokemon.known_moves[4].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[4].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[4].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha6) && this_pokemon.known_moves.Count >= 6
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[5].range
+		   && this_pokemon.known_moves[5].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[5].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[5].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha7) && this_pokemon.known_moves.Count >= 7
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[6].range
+		   && this_pokemon.known_moves[6].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[6].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[6].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha8) && this_pokemon.known_moves.Count >= 8
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[7].range
+		   && this_pokemon.known_moves[7].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[7].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[7].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha9) && this_pokemon.known_moves.Count >= 9
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[8].range
+		   && this_pokemon.known_moves[8].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[8].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[8].UseMove(gameObject, target, targets);
+		}
+		if(target != null && !using_a_move && Input.GetKeyDown(KeyCode.Alpha0) && this_pokemon.known_moves.Count >= 10
+		   && Vector3.Distance(transform.position, target.transform.position) < this_pokemon.known_moves[9].range
+		   && this_pokemon.known_moves[9].cooling_down == 0 && this_pokemon.cur_pp >= this_pokemon.known_moves[9].pp_cost)
+		{
+			using_a_move = true;
+			this_pokemon.known_moves[9].UseMove(gameObject, target, targets);
+		}
+	}
 }

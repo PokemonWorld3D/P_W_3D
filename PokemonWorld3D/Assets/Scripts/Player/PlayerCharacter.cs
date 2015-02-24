@@ -9,8 +9,8 @@ public class PlayerCharacter : MonoBehaviour
 	public int players_funds;
 	public string players_last_zone;
 	public Vector3 players_last_location;
-	public List<NEWPlayerPokemonData> players_pokemon_roster;
-	public List<NEWPlayerPokemonData> players_pokemon_inventory;
+	public List<PlayerPokemonData> players_pokemon_roster;
+	public List<PlayerPokemonData> players_pokemon_inventory;
 	public List<Item> players_inventory;
 	public bool player_is_in_battle;
 	public GameObject players_active_pokemon;
@@ -24,7 +24,7 @@ public class PlayerCharacter : MonoBehaviour
 	public void SetActivePokemon(GameObject active_pokemon)
 	{
 		players_active_pokemon = active_pokemon;
-		players_hud.SetActivePokemon(active_pokemon.GetComponent<NEWPokemon>());
+		players_hud.SetActivePokemon(active_pokemon.GetComponent<Pokemon>());
 	}
 	public void RemoveActivePokemon()
 	{

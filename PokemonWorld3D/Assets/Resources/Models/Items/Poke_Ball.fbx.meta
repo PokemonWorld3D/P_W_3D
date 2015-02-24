@@ -1,27 +1,37 @@
 fileFormatVersion: 2
-guid: 975d42e9e2a0686499d31ce7518a29b4
+guid: 980973cf9fddda94f9392515d3994fc7
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: Armature
-    100002: down
-    100004: //RootNode
-    100006: simple_low
-    100008: simple_up
-    100010: up
+    100002: button
+    100004: control
+    100006: down
+    100008: pokeball
+    100010: //RootNode
+    100012: up
+    100014: Hemi
     400000: Armature
-    400002: down
-    400004: //RootNode
-    400006: simple_low
-    400008: simple_up
-    400010: up
-    4300000: simple_up
-    4300002: simple_low
-    7400000: Default Take
-    7400002: open
+    400002: button
+    400004: control
+    400006: down
+    400008: pokeball
+    400010: //RootNode
+    400012: up
+    400014: Hemi
+    4300000: pokeball
+    4300002: button
+    7400000: Armature|Default pose
+    7400002: Armature|open
+    7400004: Scene
+    7400006: Default Take
+    7400008: Default_pose
+    7400010: Open
+    7400012: Open_Top
+    7400014: Trying_To_Catch
     9500000: //RootNode
-    13700000: simple_low
-    13700002: simple_up
+    13700000: button
+    13700002: pokeball
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +49,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: open
+      name: Open
       takeName: open
       firstFrame: 0
       lastFrame: 29
@@ -49,7 +59,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 0
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -66,13 +76,95 @@ ModelImporter:
         weight: 1
       - path: Armature
         weight: 1
-      - path: Armature/down
+      - path: Armature/control
         weight: 1
-      - path: Armature/up
+      - path: Armature/control/down
         weight: 1
-      - path: simple_low
+      - path: Armature/control/up
         weight: 1
-      - path: simple_up
+      - path: button
+        weight: 1
+      - path: pokeball
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Open_Top
+      takeName: Open_Top
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/control
+        weight: 1
+      - path: Armature/control/down
+        weight: 1
+      - path: Armature/control/up
+        weight: 1
+      - path: button
+        weight: 1
+      - path: pokeball
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Trying_To_Catch
+      takeName: capture
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/control
+        weight: 1
+      - path: Armature/control/down
+        weight: 1
+      - path: Armature/control/up
+        weight: 1
+      - path: button
+        weight: 1
+      - path: pokeball
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -81,7 +173,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

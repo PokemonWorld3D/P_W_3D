@@ -32,6 +32,19 @@ ModelImporter:
     7400004: Idle_world
     7400006: Run
     7400008: Walk
+    7400010: At_BugBite
+    7400012: At_Harden
+    7400014: At_StringShot
+    7400016: At_Tackle
+    7400018: Falling
+    7400020: Idle_battle
+    7400022: Idle_simple
+    7400024: Jump
+    7400026: Landing
+    7400028: To_Sleep
+    7400030: Sleeping
+    7400032: Wake_Up
+    7400034: Faint
     9500000: //RootNode
     13700000: mesh_transel_mat_0
   materials:
@@ -49,7 +62,789 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: At_BugBite
+      takeName: At_BugBite
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: At_Harden
+      takeName: At_Harden
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: At_StringShot
+      takeName: At_StringShot
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: At_Tackle
+      takeName: At_Tackle
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Defaultpose
+      takeName: Defaultpose
+      firstFrame: 0
+      lastFrame: .100000001
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Falling
+      takeName: Falling
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_battle
+      takeName: Idle_battle
+      firstFrame: 0
+      lastFrame: 459
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_simple
+      takeName: Idle_simple
+      firstFrame: 0
+      lastFrame: 219
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_world
+      takeName: Idle_world
+      firstFrame: 0
+      lastFrame: 449
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Jump
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Landing
+      takeName: Landing
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Run
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: To_Sleep
+      takeName: To_Sleep
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sleeping
+      takeName: Sleeping
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Wake_Up
+      takeName: Wake_Up
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Faint
+      takeName: Faint
+      firstFrame: 0
+      lastFrame: 99
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Controlfloor
+        weight: 1
+      - path: Armature/Controlfloor/Body
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head
+        weight: 1
+      - path: Armature/Controlfloor/Body/Head/Horn
+        weight: 1
+      - path: Armature/Controlfloor/tail1
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2
+        weight: 1
+      - path: Armature/Controlfloor/tail1/tail2/tail3
+        weight: 1
+      - path: mesh_transel_mat_0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

@@ -10,8 +10,8 @@ public class BasePlayer
 	public int players_funds {get; set;}
 	public string players_last_zone {get; set;}
 	public Vector3 players_last_location {get; set;}
-	public List<NEWPlayerPokemonData> players_pokemon_roster {get; set;}
-	public List<NEWPlayerPokemonData> players_pokemon_inventory {get; set;}
+	public List<PlayerPokemonData> players_pokemon_roster {get; set;}
+	public List<PlayerPokemonData> players_pokemon_inventory {get; set;}
 	public List<Item> players_inventory {get; set;}
 	public bool is_in_battle {get; set;}
 
@@ -25,14 +25,14 @@ public class BasePlayer
 		players_funds = 0;
 		players_last_zone = string.Empty;
 		players_last_location = Vector3.zero;
-		players_pokemon_roster = new List<NEWPlayerPokemonData>();
-		players_pokemon_inventory = new List<NEWPlayerPokemonData>();
+		players_pokemon_roster = new List<PlayerPokemonData>();
+		players_pokemon_inventory = new List<PlayerPokemonData>();
 		players_inventory = new List<Item>();
 		is_in_battle = false;
 	}
 
 	public BasePlayer(string this_name, Genders this_gender, int this_funds, string this_last_zone, Vector3 this_last_location,
-	                  List<NEWPlayerPokemonData> this_pkmn_roster, List<NEWPlayerPokemonData> this_pkmn_inventory, List<Item> this_inventory, bool this_battle)
+	                  List<PlayerPokemonData> this_pkmn_roster, List<PlayerPokemonData> this_pkmn_inventory, List<Item> this_inventory, bool this_battle)
 	{
 		players_name = this_name;
 		players_gender = this_gender;

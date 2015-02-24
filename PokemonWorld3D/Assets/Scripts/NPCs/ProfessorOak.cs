@@ -17,7 +17,7 @@ public class ProfessorOak : MonoBehaviour {
 	}
 	
 	private IEnumerator Dialogue(GameObject player){
-		player.GetComponent<Movement>().enabled = false;
+		player.GetComponent<PlayerInput>().enabled = false;
 		yield return null;
 	}
 }

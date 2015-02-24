@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-guid: 91bcb906fd26f9140a920f88c8f63c61
+guid: cb734b39d0e2e1f4eadb0871d01e6401
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - evolvesInto: {instanceID: 0}
-  - evolveColor: {fileID: 2100000, guid: fc061898515a4754c86e0fcedabf1862, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

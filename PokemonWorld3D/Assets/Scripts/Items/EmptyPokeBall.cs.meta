@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1afe423dbafc09841afa6317b0e60561
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - this_player: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - capture_attempt: {fileID: 8300000, guid: c0b8760003efe164eb9b9e846580c02d, type: 3}
+  - attempting_capture: {fileID: 8300000, guid: ff4d7ac321c2988468ff098d67aaf2c2,
+      type: 3}
+  - capture_success: {fileID: 8300000, guid: 929fdea582d1503409d59bb9a0263b37, type: 3}
+  - capture_fail: {fileID: 8300000, guid: fa86244e45e02d44880a26a6f7ba4ea0, type: 3}
+  - capture_orb_prefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -1,52 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System;
-using System.Runtime.Serialization;
-using System.Reflection;
-using System.Xml.Serialization;
 
 [System.Serializable]
-public class StatusEffect : ISerializable{
-	
-	public string statusEffectName;
-	public int stagesToChange;
-	public StatusEffectCategories statusEffectCategory;
-	public string changeAbilityTo;
-	
-	public enum StatusEffectCategories{
-		NON_VOLATILE,
-		VOLATILE,
-		IN_BATTLE_ONLY,
-		NONE
-	}
+public class StatusEffect
+{
+	public string status_effect_name;
+	public bool change_stat;
+	public Pokemon.Stats stat_to_change;
+	public bool change_acc_or_eva;
+	public Pokemon.AccEva acc_or_eva;
+	public int stages_to_change;
+	public bool ability_change;
+	public string change_ability_to;
+	public float success_rate;
 
-	public StatusEffect(string name, int change, StatusEffectCategories category, string newAbility){
-		statusEffectName = name;
-		stagesToChange = change;
-		statusEffectCategory = category;
-		changeAbilityTo = newAbility;
-	}
-	
-	public StatusEffect(){
+	public StatusEffect()
+	{
 		
 	}
-
-	protected StatusEffect(SerializationInfo info, StreamingContext context){
-		statusEffectName = info.GetString("statusEffectName");
-		stagesToChange = info.GetInt32("stagesToChange");
-		statusEffectCategory = (StatusEffectCategories)info.GetByte("statusEffectCategory");
-		changeAbilityTo = info.GetString("changeAbilityTo");
+	public StatusEffect(string name, bool stat_change, Pokemon.Stats stat, bool acceva_change, Pokemon.AccEva acceva, int stages, bool change_ability,
+	                    string new_ability, float rate_of_success)
+	{
+		status_effect_name = name;
+		change_stat = stat_change;
+		stat_to_change = stat;
+		change_acc_or_eva = acceva_change;
+		acc_or_eva = acceva;
+		stages_to_change = stages;
+		ability_change = change_ability;
+		change_ability_to = new_ability;
+		success_rate = rate_of_success;
 	}
-
-	public void GetObjectData(SerializationInfo info, StreamingContext context){
-		info.AddValue("statusEffectName", statusEffectName);
-		info.AddValue("stagesToChange", stagesToChange);
-		info.AddValue("statusEffectCategory", statusEffectCategory);
-		info.AddValue("changeAbilityTo", changeAbilityTo);
-	}
-
 }

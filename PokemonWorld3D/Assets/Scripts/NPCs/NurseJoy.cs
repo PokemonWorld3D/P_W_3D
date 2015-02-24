@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class NurseJoy : MonoBehaviour {
 
-	private Movement movementScript;
+	private PlayerInput input;
 	private GameObject hud;
 	private GameObject diagBox;
 	private GameObject diag;
 	private Text diagText;
-	private PlayersPokemon roster;
+	private PlayerCharacter player;
 
 	void Start(){
 		hud = GameObject.FindGameObjectWithTag("HUD");
@@ -28,8 +28,8 @@ public class NurseJoy : MonoBehaviour {
 	}
 
 	private IEnumerator Dialogue(GameObject player){
-		movementScript = player.GetComponent<Movement>();
-		movementScript.enabled = false;
+		input = player.GetComponent<PlayerInput>();
+		input.enabled = false;
 		player.GetComponent<Animator>().SetFloat("Speed", 0f);
 		diagBox.SetActive(true);
 		diag.SetActive(true);
@@ -42,12 +42,12 @@ public class NurseJoy : MonoBehaviour {
 			yield return null;
 		}
 		if(Input.GetKeyDown(KeyCode.Y)){
-			HealPlayersPokemon(player.GetComponent<PlayersPokemon>());
+			HealPlayersPokemon(player.GetComponent<PlayerCharacter>());
 		}
 		if(Input.GetKeyDown(KeyCode.N)){
 			diag.SetActive(false);
 			diagBox.SetActive(false);
-			movementScript.enabled = true;
+			input.enabled = true;
 			yield break;
 		}
 		diagText.text = "" + "There, all better! Your Pokémon have been restored to full health! Good luck on your journey and I'm here if you need me!" + "";
@@ -56,14 +56,14 @@ public class NurseJoy : MonoBehaviour {
 		}
 		diag.SetActive(false);
 		diagBox.SetActive(false);
-		movementScript.enabled = true;
+		input.enabled = true;
 		yield return null;
 	}
 
-	private void HealPlayersPokemon(PlayersPokemon roster){
-		foreach(PlayerPokemonData data in roster.pokemonRoster){
-			data.curHP = data.maxHP;
-			data.statusCondition = BasePokemon.NonVolatileStatusConditionList.NONE;
+	private void HealPlayersPokemon(PlayerCharacter player){
+		foreach(PlayerPokemonData data in player.players_pokemon_roster){
+			data.cur_hp = data.cur_max_hp;
+			data.status_condition = BasePokemon.NonVolatileStatusConditionList.NONE;
 		}
 	}
 

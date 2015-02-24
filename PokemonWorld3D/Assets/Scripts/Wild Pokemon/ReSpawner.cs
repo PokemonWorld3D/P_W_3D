@@ -17,12 +17,12 @@ public class ReSpawner : MonoBehaviour {
 		for(var i = 0; i < deadPokemon.Count; i++){
 			Pokemon pokemon = deadPokemon[i];
 			
-			float time = Time.time - pokemon.timeOfDeath;
+			float time = Time.time - pokemon.time_of_death;
 			
 			if(time > respawnDelay)
 			{
 				pokemon.gameObject.SetActive(true);
-				pokemon.isAlive = true;
+				pokemon.is_alive = true;
 				pokemon.gameObject.rigidbody.WakeUp();
 				pokemon.gameObject.GetComponent<Animator>().enabled = true;
 //				pokemon.gameObject.GetComponentInChildren<PokemonAI>().enabled = true;
@@ -36,7 +36,7 @@ public class ReSpawner : MonoBehaviour {
 						Debug.Log("...");
 					}
 					pokemon.gameObject.transform.position = spawnPoint;
-					pokemon.SetupPokemon();
+					pokemon.SetupPokemonFirstTime();
 					deadPokemon.RemoveAt(i);
 					i--;
 				}
