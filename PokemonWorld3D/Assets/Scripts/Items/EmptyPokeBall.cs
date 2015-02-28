@@ -89,6 +89,7 @@ public class EmptyPokeBall : MonoBehaviour
 			orb.transform.position = Vector3.Lerp(orb.transform.position, orb_target, 2.7f * Time.deltaTime);
 			yield return null;
 		}
+		Destroy(orb);
 		//orb.transform.parent = my_transform;
 		animation["Close"].speed = -5f;
 		animation["Close"].time = animation["Close"].length;
@@ -102,7 +103,6 @@ public class EmptyPokeBall : MonoBehaviour
 			angle = Quaternion.Angle(my_transform.rotation, fwdRotation);
 			yield return null;
 		}
-		Destroy(orb);
 		yield return null;
 	}
 	private IEnumerator TryToCatch(Collision col)

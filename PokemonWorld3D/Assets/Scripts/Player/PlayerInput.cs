@@ -4,131 +4,178 @@ using System.Collections.Generic;
 
 public class PlayerInput : MonoBehaviour
 {
-	public PlayerCharacter this_player;
-	public float speed_limit = 10.0f;
-	public float rotate_speed = 10.0f;
+	public float walk_speed = 1.0f;
+	public float run_multiplier = 2.0f;
 	public float gravity = 10.0f;
-	public float max_velocity_change = 10.0f;
-	public bool can_jump = true;
+	public float air_time;							//Make private later.
+	public float fall_time = 0.5f;
+	public float max_velocity_change = 10.0f;		//Make private later.
+	public bool can_jump = true;					//Make private later.
+	public bool jumping = false;					//Make private later.
 	public float jump_height = 2.0f;
-	public bool grounded = false;
-	public ThrowPokeBall throw_poke_ball;
-	public GameObject target;
-	public List<GameObject> targets;
-
-	private Transform my_transform;
-	private Collider terrain_collider;
-	private float terrain_height;
-	private Animator anim;
-	private float horizontal;
-	private float vertical;
-	private float rotation;
+	public bool using_a_move;						//Make private later.
+	public bool grounded = false;					//Make private later.
+	public GameObject target;						//Make private later.
+	public Pokemon target_pokemon;					//Make private later.
+	public List<GameObject> targets;				//Make private later.
+	
+	public Transform my_transform;
+	private Rigidbody body;
+	private Vector3 target_velocity;
 	private Vector3 velocity;
-	private float speed;
+	public PlayerCharacter this_player;
+	public ThrowPokeBall throw_poke_ball;
 	private FINALGUISCRIPT hud;
+	private Animator anim;
 	public bool throw_coroutine_started;
-
-	void Awake()
-	{
-		rigidbody.freezeRotation = true;
-		rigidbody.useGravity = false;
-	}
+	
 	void Start()
 	{
-		this_player = GetComponent<PlayerCharacter>();
-		anim = GetComponent<Animator>();
 		my_transform = transform;
-		terrain_collider = GameObject.FindGameObjectWithTag("Terrain").GetComponent<TerrainCollider>();
-		velocity = rigidbody.velocity;
+		body = GetComponent<Rigidbody>();
+		body.freezeRotation = true;
+		body.useGravity = false;
+		target_velocity = Vector3.zero;
+		this_player = GetComponent<PlayerCharacter>();
+		targets = new List<GameObject>();
+		target = null;
+		anim = GetComponent<Animator>();
 		hud = this_player.players_hud;
-		AddAllTargets();
 		throw_coroutine_started = false;
+		throw_poke_ball = GetComponent<ThrowPokeBall>();
 	}
 	void Update()
 	{
-		if(Input.GetButtonUp("Targeting"))
-		{
-			TargetPokemon();
-		}
-		horizontal = Input.GetAxis("Horizontal");
-		vertical = Input.GetAxis("Vertical");
-		rotation = Input.GetAxis("Rotation");
-		velocity = rigidbody.velocity;
-		if(Input.GetKey(KeyCode.LeftShift))
-		{
-			speed_limit = 1.0f;
-			
-		}
-		else
-		{
-			speed_limit = 10.0f;
-		}
-		if (can_jump && Input.GetButtonDown("Jump"))
-		{
-			Jump();
-		}
 		if(Input.GetButtonDown("Swap"))
 		{
 			SwapToPokemon();
 		}
-		if(!this_player.player_is_in_battle)
+		if(Input.GetButtonDown("Targeting"))
 		{
-
+			AddAllTargets();
+			TargetPokemon();
 		}
-		if(Input.GetKey(KeyCode.M))
-		{
-			anim.SetTrigger("Mount");
-		}
+		KeepTrackOfTargets();
 		if(Input.GetKeyDown(KeyCode.C) && target != null)
 		{
 			StartCoroutine(GetComponent<ThrowPokeBall>().PokeBallGo());
 		}
 		SummonPokemon();
-		anim.SetFloat("Speed", speed);
 	}
 	void FixedUpdate ()
 	{
-		if (grounded)
+		Vector3 forward = Camera.main.transform.TransformDirection(Vector3.forward);
+		forward.y = 0f;
+		forward = forward.normalized;
+		Vector3 right = new Vector3(forward.z, 0f, -forward.x);
+		if (grounded && !jumping && !using_a_move)
 		{
-			// Calculates the slope of the ground beneath the object and matches the "lean" of the object to the angle of the slope.
-			RaycastHit hit;
-			Ray ray = new Ray(my_transform.position, Vector3.down);
-			if (terrain_collider.Raycast(ray, out hit, 1000.0f))
-			{
-				my_transform.rotation = Quaternion.FromToRotation(my_transform.up, hit.normal) * my_transform.rotation;
-			}
+			air_time = 0.0f;
 
 			// Calculate how fast we should be moving
-			Vector3 target_velocity = new Vector3(horizontal, 0.0f, vertical);
-			target_velocity = transform.TransformDirection(target_velocity);
-			target_velocity *= speed_limit;
+			target_velocity = (Input.GetAxis("Horizontal") * right + Input.GetAxis("Vertical") * forward);
+			if (target_velocity != Vector3.zero)
+			{
+				my_transform.rotation = Quaternion.Slerp(my_transform.rotation, Quaternion.LookRotation(target_velocity), 10f * Time.smoothDeltaTime);
+				my_transform.eulerAngles = new Vector3(0f, my_transform.eulerAngles.y, 0f);
+			}
+			if(Input.GetButton("Walk"))
+			{
+				target_velocity *= walk_speed;
+			}
+			else
+			{
+				target_velocity *= walk_speed * run_multiplier;
+			}
 			
 			// Apply a force that attempts to reach our target velocity
-			Vector3 velocity_change = (target_velocity - velocity);
-			velocity_change.x = Mathf.Clamp(velocity_change.x, -max_velocity_change, max_velocity_change);
-			velocity_change.z = Mathf.Clamp(velocity_change.z, -max_velocity_change, max_velocity_change);
-			velocity_change.y = 0;
-			rigidbody.AddForce(velocity_change, ForceMode.VelocityChange);
-
-			// Rotates on the Y axis.
-			transform.Rotate(0.0f, rotation * rotate_speed, 0.0f);
-
-			speed = vertical * speed_limit;
+			velocity = body.velocity;
+			Vector3 velocityChange = (target_velocity - velocity);
+			velocityChange.x = Mathf.Clamp(velocityChange.x, -max_velocity_change, max_velocity_change);
+			velocityChange.z = Mathf.Clamp(velocityChange.z, -max_velocity_change, max_velocity_change);
+			velocityChange.y = 0;
+			body.AddForce(velocityChange, ForceMode.VelocityChange);
+			
+			// Handle animation between idle & locomotion
+			if(Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+			{
+				if(Input.GetButton("Walk"))
+				{
+					Walk();
+				}
+				else
+				{
+					Run();
+				}
+			}
+			else
+			{
+				Idle();
+			}
+		}
+		// Jump
+		if (grounded && Input.GetButton("Jump"))
+		{
+			Jump();
 		}
 		// We apply gravity manually for more tuning control
-		rigidbody.AddForce(new Vector3 (0, -gravity * rigidbody.mass, 0));
+		body.AddForce(new Vector3 (0, -gravity * body.mass, 0));
 		
 		grounded = false;
+		air_time += Time.deltaTime;
+		if(air_time > fall_time)
+			Fall();
+	}
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.CompareTag("Terrain"))
+			animation.CrossFade("Landing");
 	}
 	void OnCollisionStay()
 	{
 		grounded = true;    
 	}
+	
+	public void Jumping()
+	{
+		body.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+		can_jump = false;
+	}
+	public void NotJumping()
+	{
+		can_jump = true;
+		jumping = false;
+	}
 
 	private void Jump()
 	{
-		rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+		jumping = true;
+		animation.CrossFade("Jump");
 	}
+	private void Idle()
+	{
+		if(this_player.player_is_in_battle)
+		{
+			animation.CrossFade("Idle_Battle");
+		}
+		else
+		{
+			animation.CrossFade("Idle_World");
+		}
+	}
+	private void Walk()
+	{
+		animation.CrossFade("Walk");
+	}
+	private void Run()
+	{
+		animation.CrossFade("Run");
+	}
+	private void Fall()
+	{
+		animation.CrossFade("Falling");
+	}
+
 	private float CalculateJumpVerticalSpeed()
 	{
 		// From the jump height and gravity we deduce the upwards speed for the character to reach at the apex.
@@ -159,6 +206,26 @@ public class PlayerInput : MonoBehaviour
 		if(target.gameObject != this.gameObject)
 			targets.Add(target);
 	}
+	private void RemoveTarget(GameObject target)
+	{
+		targets.Remove(target);
+		target = null;
+		hud.NoTarget();
+	}
+	private void KeepTrackOfTargets()
+	{
+		if(target_pokemon != null && target_pokemon.cur_hp == 0)
+		{
+			RemoveTarget(target);
+		}
+		for(int i = 0; i < targets.Count; i++)
+		{
+			if(targets[i].GetComponent<Pokemon>().cur_hp == 0)
+			{
+				targets.Remove(targets[i]);
+			}
+		}
+	}
 	private void SortTargetsByDistance()
 	{
 		targets.Sort(delegate(GameObject c1, GameObject c2){
@@ -172,7 +239,8 @@ public class PlayerInput : MonoBehaviour
 		{
 			SortTargetsByDistance();
 			target = targets[0];
-			hud.SetTarget(target.GetComponent<Pokemon>());
+			target_pokemon = target.GetComponent<Pokemon>();
+			hud.SetTarget(target_pokemon);
 		}
 		else
 		{
@@ -187,6 +255,8 @@ public class PlayerInput : MonoBehaviour
 				index = 0;
 			}
 			target = targets[index];
+			target_pokemon = targets[index].GetComponent<Pokemon>();
+			hud.SetTarget(target_pokemon);
 		}
 	}
 

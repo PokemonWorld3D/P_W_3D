@@ -8,14 +8,7 @@ public class StatCalculations {
 	private float natureNeutralModifier = 1.00f;
 	private float statModifier;
 
-	public enum StatTypes{
-		HITPOINTS,
-		ATTACK,
-		DEFENSE,
-		SPECIALATTACK,
-		SPECIALDEFENSE,
-		SPEED
-	}
+	public enum StatTypes { HITPOINTS, ATTACK, DEFENSE, SPECIALATTACK, SPECIALDEFENSE, SPEED }
 	
 
 	public int CalculateHP(int baseHP, int level, int iv, int ev){
@@ -26,214 +19,214 @@ public class StatCalculations {
 		return (int)((((2 * basePP) + 100) * level) / 100);
 	}
 	
-	public int CalculateStat(int baseStat, int level, int iv, int ev, BasePokemon.NaturesList nature, StatTypes statType){
+	public int CalculateStat(int baseStat, int level, int iv, int ev, Pokemon.Natures nature, StatTypes statType){
 		SetModifier (nature, statType);
 		return (int)(((((iv + (2 * baseStat) + (ev / 4)) * level) / 100) + 5) * statModifier);
 	}
 
-	private void SetModifier(BasePokemon.NaturesList nature, StatTypes statType){
-		if(nature == BasePokemon.NaturesList.LONELY && statType == StatTypes.ATTACK){
+	private void SetModifier(Pokemon.Natures nature, StatTypes statType){
+		if(nature == Pokemon.Natures.LONELY && statType == StatTypes.ATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.LONELY && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.LONELY && statType == StatTypes.DEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.BRAVE && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.BRAVE && statType == StatTypes.ATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.BRAVE && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.BRAVE && statType == StatTypes.SPEED){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.ADAMANT && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.ADAMANT && statType == StatTypes.ATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.ADAMANT && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.ADAMANT && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.NAUGHTY && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.NAUGHTY && statType == StatTypes.ATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.NAUGHTY && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.NAUGHTY && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.BOLD && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.BOLD && statType == StatTypes.DEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.BOLD && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.BOLD && statType == StatTypes.ATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.RELAXED && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.RELAXED && statType == StatTypes.DEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.RELAXED && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.RELAXED && statType == StatTypes.SPEED){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.IMPISH && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.IMPISH && statType == StatTypes.DEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.IMPISH && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.IMPISH && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.LAX && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.LAX && statType == StatTypes.DEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.LAX && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.LAX && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.TIMID && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.TIMID && statType == StatTypes.SPEED){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.TIMID && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.TIMID && statType == StatTypes.ATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.HASTY && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.HASTY && statType == StatTypes.SPEED){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.HASTY && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.HASTY && statType == StatTypes.DEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.JOLLY && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.JOLLY && statType == StatTypes.SPEED){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.JOLLY && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.JOLLY && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.NAIVE && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.NAIVE && statType == StatTypes.SPEED){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.NAIVE && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.NAIVE && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.MODEST && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.MODEST && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.MODEST && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.MODEST && statType == StatTypes.ATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.MILD && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.MILD && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.MILD && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.MILD && statType == StatTypes.DEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.QUIET && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.QUIET && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.QUIET && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.QUIET && statType == StatTypes.SPEED){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.RASH && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.RASH && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.RASH && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.RASH && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.CALM && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.CALM && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.CALM && statType == StatTypes.ATTACK){
+		if(nature == Pokemon.Natures.CALM && statType == StatTypes.ATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.GENTLE && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.GENTLE && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.GENTLE && statType == StatTypes.DEFENSE){
+		if(nature == Pokemon.Natures.GENTLE && statType == StatTypes.DEFENSE){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.SASSY && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.SASSY && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.SASSY && statType == StatTypes.SPEED){
+		if(nature == Pokemon.Natures.SASSY && statType == StatTypes.SPEED){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.CAREFUL && statType == StatTypes.SPECIALDEFENSE){
+		if(nature == Pokemon.Natures.CAREFUL && statType == StatTypes.SPECIALDEFENSE){
 			statModifier = natureIncreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.CAREFUL && statType == StatTypes.SPECIALATTACK){
+		if(nature == Pokemon.Natures.CAREFUL && statType == StatTypes.SPECIALATTACK){
 			statModifier = natureDecreaseModifier;
 		}else{
 			statModifier = natureNeutralModifier;
 		}
-		if(nature == BasePokemon.NaturesList.BASHFUL || nature == BasePokemon.NaturesList.DOCILE || nature == BasePokemon.NaturesList.HARDY || 
-		   nature == BasePokemon.NaturesList.QUIRKY || nature == BasePokemon.NaturesList.SERIOUS){
+		if(nature == Pokemon.Natures.BASHFUL || nature == Pokemon.Natures.DOCILE || nature == Pokemon.Natures.HARDY || 
+		   nature == Pokemon.Natures.QUIRKY || nature == Pokemon.Natures.SERIOUS){
 			statModifier = natureNeutralModifier;
 		}
 	}

@@ -62,8 +62,8 @@ public class Flight : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		if(in_flight)
-			HandleInFlightCamera();
+	//	if(in_flight)
+	//		HandleInFlightCamera();
 		my_transform.position += my_transform.forward * Time.deltaTime * speed;
 		my_transform.Rotate (0.0f, -yaw, 0.0f);
 		if (speed > 10.0f)
@@ -112,6 +112,10 @@ public class Flight : MonoBehaviour
 		yield return new WaitForSeconds(3.0f);
 		rigidbody.Sleep();
 		Camera.main.GetComponent<CameraController>().enabled = false;
+		Camera.main.transform.parent = my_transform;
+		Vector3 cam_pos = new Vector3(0.0f, 3.0f, -5.0f);
+		Camera.main.transform.localPosition = cam_pos;
+		Camera.main.transform.LookAt(my_transform.position + my_transform.forward * 5.0f);
 		in_flight = true;
 		yield return null;
 	}
@@ -119,6 +123,7 @@ public class Flight : MonoBehaviour
 	{
 		rigidbody.useGravity = true;
 		anim.SetBool("Falling", true);
+		Camera.main.transform.parent = null;
 		Camera.main.GetComponent<CameraController>().enabled = true;
 		in_flight = false;
 		while(my_transform.rotation != Quaternion.identity)

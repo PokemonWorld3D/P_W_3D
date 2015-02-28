@@ -9,11 +9,13 @@ public class Move : MonoBehaviour
 	public int level;
 	public int attack;
 	public int special_attack;
+	public float acc;
 	public int base_speed;
 	public PokemonTypes.Types type_one;
 	public PokemonTypes.Types type_two;
 	public int target_defense;
 	public int target_special_defense;
+	public float target_eva;
 	public PokemonTypes.Types target_type_one;
 	public PokemonTypes.Types target_type_two;
 	public PokemonInput input;
@@ -47,10 +49,12 @@ public class Move : MonoBehaviour
 	public float cool_down;
 	public float cooling_down;
 	public float animation_speed;
+	public float chance_to_hit;
+	public bool hit;
 
-	private GameObject target;
-	private List<GameObject> targets;
-	private Pokemon target_pokemon;
+	public GameObject target;
+	public List<GameObject> these_targets;
+	public Pokemon target_pokemon;
 	private DamageCalculation dmgCalc = new DamageCalculation();
 
 	public enum MoveCategoriesList{ PHYSICAL, SPECIAL, STATUS }
@@ -66,6 +70,7 @@ public class Move : MonoBehaviour
 		level = this_pokemon.level;
 		attack = this_pokemon.cur_atk;
 		special_attack = this_pokemon.cur_spatk;
+		acc = this_pokemon.accuracy;
 		base_speed = this_pokemon.base_spd;
 		type_one = this_pokemon.type_one;
 		type_two = this_pokemon.type_two;
@@ -82,12 +87,15 @@ public class Move : MonoBehaviour
 
 	public void UseMove(GameObject pokemon, GameObject the_target, List<GameObject> targets)
 	{
+		hit = false;
+		these_targets = targets;
 		if(single_target)
 		{
 			target = the_target;
 			target_pokemon = target.GetComponent<Pokemon>();
 			target_defense = target_pokemon.cur_def;
 			target_special_defense = target_pokemon.cur_spdef;
+			target_eva = target_pokemon.evasion;
 			target_type_one = target_pokemon.type_one;
 			target_type_two = target_pokemon.type_two;
 			if(category == MoveCategoriesList.PHYSICAL)
@@ -97,7 +105,12 @@ public class Move : MonoBehaviour
 				pokemon.animation.Play(move_name);
 				damage = dmgCalc.CalculateAttackDamage(power, high_crit_chance, type, level, attack, target_defense, type_one, type_two, target_type_one,
 				                                       target_type_two, base_speed);
-				target_pokemon.AdjustCurrentHP(-damage);
+				chance_to_hit = accuracy * (acc / target_eva);
+				float hit_or_miss = Random.Range(0.0f, 1.0f);
+				if(chance_to_hit >= hit_or_miss)
+				{
+					hit = true;
+				}
 			}
 			if(category == MoveCategoriesList.SPECIAL)
 			{
@@ -106,24 +119,48 @@ public class Move : MonoBehaviour
 				pokemon.animation.Play(move_name);
 				damage = dmgCalc.CalculateSpecialAttackDamage(power, high_crit_chance, type, level, special_attack, target_special_defense, type_one, type_two,
 				                                              target_type_one, target_type_two, base_speed);
-				target_pokemon.AdjustCurrentHP(-damage);
+
+				chance_to_hit = accuracy * (acc / target_eva);
+				float hit_or_miss = Random.Range(0.0f, 1.0f);
+				if(chance_to_hit >= hit_or_miss)
+				{
+					hit = true;
+				}
 			}
 			if(category == MoveCategoriesList.STATUS)
 			{
 				pokemon.transform.LookAt(target.transform);
 				pokemon.animation[move_name].speed = animation_speed;
 				pokemon.animation.Play(move_name);
-				foreach(StatusEffect effect in status_effects)
+				chance_to_hit = accuracy * (acc / target_eva);
+				float hit_or_miss = Random.Range(0.0f, 1.0f);
+				if(chance_to_hit >= hit_or_miss)
 				{
-					if(effect.change_stat)
+					hit = true;
+					if(status_condition != Pokemon.StatusConditions.NONE)
 					{
-						target_pokemon.AdjustCurrentStat(effect.stat_to_change, effect.stages_to_change);
+						float status_chance = Random.Range(0.0f, 1.0f);
+						if(status_condition_success_rate > status_chance)
+						{
+							target_pokemon.status_condition = status_condition;
+						}
 					}
-					if(effect.change_acc_or_eva)
+					foreach(StatusEffect effect in status_effects)
 					{
-						target_pokemon.AdjustCurrentAccEva(effect.acc_or_eva, effect.stages_to_change);
+						if(effect.change_stat)
+						{
+							target_pokemon.AdjustCurrentStat(effect.stat_to_change, effect.stages_to_change);
+						}
+						if(effect.change_acc_or_eva)
+						{
+							target_pokemon.AdjustCurrentAccEva(effect.acc_or_eva, effect.stages_to_change);
+						}
 					}
 				}
+			}
+			if(hit)
+			{
+				target_pokemon.enemies.Add(pokemon);
 			}
 		}
 		if(aoe)
@@ -136,6 +173,7 @@ public class Move : MonoBehaviour
 					target_pokemon = target.GetComponent<Pokemon>();
 					target_defense = target_pokemon.cur_def;
 					target_special_defense = target_pokemon.cur_spdef;
+					target_eva = target_pokemon.evasion;
 					target_type_one = target_pokemon.type_one;
 					target_type_two = target_pokemon.type_two;
 					if(category == MoveCategoriesList.PHYSICAL)
@@ -144,7 +182,38 @@ public class Move : MonoBehaviour
 						pokemon.animation.Play(move_name);
 						damage = dmgCalc.CalculateAttackDamage(power, high_crit_chance, type, level, attack, target_defense, type_one, type_two, target_type_one,
 						                                       target_type_two, base_speed);
-						target_pokemon.AdjustCurrentHP(-damage);
+						chance_to_hit = accuracy * (acc / target_eva);
+						float hit_or_miss = Random.Range(0.0f, 1.0f);
+						if(chance_to_hit >= hit_or_miss)
+						{
+							hit = true;
+							target_pokemon.AdjustCurrentHP(-damage);
+							if(status_condition != Pokemon.StatusConditions.NONE)
+							{
+								float status_chance = Random.Range(0.0f, 1.0f);
+								if(status_condition_success_rate > status_chance)
+								{
+									target_pokemon.status_condition = status_condition;
+								}
+							}
+							foreach(StatusEffect effect in status_effects)
+							{
+								float chance_to_apply = Random.Range(0.0f, 1.0f);
+								if(effect.success_rate >= chance_to_apply)
+								{
+									if(effect.change_stat)
+									{
+										target_pokemon.AdjustCurrentStat(effect.stat_to_change, effect.stages_to_change);
+									}
+									if(effect.change_acc_or_eva)
+									{
+										target_pokemon.AdjustCurrentAccEva(effect.acc_or_eva, effect.stages_to_change);
+									}
+								}
+								
+							}
+						}
+
 					}
 					if(category == MoveCategoriesList.SPECIAL)
 					{
@@ -152,25 +221,48 @@ public class Move : MonoBehaviour
 						pokemon.animation.Play(move_name);
 						damage = dmgCalc.CalculateSpecialAttackDamage(power, high_crit_chance, type, level, special_attack, target_special_defense, type_one, type_two,
 						                                              target_type_one, target_type_two, base_speed);
-						target_pokemon.AdjustCurrentHP(-damage);
-					}
-					if(category == MoveCategoriesList.STATUS)
-					{
-						pokemon.transform.LookAt(target.transform);
-						pokemon.animation[move_name].speed = animation_speed;
-						pokemon.animation.Play(move_name);
-						foreach(StatusEffect effect in status_effects)
+						
+						chance_to_hit = accuracy * (acc / target_eva);
+						float hit_or_miss = Random.Range(0.0f, 1.0f);
+						if(chance_to_hit >= hit_or_miss)
 						{
-							if(effect.change_stat)
+							hit = true;
+							target_pokemon.AdjustCurrentHP(-damage);
+							if(status_condition != Pokemon.StatusConditions.NONE)
 							{
-								target_pokemon.AdjustCurrentStat(effect.stat_to_change, effect.stages_to_change);
+								float status_chance = Random.Range(0.0f, 1.0f);
+								if(status_condition_success_rate > status_chance)
+								{
+									target_pokemon.status_condition = status_condition;
+								}
 							}
-							if(effect.change_acc_or_eva)
+							foreach(StatusEffect effect in status_effects)
 							{
-								target_pokemon.AdjustCurrentAccEva(effect.acc_or_eva, effect.stages_to_change);
+								float chance_to_apply = Random.Range(0.0f, 1.0f);
+								if(effect.success_rate >= chance_to_apply)
+								{
+									if(effect.change_stat)
+									{
+										target_pokemon.AdjustCurrentStat(effect.stat_to_change, effect.stages_to_change);
+									}
+									if(effect.change_acc_or_eva)
+									{
+										target_pokemon.AdjustCurrentAccEva(effect.acc_or_eva, effect.stages_to_change);
+									}
+								}
+								
 							}
 						}
 					}
+					if(category == MoveCategoriesList.STATUS)
+					{
+						pokemon.animation[move_name].speed = animation_speed;
+						pokemon.animation.Play(move_name);
+					}
+				}
+				if(hit)
+				{
+					target_pokemon.enemies.Add(pokemon);
 				}
 			}
 		}

@@ -23,6 +23,8 @@ public class ThrowPokeBall : MonoBehaviour
 	{
 		my_transform = transform;
 		anim = GetComponent<Animator>();
+		this_player = GetComponent<PlayerCharacter>();
+		input = GetComponent<PlayerInput>();
 	}
 
 	void Update()

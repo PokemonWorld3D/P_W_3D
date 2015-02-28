@@ -195,7 +195,7 @@ public class FINALGUISCRIPT : MonoBehaviour
 			move_three.SetActive(true);
 			move_three_icon.color = icon_color;
 			move_three_icon.sprite = active_pokemon.known_moves[2].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_three_timer.fillAmount = active_pokemon.known_moves[2].cooling_down / active_pokemon.known_moves[2].cool_down;
 			move_three_pp.text = active_pokemon.known_moves[2].pp_cost.ToString();
 		}
 		else
@@ -208,7 +208,7 @@ public class FINALGUISCRIPT : MonoBehaviour
 			move_four.SetActive(true);
 			move_four_icon.color = icon_color;
 			move_four_icon.sprite = active_pokemon.known_moves[3].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_four_timer.fillAmount = active_pokemon.known_moves[3].cooling_down / active_pokemon.known_moves[3].cool_down;
 			move_four_pp.text = active_pokemon.known_moves[3].pp_cost.ToString();
 		}
 		else

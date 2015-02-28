@@ -63,7 +63,7 @@ public class NurseJoy : MonoBehaviour {
 	private void HealPlayersPokemon(PlayerCharacter player){
 		foreach(PlayerPokemonData data in player.players_pokemon_roster){
 			data.cur_hp = data.cur_max_hp;
-			data.status_condition = BasePokemon.NonVolatileStatusConditionList.NONE;
+			data.status_condition = Pokemon.StatusConditions.NONE;
 		}
 	}
 

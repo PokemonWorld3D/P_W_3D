@@ -3,45 +3,45 @@ using System.Collections;
 
 public class CalculateXP {
 
-	public int CalculateCurrentXP(int level, BasePokemon.LevelingRatesList lvlrate){
-		if(lvlrate == BasePokemon.LevelingRatesList.ERRATIC){
+	public int CalculateCurrentXP(int level, Pokemon.LevelingRates lvlrate){
+		if(lvlrate == Pokemon.LevelingRates.ERRATIC){
 			return CalculateErraticCurrentXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.FAST){
+		if(lvlrate == Pokemon.LevelingRates.FAST){
 			return CalculateFastCurrentXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.FLUCTUATING){
+		if(lvlrate == Pokemon.LevelingRates.FLUCTUATING){
 			return CalculateFluctuatingCurrentXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.MEDIUM_FAST){
+		if(lvlrate == Pokemon.LevelingRates.MEDIUM_FAST){
 			return CalculateMediumFastCurrentXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.MEDIUM_SLOW){
+		if(lvlrate == Pokemon.LevelingRates.MEDIUM_SLOW){
 			return CalculateMediumSlowCurrentXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.SLOW){
+		if(lvlrate == Pokemon.LevelingRates.SLOW){
 			return CalculateSlowCurrentXP(level);
 		}
 		return 0;
 	}
 
-	public int CalculateRequiredXP(int level, BasePokemon.LevelingRatesList lvlrate){
-		if(lvlrate == BasePokemon.LevelingRatesList.ERRATIC){
+	public int CalculateRequiredXP(int level, Pokemon.LevelingRates lvlrate){
+		if(lvlrate == Pokemon.LevelingRates.ERRATIC){
 			return CalculateErraticRequiredXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.FAST){
+		if(lvlrate == Pokemon.LevelingRates.FAST){
 			return CalculateFastRequiredXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.FLUCTUATING){
+		if(lvlrate == Pokemon.LevelingRates.FLUCTUATING){
 			return CalculateFluctuatingRequiredXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.MEDIUM_FAST){
+		if(lvlrate == Pokemon.LevelingRates.MEDIUM_FAST){
 			return CalculateMediumFastRequiredXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.MEDIUM_SLOW){
+		if(lvlrate == Pokemon.LevelingRates.MEDIUM_SLOW){
 			return CalculateMediumSlowRequiredXP(level);
 		}
-		if(lvlrate == BasePokemon.LevelingRatesList.SLOW){
+		if(lvlrate == Pokemon.LevelingRates.SLOW){
 			return CalculateSlowRequiredXP(level);
 		}
 		return 0;

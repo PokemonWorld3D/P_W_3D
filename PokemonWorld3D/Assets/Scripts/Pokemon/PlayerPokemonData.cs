@@ -19,8 +19,8 @@ public class PlayerPokemonData : ISerializable {
 	public string nick_name;
 	public bool is_from_trade;
 	public int level;
-	public BasePokemon.SexesList gender;
-	public BasePokemon.NaturesList nature;
+	public Pokemon.Genders gender;
+	public Pokemon.Natures nature;
 	public int max_hp;
 	public int cur_max_hp;
 	public int max_atk;
@@ -49,7 +49,7 @@ public class PlayerPokemonData : ISerializable {
 	public int last_required_exp;
 	public int current_exp;
 	public int next_required_exp;
-	public BasePokemon.NonVolatileStatusConditionList status_condition;
+	public Pokemon.StatusConditions status_condition;
 	[XmlArray]
 	public List<string> moves_to_learn;
 	[XmlArray]
@@ -64,13 +64,12 @@ public class PlayerPokemonData : ISerializable {
 	}
 	
 	public PlayerPokemonData(bool newIsSetup, bool newIsCaptured, string newTrainersName, string newPokemonName, string newNickName, bool newIsFromTrade,
-	                            int newLevel,
-	                         	BasePokemon.SexesList newSex, BasePokemon.NaturesList newNature, int newMaxHP, int newCurMaxHP, int newMaxATK, int newMaxDEF,
-	                        	int newMaxSPATK, int newMaxSPDEF, int newMaxSPD, int newCurHP, int newCurATK, int newCurDEF, int newCurSPATK, int newCurSPDEF,
-	                            int newCurSPD, int newHpEV, int newAtkEV, int newDefEV, int newSpatkEV, int newSpdefEV, int newSpdEV, int newHpIV, int newAtkIV,
-	                            int newDefIV, int newSpatkIV, int newSpdefIV, int newSpdIV, int newLastRequiredXP, int newCurrentXP, int newNextRequiredXP,
-	                            BasePokemon.NonVolatileStatusConditionList newStatusCondition, List<string> newMovesToLearn, List<string> newPokemonsMoves,
-	                            Move newLastMoveUsed, Item newEquippedItem, int newOrigin, bool newIsShiny)
+	                         int newLevel, Pokemon.Genders newSex, Pokemon.Natures newNature, int newMaxHP, int newCurMaxHP, int newMaxATK, int newMaxDEF,
+	                         int newMaxSPATK, int newMaxSPDEF, int newMaxSPD, int newCurHP, int newCurATK, int newCurDEF, int newCurSPATK, int newCurSPDEF,
+	                         int newCurSPD, int newHpEV, int newAtkEV, int newDefEV, int newSpatkEV, int newSpdefEV, int newSpdEV, int newHpIV, int newAtkIV,
+	                         int newDefIV, int newSpatkIV, int newSpdefIV, int newSpdIV, int newLastRequiredXP, int newCurrentXP, int newNextRequiredXP,
+	                         Pokemon.StatusConditions newStatusCondition, List<string> newMovesToLearn, List<string> newPokemonsMoves,
+	                         Move newLastMoveUsed, Item newEquippedItem, int newOrigin, bool newIsShiny)
 	{
 		is_setup = newIsSetup;
 		is_captured = newIsCaptured;
@@ -127,8 +126,8 @@ public class PlayerPokemonData : ISerializable {
 		nick_name = info.GetString("nickName");
 		is_from_trade = info.GetBoolean("isFromTrade");
 		level = info.GetInt32("level");
-		gender = (BasePokemon.SexesList)info.GetByte("sex");
-		nature = (BasePokemon.NaturesList)info.GetByte("nature");
+		gender = (Pokemon.Genders)info.GetByte("sex");
+		nature = (Pokemon.Natures)info.GetByte("nature");
 		max_hp = info.GetInt32("maxHP");
 		cur_max_hp = info.GetInt32("curMaxHP");
 		max_atk = info.GetInt32("maxATK");
@@ -157,7 +156,7 @@ public class PlayerPokemonData : ISerializable {
 		last_required_exp = info.GetInt32("lastRequiredXP");
 		current_exp = info.GetInt32("currentXP");
 		next_required_exp = info.GetInt32("nextRequiredXP");
-		status_condition = (BasePokemon.NonVolatileStatusConditionList)info.GetByte("statusCondition");
+		status_condition = (Pokemon.StatusConditions)info.GetByte("statusCondition");
 //		movesToLearn = info.
 //		pokemonsMoves = info.
 //		equippedItem = info.GetValue("baseItem", BaseItem);

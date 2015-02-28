@@ -21,8 +21,8 @@ public class Pokemon : MonoBehaviour
 	public int evolve_level;
 	public PokemonTypes.Types type_one;
 	public PokemonTypes.Types type_two;
-	public BasePokemon.SexesList gender;
-	public BasePokemon.NaturesList nature;
+	public Genders gender;
+	public Natures nature;
 	public string ability_one;
 	public string ability_two;
 	public int base_hp;
@@ -70,7 +70,7 @@ public class Pokemon : MonoBehaviour
 	public int spdef_iv;
 	public int spd_iv;
 	public int base_exp_yield;
-	public BasePokemon.LevelingRatesList leveling_rate;
+	public LevelingRates leveling_rate;
 	public int last_required_exp;
 	public int current_exp;
 	public int next_required_exp;
@@ -82,7 +82,7 @@ public class Pokemon : MonoBehaviour
 	public int spd_ev_yield;
 	public int base_friendship;
 	public int capture_rate;
-	public BasePokemon.NonVolatileStatusConditionList status_condition;
+	public StatusConditions status_condition;
 	public float badly_poisoned_timer;
 	public float sleep_timer;
 	public bool confused;
@@ -145,19 +145,26 @@ public class Pokemon : MonoBehaviour
 	public float evolution_flare_size;
 	public GameObject evolves_into;
 	public GameObject mesh;
+	public List<GameObject> enemies;
 
+	public enum Genders { NONE, FEMALE, MALE }
+	public enum Natures { ADAMANT, BASHFUL, BOLD, BRAVE, CALM, CAREFUL, DOCILE, GENTLE, HARDY, HASTY, IMPISH, JOLLY, LAX, LONELY, MILD, MODEST, NAIVE, NAUGHTY,
+						QUIET, QUIRKY, RASH, RELAXED, SASSY, SERIOUS, TIMID }
+	public enum LevelingRates { ERRATIC, FAST, FLUCTUATING, MEDIUM_FAST, MEDIUM_SLOW, SLOW }
 	public enum StatusConditions { NONE, BADLY_POISONED, BURNED, FROZEN, PARALYZED, POISONED, SLEEPING }
 	public enum Stats { HITPOINTS, POWERPOINTS, ATTACK, DEFENSE, SPECIALATTACK, SPECIALDEFENSE, SPEED }
 	public enum AccEva { EVASION, ACCURACY }
 
 	private StatCalculations stat_calculations_script = new StatCalculations();
 	private CalculateXP calculate_exp_script = new CalculateXP();
+	private IncreaseExperience increase_exp_script = new IncreaseExperience();
 	private bool evolution_started;
 #endregion
 
 	void Start()
 	{
 		is_alive = true;
+		enemies = new List<GameObject>();
 		if(!is_setup)
 		{
 			SetupPokemonFirstTime();
@@ -172,7 +179,7 @@ public class Pokemon : MonoBehaviour
 	{
 		if(cur_hp == 0)
 		{
-			SetDead();
+			GetComponent<PokemonInput>().Faint();
 		}
 		if(level == evolve_level && !evolution_started)
 		{
@@ -314,11 +321,17 @@ public class Pokemon : MonoBehaviour
 		}
 	}
 	public void SetDead(){
-		if(trainers_name == string.Empty){
+		foreach(GameObject pokemon in enemies)
+		{
+			Pokemon that_pokemon = pokemon.GetComponent<Pokemon>();
+			if(that_pokemon.is_captured && that_pokemon.cur_hp > 0)
+				that_pokemon.AdjustCurrentEXP(increase_exp_script.AddExperience(gameObject, pokemon));
+		}
+		if(!is_captured){
 			is_alive = false;
 			time_of_death = Time.time;
 			//			ReSpawner.deadPokemon.Add(this);
-			this.gameObject.SetActive(false);
+			gameObject.SetActive(false);
 		}
 	}
 	public void SetupPokemonFirstTime(){
@@ -377,14 +390,14 @@ public class Pokemon : MonoBehaviour
 	}
 	private void SetupGender(){
 		if(atk_iv > gender_ratio){
-			gender = BasePokemon.SexesList.MALE;
+			gender = Genders.MALE;
 		}else if(atk_iv <= gender_ratio){
-			gender = BasePokemon.SexesList.FEMALE;
+			gender = Genders.FEMALE;
 		}
 	}
 	private void SetupNature(){
-		System.Array natures = System.Enum.GetValues (typeof(BasePokemon.NaturesList));
-		nature = (BasePokemon.NaturesList)natures.GetValue (UnityEngine.Random.Range(0,24));
+		System.Array natures = System.Enum.GetValues (typeof(Natures));
+		nature = (Natures)natures.GetValue (UnityEngine.Random.Range(0,24));
 	}
 	private void SetupStats(){
 		max_hp = stat_calculations_script.CalculateHP (base_hp, level, hp_iv, hp_ev);
@@ -487,10 +500,10 @@ public class Pokemon : MonoBehaviour
 		}
 	}
 	private void GiveStatsToEvolvedForm(bool this_is_setup, bool this_is_captured, GameObject this_trainer, string this_trainers_name, string this_nick_name,
-	                                    bool this_is_from_trade, int this_level, BasePokemon.SexesList this_gender, BasePokemon.NaturesList this_nature,
-	                                    int this_hp_iv, int this_atk_iv, int this_def_iv, int this_spatk_iv, int this_spdef_iv, int this_spd_iv, int this_hp_ev,
-	                                    int this_atk_ev, int this_def_ev, int this_spatk_ev, int this_spdef_ev, int this_spd_ev, List<string> this_known_moves_names,
-	                                    Move this_last_move_used, Item this_equipped_item, bool this_is_in_battle, int this_origin, bool this_is_shiny)
+	                                    bool this_is_from_trade, int this_level, Genders this_gender, Natures this_nature, int this_hp_iv, int this_atk_iv,
+	                                    int this_def_iv, int this_spatk_iv, int this_spdef_iv, int this_spd_iv, int this_hp_ev, int this_atk_ev, int this_def_ev,
+	                                    int this_spatk_ev, int this_spdef_ev, int this_spd_ev, List<string> this_known_moves_names, Move this_last_move_used,
+	                                    Item this_equipped_item, bool this_is_in_battle, int this_origin, bool this_is_shiny)
 	{
 		is_setup = this_is_setup;
 		is_captured = this_is_captured;

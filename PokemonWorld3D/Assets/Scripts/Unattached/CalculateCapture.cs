@@ -13,7 +13,7 @@ public class CalculateCapture {
 	private int modifiedCatchRate;
 
 
-	public bool AttemptCapture(BasePokemon.NonVolatileStatusConditionList statusCondition, PokeBall.PokeBallTypes pokeBallType, int pokemonCurHP, int pokemonMaxHP, int catchRate){
+	public bool AttemptCapture(Pokemon.StatusConditions statusCondition, PokeBall.PokeBallTypes pokeBallType, int pokemonCurHP, int pokemonMaxHP, int catchRate){
 		if(pokeBallType == PokeBall.PokeBallTypes.POKEBALL){
 			ballBonus = 1f;
 		}else if(pokeBallType == PokeBall.PokeBallTypes.GREATBALL){
@@ -23,15 +23,15 @@ public class CalculateCapture {
 		}else if(pokeBallType == PokeBall.PokeBallTypes.MASTERBALL){
 			ballBonus = 255f;
 		}
-		if(statusCondition == BasePokemon.NonVolatileStatusConditionList.SLEEP){
+		if(statusCondition == Pokemon.StatusConditions.SLEEPING){
 			statusBonus = 2f;
-		}else if(statusCondition == BasePokemon.NonVolatileStatusConditionList.BURNED){
+		}else if(statusCondition == Pokemon.StatusConditions.BURNED){
 			statusBonus = 1.5f;
-		}else if(statusCondition == BasePokemon.NonVolatileStatusConditionList.FROZEN){
+		}else if(statusCondition == Pokemon.StatusConditions.FROZEN){
 			statusBonus = 2f;
-		}else if(statusCondition == BasePokemon.NonVolatileStatusConditionList.PARALYZED){
+		}else if(statusCondition == Pokemon.StatusConditions.PARALYZED){
 			statusBonus = 1.5f;
-		}else if(statusCondition == BasePokemon.NonVolatileStatusConditionList.POISONED){
+		}else if(statusCondition == Pokemon.StatusConditions.POISONED){
 			statusBonus = 1.5f;
 		}else{
 			statusBonus = 1f;

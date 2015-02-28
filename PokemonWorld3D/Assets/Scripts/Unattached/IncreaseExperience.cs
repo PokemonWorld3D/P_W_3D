@@ -14,7 +14,7 @@ public class IncreaseExperience {
 
 	public int AddExperience(GameObject faintedPKMN, GameObject winningPKMN){
 		//f = 1.2 if the pkmn calculating exp for has 2 or more affection hearts or 1 if less than 2 affection hearts
-		if(faintedPKMN.CompareTag("WildPokemon")){
+		if(faintedPKMN.GetComponent<Pokemon>().trainers_name == string.Empty){
 			a = 1.0f;
 		}else{
 			a = 1.5f;
