@@ -1,9 +1,17 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-CSharp-firstpass.csproj", "{846122AD-A0C3-E8C5-9314-F7B5A25CA85C}"
+EndProject
 Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-CSharp.csproj", "{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}"
 EndProject
+Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-CSharp-Editor.csproj", "{4FCFF05C-ECDD-CB38-84C1-C7D22180C1BF}"
+EndProject
+Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-Boo-Editor.booproj", "{E03C1471-FA59-4373-36D1-AB1D9753FBF7}"
+EndProject
 Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-UnityScript.unityproj", "{C3CE7A77-A966-6890-8B54-CE0E46B8B976}"
+EndProject
+Project("{09112E05-FC57-5617-2AB7-E0FC2787DA44}") = "PokemonWorld3D", "Assembly-UnityScript-Editor.unityproj", "{5E3650A5-0E3C-FBDE-A3F6-FE20188DB996}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,19 +19,35 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{846122AD-A0C3-E8C5-9314-F7B5A25CA85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{846122AD-A0C3-E8C5-9314-F7B5A25CA85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{846122AD-A0C3-E8C5-9314-F7B5A25CA85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{846122AD-A0C3-E8C5-9314-F7B5A25CA85C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39564D3-FF1B-9C3A-FC5F-EA678BF7F4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FCFF05C-ECDD-CB38-84C1-C7D22180C1BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCFF05C-ECDD-CB38-84C1-C7D22180C1BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCFF05C-ECDD-CB38-84C1-C7D22180C1BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCFF05C-ECDD-CB38-84C1-C7D22180C1BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03C1471-FA59-4373-36D1-AB1D9753FBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03C1471-FA59-4373-36D1-AB1D9753FBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03C1471-FA59-4373-36D1-AB1D9753FBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03C1471-FA59-4373-36D1-AB1D9753FBF7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3CE7A77-A966-6890-8B54-CE0E46B8B976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3CE7A77-A966-6890-8B54-CE0E46B8B976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3CE7A77-A966-6890-8B54-CE0E46B8B976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3CE7A77-A966-6890-8B54-CE0E46B8B976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3650A5-0E3C-FBDE-A3F6-FE20188DB996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3650A5-0E3C-FBDE-A3F6-FE20188DB996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3650A5-0E3C-FBDE-A3F6-FE20188DB996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3650A5-0E3C-FBDE-A3F6-FE20188DB996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

@@ -52,84 +52,90 @@ public class CameraController : MonoBehaviour
 	}
 	void Update()
 	{
-		if(target_height < 1.0f)
-			target_height = 1.0f;
+		if(networkView.isMine)
+		{
+			if(target_height < 1.0f)
+				target_height = 1.0f;
+		}
 	}
 	void LateUpdate()
 	{
-		// Don't do anything if target is not defined
-		if (!target)
-			return;
-		
-		Vector3 v_target_offset;
-		
-		
-		// If either mouse buttons are down, let the mouse govern camera position
-		if (GUIUtility.hotControl == 0)
+		if(networkView.isMine)
 		{
-			if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+			// Don't do anything if target is not defined
+			if (!target)
+				return;
+			
+			Vector3 v_target_offset;
+			
+			
+			// If either mouse buttons are down, let the mouse govern camera position
+			if (GUIUtility.hotControl == 0)
 			{
-				//Check to see if mouse input is allowed on the axis
-				if (allow_mouse_input_x)
-					x_deg += Input.GetAxis ("Mouse X") * x_speed * 0.02f;
-				else
-					RotateBehindTarget();
-				if (allow_mouse_input_y)
-					y_deg -= Input.GetAxis ("Mouse Y") * y_speed * 0.02f;
+				if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+				{
+					//Check to see if mouse input is allowed on the axis
+					if (allow_mouse_input_x)
+						x_deg += Input.GetAxis ("Mouse X") * x_speed * 0.02f;
+					else
+						RotateBehindTarget();
+					if (allow_mouse_input_y)
+						y_deg -= Input.GetAxis ("Mouse Y") * y_speed * 0.02f;
+					
+					//Interrupt rotating behind if mouse wants to control rotation
+					if (!lock_to_rear_of_target)
+						rotate_behind = false;
+				}
 				
-				//Interrupt rotating behind if mouse wants to control rotation
-				if (!lock_to_rear_of_target)
-					rotate_behind = false;
+				// otherwise, ease behind the target if any of the directional keys are pressed
+				else if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0 || rotate_behind)
+				{
+					//RotateBehindTarget();
+				}
+			}
+			y_deg = ClampAngle (y_deg, y_min_limit, y_max_limit);
+			
+			// Set camera rotation
+			Quaternion rotation = Quaternion.Euler (y_deg, x_deg, 0.0f);
+			
+			// Calculate the desired distance
+			desired_distance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoom_rate * Mathf.Abs (desired_distance);
+			desired_distance = Mathf.Clamp (desired_distance, min_distance, max_distance);
+			corrected_distance = desired_distance;
+			
+			// Calculate desired camera position
+			v_target_offset = new Vector3(0.0f, -target_height, 0.0f);
+			Vector3 position = target.position - (rotation * Vector3.forward * desired_distance + v_target_offset);
+			
+			// Check for collision using the true target's desired registration point as set by user using height
+			RaycastHit collision_hit;
+			Vector3 true_target_position = new Vector3(target.position.x, target.position.y + target_height, target.position.z);
+			
+			// If there was a collision, correct the camera position and calculate the corrected distance
+			bool is_corrected = false;
+			if (Physics.Linecast (true_target_position, position, out collision_hit, collision_layers))
+			{
+				// Calculate the distance from the original estimated position to the collision location,
+				// subtracting out a safety "offset" distance from the object we hit.  The offset will help
+				// keep the camera from being right on top of the surface we hit, which usually shows up as
+				// the surface geometry getting partially clipped by the camera's front clipping plane.
+				corrected_distance = Vector3.Distance(true_target_position, collision_hit.point) - offset_from_wall;
+				is_corrected = true;
 			}
 			
-			// otherwise, ease behind the target if any of the directional keys are pressed
-			else if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0 || rotate_behind)
-			{
-				//RotateBehindTarget();
-			}
+			// For smoothing, lerp distance only if either distance wasn't corrected, or correctedDistance is more than currentDistance
+			current_distance = !is_corrected || corrected_distance > current_distance ? Mathf.Lerp (current_distance, corrected_distance, Time.deltaTime * zoom_dampening) : corrected_distance;
+			
+			// Keep within limits
+			current_distance = Mathf.Clamp (current_distance, min_distance, max_distance);
+			
+			// Recalculate position based on the new currentDistance
+			position = target.position - (rotation * Vector3.forward * current_distance + v_target_offset);
+			
+			//Finally Set rotation and position of camera
+			transform.rotation = rotation;
+			transform.position = position;
 		}
-		y_deg = ClampAngle (y_deg, y_min_limit, y_max_limit);
-		
-		// Set camera rotation
-		Quaternion rotation = Quaternion.Euler (y_deg, x_deg, 0.0f);
-		
-		// Calculate the desired distance
-		desired_distance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoom_rate * Mathf.Abs (desired_distance);
-		desired_distance = Mathf.Clamp (desired_distance, min_distance, max_distance);
-		corrected_distance = desired_distance;
-		
-		// Calculate desired camera position
-		v_target_offset = new Vector3(0.0f, -target_height, 0.0f);
-		Vector3 position = target.position - (rotation * Vector3.forward * desired_distance + v_target_offset);
-		
-		// Check for collision using the true target's desired registration point as set by user using height
-		RaycastHit collision_hit;
-		Vector3 true_target_position = new Vector3(target.position.x, target.position.y + target_height, target.position.z);
-		
-		// If there was a collision, correct the camera position and calculate the corrected distance
-		bool is_corrected = false;
-		if (Physics.Linecast (true_target_position, position, out collision_hit, collision_layers))
-		{
-			// Calculate the distance from the original estimated position to the collision location,
-			// subtracting out a safety "offset" distance from the object we hit.  The offset will help
-			// keep the camera from being right on top of the surface we hit, which usually shows up as
-			// the surface geometry getting partially clipped by the camera's front clipping plane.
-			corrected_distance = Vector3.Distance(true_target_position, collision_hit.point) - offset_from_wall;
-			is_corrected = true;
-		}
-		
-		// For smoothing, lerp distance only if either distance wasn't corrected, or correctedDistance is more than currentDistance
-		current_distance = !is_corrected || corrected_distance > current_distance ? Mathf.Lerp (current_distance, corrected_distance, Time.deltaTime * zoom_dampening) : corrected_distance;
-		
-		// Keep within limits
-		current_distance = Mathf.Clamp (current_distance, min_distance, max_distance);
-		
-		// Recalculate position based on the new currentDistance
-		position = target.position - (rotation * Vector3.forward * current_distance + v_target_offset);
-		
-		//Finally Set rotation and position of camera
-		transform.rotation = rotation;
-		transform.position = position;
 	}
 	
 	public void SetTarget(GameObject new_target)

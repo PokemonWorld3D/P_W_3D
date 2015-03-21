@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class HateHolder
 {
-	public GameObject player;
-	public Pokemon pokemon;
+	public GameObject pokemon;
+	public Pokemon this_pokemon;
 	public int amount_of_hate;
 
-	public HateHolder(GameObject new_player, Pokemon new_pokemon, int new_hate_amount)
+	public HateHolder(GameObject new_pokemon, Pokemon new_this_pokemon, int new_hate_amount)
 	{
-		player = new_player;
 		pokemon = new_pokemon;
+		this_pokemon = new_this_pokemon;
 		amount_of_hate = new_hate_amount;
 	}
 

@@ -8,7 +8,7 @@ public class Scratch : Move
 
 	public void ScratchDamage()
 	{
-		if(hit = true){
+		if(hit){
 			target.GetComponent<Pokemon>().AdjustCurrentHP(-damage);
 			if(status_condition != Pokemon.StatusConditions.NONE)
 			{

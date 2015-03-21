@@ -9,7 +9,7 @@ public class Ember : Move
 	
 	public void EmberDamage()
 	{
-		if(hit = true)
+		if(hit)
 		{
 			target_pokemon.AdjustCurrentHP(-damage);
 			if(status_condition != Pokemon.StatusConditions.NONE)

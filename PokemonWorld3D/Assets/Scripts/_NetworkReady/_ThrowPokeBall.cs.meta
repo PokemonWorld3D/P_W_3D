@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 2356b25caf8782d48aa05051430521a0
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - pokeball: {instanceID: 0}
+  - empty_ball: {instanceID: 0}
+  - poke_ball_grow: {fileID: 8300000, guid: dfc8a1846a3100a4e8a5bb9779fd45b8, type: 3}
+  - pokemon_out: {fileID: 8300000, guid: fa86244e45e02d44880a26a6f7ba4ea0, type: 3}
+  - poke_ball_prefab: {fileID: 185680, guid: 164a0d11a00626c45a51665e16d989d4, type: 2}
+  - empty_poke_ball_prefab: {fileID: 165238, guid: 45b43e5410f2fa74d9f6ef89ce6c0e29,
+      type: 2}
+  - grip: {instanceID: 0}
+  - this_player: {instanceID: 0}
+  - input: {instanceID: 0}
+  - target: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

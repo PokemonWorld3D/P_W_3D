@@ -87,7 +87,7 @@ public class PokemonInput : MonoBehaviour
 			if(Input.GetButtonDown("TakeFlight"))
 			{
 				flight.enabled = true;
-				StartCoroutine(flight.TakeOff());
+				StartCoroutine(flight.Mount());
 			}
 			// Calculate how fast we should be moving
 			target_velocity = (Input.GetAxis("Horizontal") * right + Input.GetAxis("Vertical") * forward);
