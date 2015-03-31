@@ -4,382 +4,444 @@ using System.Collections.Generic;
 
 public class Pokemon : MonoBehaviour
 {
-
-#region Variables
-	public bool is_alive = false;
-	public bool is_setup = false;
-	public float time_of_death;
-	public bool is_captured = false;
+	#region Variables
+	public bool isAlive = false;
+	public bool isSetup = false;
+	public float timeOfDeath;
+	public bool isCaptured = false;
 	public GameObject trainer;
-	public string trainers_name = string.Empty;
-	public int pokemon_number;
-	public string pokemon_name;
-	public string nick_name = null;
+	public string trainersName = "";
+	public int pokemonNumber;
+	public string pokemonName;
+	public string nickName = "";
 	public string description;
-	public bool is_from_trade = false;
+	public bool isFromTrade = false;
 	public int level;
-	public int evolve_level;
-	public PokemonTypes.Types type_one;
-	public PokemonTypes.Types type_two;
+	public int evolveLevel;
+	public PokemonTypes.Types typeOne;
+	public PokemonTypes.Types typeTwo;
 	public Genders gender;
 	public Natures nature;
-	public string ability_one;
-	public string ability_two;
-	public int base_hp;
-	public int base_pp;
-	public int base_atk;
-	public int base_def;
-	public int base_spatk;
-	public int base_spdef;
-	public int base_spd;
-	public int max_hp;
-	public int max_pp;
-	public int max_atk;
-	public int max_def;
-	public int max_spatk;
-	public int max_spdef;
-	public int max_spd;
-	public int cur_max_hp;
-	public int cur_max_pp;
-	public int cur_hp;
-	public int cur_pp;
-	public int cur_atk;
-	public int cur_def;
-	public int cur_spatk;
-	public int cur_spdef;
-	public int cur_spd;
+	public string abilityOne;
+	public string abilityTwo;
+	public int baseHP;
+	public int basePP;
+	public int baseATK;
+	public int baseDEF;
+	public int baseSPATK;
+	public int baseSPDEF;
+	public int baseSPD;
+	public int maxHP;
+	public int maxPP;
+	public int maxATK;
+	public int maxDEF;
+	public int maxSPATK;
+	public int maxSPDEF;
+	public int maxSPD;
+	public int curMaxHP;
+	public int curMaxPP;
+	public int curHP;
+	public int curPP;
+	public int curATK;
+	public int curDEF;
+	public int curSPATK;
+	public int curSPDEF;
+	public int curSPD;
 	public float evasion;
 	public float accuracy;
-	public int atk_stage;
-	public int def_stage;
-	public int spatk_stage;
-	public int spdef_stage;
-	public int spd_stage;
-	public int evasion_stage;
-	public int accuracy_stage;
-	public int hp_ev;
-	public int atk_ev;
-	public int def_ev;
-	public int spatk_ev;
-	public int spdef_ev;
-	public int spd_ev;
-	public int hp_iv;
-	public int atk_iv;
-	public int def_iv;
-	public int spatk_iv;
-	public int spdef_iv;
-	public int spd_iv;
-	public int base_exp_yield;
-	public LevelingRates leveling_rate;
-	public int last_required_exp;
-	public int current_exp;
-	public int next_required_exp;
-	public int hp_ev_yield;
-	public int atk_ev_yield;
-	public int def_ev_yield;
-	public int spatk_ev_yield;
-	public int spdef_ev_yield;
-	public int spd_ev_yield;
-	public int base_friendship;
-	public int capture_rate;
-	public StatusConditions status_condition;
-	public float badly_poisoned_timer;
-	public float sleep_timer;
+	public int atkStage;
+	public int defStage;
+	public int spatkStage;
+	public int spdefStage;
+	public int spdStage;
+	public int evasionStage;
+	public int accuracyStage;
+	public int hpEV;
+	public int atkEV;
+	public int defEV;
+	public int spatkEV;
+	public int spdefEV;
+	public int spdEV;
+	public int hpIV;
+	public int atkIV;
+	public int defIV;
+	public int spatkIV;
+	public int spdefIV;
+	public int spdIV;
+	public int baseEXPYield;
+	public LevelingRates levelingRate;
+	public int lastRequiredEXP;
+	public int currentEXP;
+	public int nextRequiredEXP;
+	public int hpEVYield;
+	public int atkEVYield;
+	public int defEVYield;
+	public int spatkEVYield;
+	public int spdefEVYield;
+	public int spdEVYield;
+	public int baseFriendship;
+	public int captureRate;
+	public StatusConditions statusCondition;
+	public float badlyPoisonedTimer;
+	public float sleepTimer;
 	public bool confused;
-	public float confuse_timer;
+	public float confusedTimer;
 	public bool cursed;
 	public bool embargoed;
-	public float embargo_timer;
+	public float embargoTimer;
 	public bool encored;
-	public float encore_timer;
+	public float encoreTimer;
 	public bool flinched;
-	public bool heal_blocked;
-	public float heal_block_timer;
+	public bool healBlocked;
+	public float healBlockTimer;
 	public bool identified;
 	public bool infatuated;
 	public bool nightmared;
-	public bool partially_trapped;
-	public float partially_trapped_timer;
-	public bool perish_songed;
-	public float perish_song_count_down;
+	public bool partiallyTrapped;
+	public float partiallyTrappedTimer;
+	public bool perishSonged;
+	public float perishSongCountDown;
 	public bool seeded;
 	public bool taunted;
-	public float taunt_timer;
-	public bool telekinectically_levitating;
-	public float telekinetic_levitation_timer;
+	public float tauntTimer;
+	public bool telekinecticallyLevitating;
+	public float telekineticLevitationTimer;
 	public bool tormented;
 	public bool trapped;
-	public bool aqua_ringed;
+	public bool aquaRinged;
 	public bool bracing;
-	public bool center_of_attention;
-	public bool defense_curling;
+	public bool centerOfAttention;
+	public bool defenseCurling;
 	public bool glowing;
 	public bool rooting;
-	public bool magically_coated;
-	public bool magnetically_levitating;
-	public float magnetic_levitation_timer;
+	public bool magicallyCoated;
+	public bool magneticallyLevitating;
+	public float magneticLevitationTimer;
 	public bool minimized;
 	public bool protecting;
 	public bool recharging;
-	public bool semi_invulnerable;
-	public bool has_a_substitute;
+	public bool semiInvulnerable;
+	public bool hasAStubstitute;
 	public GameObject substitute;
-	public bool taking_aim;
-	public bool taking_in_sunlight;
+	public bool takingAim;
+	public bool takingInSunlight;
 	public bool withdrawing;
-	public bool whipping_up_a_whirlwind;
-	public List<string> moves_to_learn_names;
-	public List<Move> moves_to_learn;
-	public List<string> known_moves_names;
-	public List<Move> known_moves;
-	public Move last_move_used;
-	public Item equipped_item;
-	public bool is_in_battle;
+	public bool whippingUpAWhirlwind;
+	public List<string> MovesToLearnNames;
+	public List<Move> MovesToLearn;
+	public List<string> KnownMovesNames;
+	public List<Move> KnownMoves;
+	public Move lastMoveUsed;
+	public _Item equippedItem;
+	public bool isInBattle;
 	public int origin;
-	public int gender_ratio;
-	public bool is_shiny = false;
+	public int genderRatio;
+	public bool isShiny = false;
 	public Sprite avatar;
-	public LensFlare evolve_flare;
-	public float flare_grow_delay = 0.05f;
-	public float flare_die_delay = 0.075f;
-	public float evolution_flare_size;
-	public GameObject evolves_into;
+	public LensFlare evolveFalre;
+	public float flareGrowDelay = 0.05f;
+	public float flareDieDelay = 0.075f;
+	public float evolutionFlareSize;
+	public string evolvesInto;
 	public GameObject mesh;
-	public List<GameObject> enemies;
-
+	public List<GameObject> Enemies;
+	public List<int> PokemonToGiveEXPTo;
+	
 	public enum Genders { NONE, FEMALE, MALE }
 	public enum Natures { ADAMANT, BASHFUL, BOLD, BRAVE, CALM, CAREFUL, DOCILE, GENTLE, HARDY, HASTY, IMPISH, JOLLY, LAX, LONELY, MILD, MODEST, NAIVE, NAUGHTY,
-						QUIET, QUIRKY, RASH, RELAXED, SASSY, SERIOUS, TIMID }
+		QUIET, QUIRKY, RASH, RELAXED, SASSY, SERIOUS, TIMID }
 	public enum LevelingRates { ERRATIC, FAST, FLUCTUATING, MEDIUM_FAST, MEDIUM_SLOW, SLOW }
 	public enum StatusConditions { NONE, BADLY_POISONED, BURNED, FROZEN, PARALYZED, POISONED, SLEEPING }
 	public enum Stats { HITPOINTS, POWERPOINTS, ATTACK, DEFENSE, SPECIALATTACK, SPECIALDEFENSE, SPEED }
 	public enum AccEva { EVASION, ACCURACY }
-
-	private StatCalculations stat_calculations_script = new StatCalculations();
-	private CalculateXP calculate_exp_script = new CalculateXP();
-	private IncreaseExperience increase_exp_script = new IncreaseExperience();
-	private bool evolution_started;
-#endregion
-
+	
+	private StatCalculations statCalculationsScript = new StatCalculations();
+	private CalculateXP calculateEXPScript = new CalculateXP();
+	private IncreaseExperience increaseEXPScript = new IncreaseExperience();
+	private bool fainting;
+	private bool evolving;
+	private Animator anim;
+	private Pokemon target;
+	#endregion
+	
 	void Start()
 	{
-		is_alive = true;
-		enemies = new List<GameObject>();
-		if(!is_setup)
-		{
-			SetupPokemonFirstTime();
-		}
-		else
-		{
-			SetupSetupPokemon();
-		}
+		anim = GetComponent<Animator>();
 		InvokeRepeating("RegeneratePP", 1.0f, 1.0f);
-	}
-	void Update()
+ 	}
+
+	[RPC]
+	public void StartWildPokemonBattle(int opponent)
 	{
-		if(cur_hp == 0)
+		Enemies = new List<GameObject>();
+		GameObject enemy = PhotonView.Find(opponent).gameObject;
+		Enemies.Add(enemy);
+		Pokemon targetPokemon = PhotonView.Find(opponent).gameObject.GetComponent<Pokemon>();
+		target = targetPokemon;
+		isInBattle = true;
+		anim.SetBool("InBattle", true);
+		if(!isCaptured)
 		{
-			GetComponent<PokemonInput>().Faint();
+			GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Battle;
 		}
-		if(level == evolve_level && !evolution_started)
+	}
+	[RPC]
+	public void EndWildPokemonBattle()
+	{
+		isInBattle = false;
+		anim.SetBool("InBattle", false);
+		if(!isCaptured && isAlive)
 		{
-			evolution_started = true;
+			GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Idle;
+		}
+		target = null;
+	}
+	[RPC]
+	public void AdjustCurrentMaxHP(int adj, int attacker)
+	{
+		curMaxHP += adj;
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		if(curMaxHP < 0)
+		{
+			curMaxHP = 0;
+		}
+		if(curMaxHP > maxHP)
+		{
+			curMaxHP = maxHP;
+		}
+	}
+	[RPC]
+	public void AdjustCurrentHP(int adj, int attacker)
+	{
+		curHP += adj;
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		if(curHP < 0){
+			curHP = 0;
+		}
+		if(curHP > curMaxHP){
+			curHP = curMaxHP;
+		}
+		if(curHP == 0)
+		{
+			StartCoroutine(Faint());
+		}
+	}
+	[RPC]
+	public void AdjustCurrentMaxPP(int adj, int attacker)
+	{
+		curMaxPP += adj;
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		if(curMaxPP < 0){
+			curMaxPP = 0;
+		}
+		if(curMaxPP > maxPP){
+			curMaxPP = maxPP;
+		}
+	}
+	[RPC]
+	public void AdjustCurrentPP(int adj, int attacker)
+	{
+		curPP += adj;
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		if(curPP < 0){
+			curPP = 0;
+		}
+		if(curPP > curMaxPP){
+			curPP = curMaxPP;
+		}
+	}
+	[RPC]
+	public void AdjustCurrentStat(Stats stat, int adj, int attacker)
+	{
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		if(stat == Stats.ATTACK)
+		{
+			atkStage += adj;
+			if(atkStage < -6){
+				atkStage = -6;
+			}
+			if(atkStage > 6){
+				atkStage = 6;
+			}
+			curATK = ChangeStatTo(atkStage, maxATK);
+		}
+		if(stat == Stats.DEFENSE)
+		{
+			defStage += adj;
+			if(defStage < -6){
+				defStage = -6;
+			}
+			if(defStage > 6){
+				defStage = 6;
+			}
+			curDEF = ChangeStatTo(defStage, maxDEF);
+		}
+		if(stat == Stats.SPECIALATTACK)
+		{
+			spatkStage += adj;
+			if(spatkStage < -6){
+				spatkStage = -6;
+			}
+			if(spatkStage > 6){
+				spatkStage = 6;
+			}
+			curSPATK = ChangeStatTo(spatkStage, maxSPATK);
+		}
+		if(stat == Stats.SPECIALDEFENSE)
+		{
+			spdefStage += adj;
+			if(spdefStage < -6){
+				spdefStage = -6;
+			}
+			if(spdefStage > 6){
+				spdefStage = 6;
+			}
+			curSPDEF = ChangeStatTo(spdefStage, maxSPDEF);
+		}
+		if(stat == Stats.SPEED)
+		{
+			spdStage += adj;
+			if(spdStage < -6){
+				spdStage = -6;
+			}
+			if(spdStage > 6){
+				spdStage = 6;
+			}
+			curSPD = ChangeStatTo(spdStage, maxSPD);
+		}
+	}
+	[RPC]
+	public void AdjustCurrentAccEva(AccEva stat, int adj, int attacker){
+		if(stat == AccEva.ACCURACY)
+		{
+			accuracyStage += adj;
+			if(accuracyStage < -6){
+				accuracyStage = -6;
+			}
+			if(accuracyStage > 6){
+				accuracyStage = 6;
+			}
+			accuracy = ChangeAccEvaTo(accuracyStage);
+		}
+		if(stat == AccEva.EVASION)
+		{
+			evasionStage += adj;
+			if(evasionStage < -6){
+				evasionStage = -6;
+			}
+			if(evasionStage > 6){
+				evasionStage = 6;
+			}
+			evasion = ChangeAccEvaTo(evasionStage);
+		}
+	}
+	[RPC]
+	public void AdjustStatusCondition(StatusConditions condition, int attacker)
+	{
+		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		{
+			PokemonToGiveEXPTo.Add(attacker);
+		}
+		statusCondition = condition;
+	}
+	[RPC]
+	public void AdjustCurrentEXP(bool faintedIsCaptured, int faintedBaseEXP, int faintedLevel)
+	{
+		bool luckyEgg = false;
+		if(equippedItem.name == "Lucky Egg")
+		{
+			luckyEgg = true;
+		}
+		int increase = increaseEXPScript.AddExperience(faintedIsCaptured, isFromTrade, faintedBaseEXP, luckyEgg, faintedLevel, level, evolveLevel);
+		StartCoroutine(IncreaseEXP(increase));
+		if(level == evolveLevel && !evolving)
+		{
+			evolving = true;
 			StartCoroutine(Evolve());
 		}
 	}
-
-	public void AdjustCurrentMaxHP(int adj)
+	[RPC]
+	public void SetupPokemonFirstTime()
 	{
-		cur_max_hp += adj;
-		if(cur_max_hp < 0){
-			cur_max_hp = 0;
-		}
-		if(cur_max_hp > max_hp){
-			cur_max_hp = max_hp;
-		}
-	}
-	public void AdjustCurrentHP(int adj)
-	{
-		cur_hp += adj;
-		if(cur_hp < 0){
-			cur_hp = 0;
-		}
-		if(cur_hp > cur_max_hp){
-			cur_hp = cur_max_hp;
-		}
-	}
-	public void AdjustCurrentMaxPP(int adj)
-	{
-		cur_max_pp += adj;
-		if(cur_max_pp < 0){
-			cur_max_pp = 0;
-		}
-		if(cur_max_pp > max_pp){
-			cur_max_pp = max_pp;
-		}
-	}
-	public void AdjustCurrentPP(int adj)
-	{
-		cur_pp += adj;
-		if(cur_pp < 0){
-			cur_pp = 0;
-		}
-		if(cur_pp > cur_max_pp){
-			cur_pp = cur_max_pp;
-		}
-	}
-	public void AdjustCurrentStat(Pokemon.Stats stat, int adj)
-	{
-		if(stat == Stats.ATTACK){
-			atk_stage += adj;
-			if(atk_stage < -6){
-				atk_stage = -6;
-			}
-			if(atk_stage > 6){
-				atk_stage = 6;
-			}
-			cur_atk = ChangeStatTo(atk_stage, max_atk);
-		}
-		if(stat == Stats.DEFENSE){
-			def_stage += adj;
-			if(def_stage < -6){
-				def_stage = -6;
-			}
-			if(def_stage > 6){
-				def_stage = 6;
-			}
-			cur_def = ChangeStatTo(def_stage, max_def);
-		}
-		if(stat == Stats.SPECIALATTACK){
-			spatk_stage += adj;
-			if(spatk_stage < -6){
-				spatk_stage = -6;
-			}
-			if(spatk_stage > 6){
-				spatk_stage = 6;
-			}
-			cur_spatk = ChangeStatTo(spatk_stage, max_spatk);
-		}
-		if(stat == Stats.SPECIALDEFENSE){
-			spdef_stage += adj;
-			if(spdef_stage < -6){
-				spdef_stage = -6;
-			}
-			if(spdef_stage > 6){
-				spdef_stage = 6;
-			}
-			cur_spdef = ChangeStatTo(spdef_stage, max_spdef);
-		}
-		if(stat == Stats.SPEED){
-			spd_stage += adj;
-			if(spd_stage < -6){
-				spd_stage = -6;
-			}
-			if(spd_stage > 6){
-				spd_stage = 6;
-			}
-			cur_spd = ChangeStatTo(spd_stage, max_spd);
-		}
-	}
-	public void AdjustCurrentAccEva(Pokemon.AccEva stat, int adj){
-		if(stat == AccEva.ACCURACY){
-			accuracy_stage += adj;
-			if(accuracy_stage < -6){
-				accuracy_stage = -6;
-			}
-			if(accuracy_stage > 6){
-				accuracy_stage = 6;
-			}
-			accuracy = ChangeAccEvaTo(accuracy_stage);
-		}
-		if(stat == AccEva.EVASION){
-			evasion_stage += adj;
-			if(evasion_stage < -6){
-				evasion_stage = -6;
-			}
-			if(evasion_stage > 6){
-				evasion_stage = 6;
-			}
-			evasion = ChangeAccEvaTo(evasion_stage);
-		}
-	}
-	public void AdjustCurrentEXP(int adj)
-	{
-		current_exp += adj;
-		if(current_exp >= next_required_exp){
-			level += 1;
-			last_required_exp = next_required_exp;
-			next_required_exp = calculate_exp_script.CalculateRequiredXP(level, leveling_rate);
-			max_hp = stat_calculations_script.CalculateHP (base_hp, level, hp_iv, hp_ev);
-			max_pp = stat_calculations_script.CalculatePP (base_pp, level);
-			max_atk = stat_calculations_script.CalculateStat (base_atk, level, atk_iv, atk_ev, nature, StatCalculations.StatTypes.ATTACK);
-			max_def = stat_calculations_script.CalculateStat (base_def, level, def_iv, def_ev, nature, StatCalculations.StatTypes.DEFENSE);
-			max_spatk = stat_calculations_script.CalculateStat (base_spatk, level, spatk_iv, spatk_ev, nature,StatCalculations.StatTypes.SPECIALATTACK);
-			max_spdef = stat_calculations_script.CalculateStat (base_spdef, level, spdef_iv, spdef_ev, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
-			max_spd = stat_calculations_script.CalculateStat (base_spd, level, spd_iv, spd_ev, nature, StatCalculations.StatTypes.SPEED);
-			SetupMoves();
-		}
-	}
-	public void SetDead(){
-		foreach(GameObject pokemon in enemies)
-		{
-			Pokemon that_pokemon = pokemon.GetComponent<Pokemon>();
-			if(that_pokemon.is_captured && that_pokemon.cur_hp > 0)
-				that_pokemon.AdjustCurrentEXP(increase_exp_script.AddExperience(gameObject, pokemon));
-		}
-		if(!is_captured){
-			is_alive = false;
-			time_of_death = Time.time;
-			//			ReSpawner.deadPokemon.Add(this);
-			gameObject.SetActive(false);
-		}
-	}
-	public void SetupPokemonFirstTime(){
+		Enemies = new List<GameObject>();
+		PokemonToGiveEXPTo = new List<int>();
 		SetupIV();
 		SetupShininess();
 		SetupGender();
 		SetupNature();
-		SetupStats();
-		foreach(string name in moves_to_learn_names)
-		{
-			moves_to_learn.Add(GetComponent(name) as Move);
-		}
+		SetupNewStats();
 		SetupMoves();
-		is_setup = true;
+		isAlive = true;
+		isSetup = true;
 	}
+	[RPC]
 	public void SetupSetupPokemon()
 	{
-		SetupStats();
-		foreach(string name in known_moves_names)
+		Enemies = new List<GameObject>();
+		PokemonToGiveEXPTo = new List<int>();
+		SetupExistingStats();
+		SetupMoves();
+		isAlive = true;
+		isSetup = true;
+	}
+	[RPC]
+	public void SetDead()
+	{
+		isAlive = false;
+		timeOfDeath = Time.time;
+		//_ReSpawner.deadPokemon.Add(this);
+		foreach(Component c in GetComponent<WildPokemonAI>().ThingsToDisable)
 		{
-			if(!known_moves.Contains(GetComponent(name) as Move))
-			{
-				known_moves.Add(GetComponent(name) as Move);
-			}
+			c.gameObject.SetActive(false);
 		}
 	}
-
+	
 	private void RegeneratePP()
 	{
-		cur_pp += 1;
-		if(cur_pp > cur_max_pp)
-			cur_pp = cur_max_pp;
+		curPP += 1;
+		if(curPP > curMaxPP)
+			curPP = curMaxPP;
 	}
-	private void SetupIV(){
-		hp_iv = UnityEngine.Random.Range(0,32);
-		atk_iv = UnityEngine.Random.Range(0,32);
-		def_iv = UnityEngine.Random.Range(0,32);
-		spatk_iv = UnityEngine.Random.Range(0,32);
-		spdef_iv = UnityEngine.Random.Range(0,32);
-		spd_iv = UnityEngine.Random.Range(0,32);
+	private void SetupIV()
+	{
+		hpIV = UnityEngine.Random.Range(0,32);
+		atkIV = UnityEngine.Random.Range(0,32);
+		defIV = UnityEngine.Random.Range(0,32);
+		spatkIV = UnityEngine.Random.Range(0,32);
+		spdefIV = UnityEngine.Random.Range(0,32);
+		spdIV = UnityEngine.Random.Range(0,32);
 	}
-	private void SetupShininess(){
-		if(def_iv == 10 && spd_iv == 10 && spatk_iv == 10){
-			if(atk_iv == 2 || atk_iv == 3 || atk_iv == 6 || atk_iv == 7 || atk_iv == 10 || atk_iv == 11 || atk_iv == 14 || atk_iv == 15){
-				is_shiny = true;
+	private void SetupShininess()
+	{
+		if(defIV == 10 && spdIV == 10 && spatkIV == 10)
+		{
+			if(atkIV == 2 || atkIV == 3 || atkIV == 6 || atkIV == 7 || atkIV == 10 || atkIV == 11 || atkIV == 14 || atkIV == 15){
+				isShiny = true;
 			}
 		}
-		if(is_shiny){
+		if(isShiny)
+		{
 			Renderer[] rendererArray = GetComponentsInChildren<Renderer>();
 			for(int r = 0; r < rendererArray.Length; r++){
 				string materialName = rendererArray[r].material.name;
@@ -388,150 +450,298 @@ public class Pokemon : MonoBehaviour
 			}
 		}
 	}
-	private void SetupGender(){
-		if(atk_iv > gender_ratio){
+	private void SetupGender()
+	{
+		if(atkIV > genderRatio)
+		{
 			gender = Genders.MALE;
-		}else if(atk_iv <= gender_ratio){
+		}
+		else if(atkIV <= genderRatio)
+		{
 			gender = Genders.FEMALE;
 		}
 	}
-	private void SetupNature(){
+	private void SetupNature()
+	{
 		System.Array natures = System.Enum.GetValues (typeof(Natures));
 		nature = (Natures)natures.GetValue (UnityEngine.Random.Range(0,24));
 	}
-	private void SetupStats(){
-		max_hp = stat_calculations_script.CalculateHP (base_hp, level, hp_iv, hp_ev);
-		cur_max_hp = max_hp;
-		max_pp = stat_calculations_script.CalculatePP (base_pp, level);
-		cur_max_pp = max_pp;
-		max_atk = stat_calculations_script.CalculateStat (base_atk, level, atk_iv, atk_ev, nature, StatCalculations.StatTypes.ATTACK);
-		max_def = stat_calculations_script.CalculateStat (base_def, level, def_iv, def_ev, nature, StatCalculations.StatTypes.DEFENSE);
-		max_spatk = stat_calculations_script.CalculateStat (base_spatk, level, spatk_iv, spatk_ev, nature, StatCalculations.StatTypes.SPECIALATTACK);
-		max_spdef = stat_calculations_script.CalculateStat (base_spdef, level, spdef_iv, spdef_ev, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
-		max_spd = stat_calculations_script.CalculateStat (base_spd, level, spd_iv, spd_ev, nature, StatCalculations.StatTypes.SPEED);
-		cur_hp = cur_max_hp;
-		cur_pp = cur_max_pp;
-		cur_atk = max_atk;
-		cur_def = max_def;
-		cur_spatk = max_spatk;
-		cur_spdef = max_spdef;
-		cur_spd = max_spd;
+	private void SetupNewStats()
+	{
+		maxHP = statCalculationsScript.CalculateHP (baseHP, level, hpIV, hpEV);
+		curMaxHP = maxHP;
+		maxPP = statCalculationsScript.CalculatePP (basePP, level);
+		curMaxPP = maxPP;
+		maxATK = statCalculationsScript.CalculateStat (baseATK, level, atkIV, atkEV, nature, StatCalculations.StatTypes.ATTACK);
+		maxDEF = statCalculationsScript.CalculateStat (baseDEF, level, defIV, defEV, nature, StatCalculations.StatTypes.DEFENSE);
+		maxSPATK = statCalculationsScript.CalculateStat (baseSPATK, level, spatkIV, spatkEV, nature, StatCalculations.StatTypes.SPECIALATTACK);
+		maxSPDEF = statCalculationsScript.CalculateStat (baseSPDEF, level, spdefIV, spdefEV, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
+		maxSPD = statCalculationsScript.CalculateStat (baseSPD, level, spdIV, spdEV, nature, StatCalculations.StatTypes.SPEED);
+		curHP = curMaxHP;
+		curPP = curMaxPP;
+		curATK = maxATK;
+		curDEF = maxDEF;
+		curSPATK = maxSPATK;
+		curSPDEF = maxSPDEF;
+		curSPD = maxSPD;
 		evasion = 1.0f;
 		accuracy = 1.0f;
-		last_required_exp = calculate_exp_script.CalculateCurrentXP(level - 1, leveling_rate);
-		current_exp = calculate_exp_script.CalculateCurrentXP(level, leveling_rate);
-		next_required_exp = calculate_exp_script.CalculateRequiredXP(level, leveling_rate);
+		lastRequiredEXP = calculateEXPScript.CalculateCurrentXP(level - 1, levelingRate);
+		currentEXP = calculateEXPScript.CalculateCurrentXP(level, levelingRate);
+		nextRequiredEXP = calculateEXPScript.CalculateRequiredXP(level, levelingRate);
+	}
+	private void SetupExistingStats()
+	{
+		maxHP = statCalculationsScript.CalculateHP (baseHP, level, hpIV, hpEV);
+		curMaxHP = maxHP;
+		maxPP = statCalculationsScript.CalculatePP (basePP, level);
+		curMaxPP = maxPP;
+		maxATK = statCalculationsScript.CalculateStat (baseATK, level, atkIV, atkEV, nature, StatCalculations.StatTypes.ATTACK);
+		maxDEF = statCalculationsScript.CalculateStat (baseDEF, level, defIV, defEV, nature, StatCalculations.StatTypes.DEFENSE);
+		maxSPATK = statCalculationsScript.CalculateStat (baseSPATK, level, spatkIV, spatkEV, nature, StatCalculations.StatTypes.SPECIALATTACK);
+		maxSPDEF = statCalculationsScript.CalculateStat (baseSPDEF, level, spdefIV, spdefEV, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
+		maxSPD = statCalculationsScript.CalculateStat (baseSPD, level, spdIV, spdEV, nature, StatCalculations.StatTypes.SPEED);
+		curPP = curMaxPP;
+		curATK = maxATK;
+		curDEF = maxDEF;
+		curSPATK = maxSPATK;
+		curSPDEF = maxSPDEF;
+		curSPD = maxSPD;
+		evasion = 1.0f;
+		accuracy = 1.0f;
+		lastRequiredEXP = calculateEXPScript.CalculateCurrentXP(level - 1, levelingRate);
+		nextRequiredEXP = calculateEXPScript.CalculateRequiredXP(level, levelingRate);
 	}
 	private void SetupMoves()
 	{
-		List<Move> tempList = new List<Move>();
-		foreach(Move move in moves_to_learn){
-			if(level >= move.level_learned){
-				if(!known_moves.Contains(move)){
-					known_moves_names.Add(move.move_name.ToString().Replace(" ","_"));
-					known_moves.Add(move);
-					tempList.Add(move);
+		MovesToLearn = new List<Move>();
+		KnownMoves = new List<Move>();
+		foreach(string name in MovesToLearnNames)
+		{
+			MovesToLearn.Add(GetComponent(name) as Move);
+		}
+		foreach(string name in KnownMovesNames)
+		{
+			KnownMoves.Add(GetComponent(name) as Move);
+		}
+		List<Move> TempList = new List<Move>();
+		foreach(Move move in MovesToLearn)
+		{
+			if(level >= move.levelLearned)
+			{
+				if(!KnownMoves.Contains(move))
+				{
+					KnownMovesNames.Add(move.moveName.ToString().Replace(" ","_"));
+					KnownMoves.Add(move);
+					TempList.Add(move);
+				}
+				else
+				{
+					TempList.Add(move);
 				}
 			}
 		}
-		foreach(Move move in tempList){
-			if(moves_to_learn.Contains(move)){
-				moves_to_learn_names.Remove(move.move_name.ToString().Replace(" ","_"));
-				moves_to_learn.Remove(move);
+		foreach(Move move in TempList)
+		{
+			if(MovesToLearn.Contains(move))
+			{
+				MovesToLearnNames.Remove(move.moveName.ToString().Replace(" ","_"));
+				MovesToLearn.Remove(move);
 			}
 		}
+
 	}
-	private int ChangeStatTo(int statStage, int maxStat){
-		if(statStage <= -6){
+	private int ChangeStatTo(int statStage, int maxStat)
+	{
+		if(statStage <= -6)
+		{
 			return (int)((float)maxStat * 0.25f);
-		}else if(statStage == -5){
+		}
+		else if(statStage == -5)
+		{
 			return (int)((float)maxStat * 0.2857142857f);
-		}else if(statStage == -4){
+		}
+		else if(statStage == -4)
+		{
 			return (int)((float)maxStat * 0.3333333333f);
-		}else if(statStage == -3){
+		}
+		else if(statStage == -3)
+		{
 			return (int)((float)maxStat * 0.4f);
-		}else if(statStage == -2){
+		}
+		else if(statStage == -2)
+		{
 			return (int)((float)maxStat * 0.5f);
-		}else if(statStage == -1){
+		}
+		else if(statStage == -1)
+		{
 			return (int)((float)maxStat * 0.6666666667f);
-		}else if(statStage == 1){
+		}
+		else if(statStage == 1)
+		{
 			return (int)((float)maxStat * 1.5f);
-		}else if(statStage == 2){
+		}
+		else if(statStage == 2)
+		{
 			return (int)((float)maxStat * 2f);
-		}else if(statStage == 3){
+		}
+		else if(statStage == 3)
+		{
 			return (int)((float)maxStat * 2.5f);
-		}else if(statStage == 4){
+		}
+		else if(statStage == 4)
+		{
 			return (int)((float)maxStat * 3f);
-		}else if(statStage == 5){
+		}
+		else if(statStage == 5)
+		{
 			return (int)((float)maxStat * 3.5f);
-		}else if(statStage >= 6){
+		}
+		else if(statStage >= 6)
+		{
 			return (int)((float)maxStat * 4f);
-		}else{
+		}
+		else
+		{
 			return (int)((float)maxStat * 1f);
 		}	
 	}
-	private float ChangeAccEvaTo(int statStage){
-		if(statStage <= -6){
+	private float ChangeAccEvaTo(int statStage)
+	{
+		if(statStage <= -6)
+		{
 			return 0.3333333333f;
-		}else if(statStage == -5){
+		}
+		else if(statStage == -5)
+		{
 			return 0.375f;
-		}else if(statStage == -4){
+		}
+		else if(statStage == -4)
+		{
 			return 0.4285714286f;
-		}else if(statStage == -3){
+		}
+		else if(statStage == -3)
+		{
 			return 0.5f;
-		}else if(statStage == -2){
+		}
+		else if(statStage == -2)
+		{
 			return 0.6f;
-		}else if(statStage == -1){
+		}
+		else if(statStage == -1)
+		{
 			return 0.75f;
-		}else if(statStage == 1){
+		}
+		else if(statStage == 1)
+		{
 			return 1.3333333333f;
-		}else if(statStage == 2){
+		}
+		else if(statStage == 2)
+		{
 			return 1.6666666667f;
-		}else if(statStage == 3){
+		}
+		else if(statStage == 3)
+		{
 			return 2f;
-		}else if(statStage == 4){
+		}
+		else if(statStage == 4)
+		{
 			return 2.3333333333f;
-		}else if(statStage == 5){
+		}
+		else if(statStage == 5)
+		{
 			return 2.6666666667f;
-		}else if(statStage == 6){
+		}
+		else if(statStage == 6)
+		{
 			return 3f;
-		}else{
+		}else
+		{
 			return 1f;
 		}
 	}
-	private void GiveStatsToEvolvedForm(bool this_is_setup, bool this_is_captured, GameObject this_trainer, string this_trainers_name, string this_nick_name,
-	                                    bool this_is_from_trade, int this_level, Genders this_gender, Natures this_nature, int this_hp_iv, int this_atk_iv,
-	                                    int this_def_iv, int this_spatk_iv, int this_spdef_iv, int this_spd_iv, int this_hp_ev, int this_atk_ev, int this_def_ev,
-	                                    int this_spatk_ev, int this_spdef_ev, int this_spd_ev, List<string> this_known_moves_names, Move this_last_move_used,
-	                                    Item this_equipped_item, bool this_is_in_battle, int this_origin, bool this_is_shiny)
+	private void GiveStatsToEvolvedForm(bool thisIsSetup, bool thisIsCaptured, GameObject thisTrainer, string thisTrainersName, string thisNickName,
+	                                    bool thisIsFromTrade, int thisLevel, Genders thisGender, Natures thisNature, int thisHPIV, int thisATKIV,
+	                                    int thisDEFIV, int thisSPATKIV, int thisSPDEFIV, int thisSPDIV, int thisHPEV, int thisATKEV, int thisDEFEV,
+	                                    int thisSPATKEV, int thisSPDEFEV, int thisSPDEV, List<string> ThisKnownMoves, Move thisLastMoveUsed,
+	                                    _Item thisEquippedItem, bool thisIsInBattle, int thisOrigin, bool thisIsShiny)
 	{
-		is_setup = this_is_setup;
-		is_captured = this_is_captured;
-		trainer = this_trainer;
-		trainers_name = this_trainers_name;
-		nick_name = this_nick_name;
-		is_from_trade = this_is_from_trade;
-		level = this_level;
-		gender = this_gender;
-		nature = this_nature;
-		hp_iv = this_hp_iv;
-		atk_iv = this_atk_iv;
-		def_iv = this_def_iv;
-		spatk_iv = this_spatk_iv;
-		spdef_iv = this_spdef_iv;
-		spd_iv = this_spd_iv;
-		hp_ev = this_hp_ev;
-		atk_ev = this_atk_ev;
-		def_ev = this_def_ev;
-		spatk_ev = this_spatk_ev;
-		spdef_ev = this_spdef_ev;
-		spd_ev = this_spd_ev;
-		known_moves_names = this_known_moves_names;
-		last_move_used = this_last_move_used;
-		equipped_item = this_equipped_item;
-		is_in_battle = this_is_in_battle;
-		origin = this_origin;
-		is_shiny = this_is_shiny;
+		isSetup = thisIsSetup;
+		isCaptured = thisIsCaptured;
+		trainer = thisTrainer;
+		trainersName = thisTrainersName;
+		nickName = thisNickName;
+		isFromTrade = thisIsFromTrade;
+		level = thisLevel;
+		gender = thisGender;
+		nature = thisNature;
+		hpIV = thisHPIV;
+		atkIV = thisATKIV;
+		defIV = thisDEFIV;
+		spatkIV = thisSPATKIV;
+		spdefIV = thisSPDEFIV;
+		spdIV = thisSPDIV;
+		hpEV = thisHPEV;
+		atkEV = thisATKEV;
+		defEV = thisDEFEV;
+		spatkEV = thisSPATKEV;
+		spdefEV = thisSPDEFEV;
+		spdEV = thisSPDEV;
+		KnownMovesNames = ThisKnownMoves;
+		lastMoveUsed = thisLastMoveUsed;
+		equippedItem = thisEquippedItem;
+		isInBattle = thisIsInBattle;
+		origin = thisOrigin;
+		isShiny = thisIsShiny;
+	}
+	private IEnumerator IncreaseEXP(int increase)
+	{
+		int target = currentEXP + increase;
+		while(currentEXP < target)
+		{
+			currentEXP += 1;
+			if(currentEXP >= nextRequiredEXP)
+			{
+				level += 1;
+				lastRequiredEXP = nextRequiredEXP;
+				nextRequiredEXP = calculateEXPScript.CalculateRequiredXP(level, levelingRate);
+				maxHP = statCalculationsScript.CalculateHP (baseHP, level, hpIV, hpEV);
+				curMaxHP = maxHP;
+				maxPP = statCalculationsScript.CalculatePP (basePP, level);
+				curMaxPP = maxPP;
+				maxATK = statCalculationsScript.CalculateStat (baseATK, level, atkIV, atkEV, nature, StatCalculations.StatTypes.ATTACK);
+				maxDEF = statCalculationsScript.CalculateStat (baseDEF, level, defIV, defEV, nature, StatCalculations.StatTypes.DEFENSE);
+				maxSPATK = statCalculationsScript.CalculateStat (baseSPATK, level, spatkIV, spatkEV, nature, StatCalculations.StatTypes.SPECIALATTACK);
+				maxSPDEF = statCalculationsScript.CalculateStat (baseSPDEF, level, spdefIV, spdefEV, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
+				maxSPD = statCalculationsScript.CalculateStat (baseSPD, level, spdIV, spdEV, nature, StatCalculations.StatTypes.SPEED);
+				SetupMoves();
+			}
+			yield return null;
+		}
+	}
+	private IEnumerator Faint()
+	{
+		GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Dead;
+		anim.SetBool("Fainting", true);
+		foreach(int pokemon in PokemonToGiveEXPTo)
+		{
+			GameObject thePokemon = PhotonView.Find(pokemon).gameObject;
+			if(thePokemon.GetComponent<PhotonView>().owner == PhotonNetwork.player)
+				thePokemon.GetComponent<PhotonView>().RPC("AdjustCurrentEXP", PhotonTargets.AllBuffered, isCaptured, baseEXPYield, level);
+		}
+		yield return new WaitForSeconds(5.0f);
+		if(!isCaptured)
+		{
+			GetComponent<PhotonView>().RPC("SetDead", PhotonTargets.AllBuffered);
+			target.gameObject.GetComponent<PhotonView>().RPC("EndWildPokemonBattle", PhotonTargets.AllBuffered);
+			GetComponent<PhotonView>().RPC("EndWildPokemonBattle", PhotonTargets.AllBuffered);
+		}
+		else
+		{
+			GetComponent<PokemonInput>().SwapToPlayer();
+			target.gameObject.GetComponent<PhotonView>().RPC("EndWildPokemonBattle", PhotonTargets.AllBuffered);
+		}
+		yield return null;
 	}
 	private IEnumerator Evolve()
 	{
@@ -552,11 +762,11 @@ public class Pokemon : MonoBehaviour
 			yield return null;
 		}
 		StartCoroutine(IncreaseFlare());
-		while(evolve_flare.brightness < evolution_flare_size - 1f)
+		while(evolveFalre.brightness < evolutionFlareSize - 1f)
 		{
 			yield return null;
 		}
-		GameObject evolved_form = Instantiate(evolves_into, transform.position, transform.rotation) as GameObject;
+		GameObject evolved_form = PhotonNetwork.Instantiate(evolvesInto, transform.position, transform.rotation, 0) as GameObject;
 		Material[] evolved_materials = evolved_form.GetComponentInChildren<SkinnedMeshRenderer>().materials;
 		evolved_form.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
 		foreach(Material material in evolved_materials)
@@ -565,22 +775,22 @@ public class Pokemon : MonoBehaviour
 		}
 		evolved_form.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
 		trainer.GetComponent<PlayerCharacter>().SetActivePokemon(evolved_form);
-		Camera.main.GetComponent<CameraController>().SetTarget(evolved_form);
+		GetComponent<PokemonInput>().myCamera.GetComponent<CameraController>().SetTarget(evolved_form.transform);
 		SkinnedMeshRenderer componenets = GetComponentInChildren<SkinnedMeshRenderer>();
 		componenets.enabled = false;
-		while(evolve_flare.brightness > 0f){
+		while(evolveFalre.brightness > 0f){
 			yield return null;
 		}
 		foreach(Material material in evolved_materials){
 			StartCoroutine(ChangeToColor(material));
 		}
 		yield return new WaitForSeconds(1);
-		evolved_form.GetComponent<Pokemon>().GiveStatsToEvolvedForm(is_setup, is_captured, trainer, trainers_name, nick_name, is_from_trade, level, gender, nature,
-		                                                            hp_iv, atk_iv, def_iv, spatk_iv, spdef_iv, spd_iv, hp_ev, atk_ev, def_ev, spatk_ev, spdef_ev,
-		                                                            spd_ev, known_moves_names, last_move_used, equipped_item, is_in_battle, origin, is_shiny);
+		evolved_form.GetComponent<Pokemon>().GiveStatsToEvolvedForm(isSetup, isCaptured, trainer, trainersName, nickName, isFromTrade, level, gender, nature,
+		                                                            hpIV, atkIV, defIV, spatkIV, spdefIV, spdIV, hpEV, atkEV, defEV, spatkEV, spdefEV,
+		                                                            spdEV, KnownMovesNames, lastMoveUsed, equippedItem, isInBattle, origin, isShiny);
 		evolved_form.GetComponent<Pokemon>().SetupSetupPokemon();
 		evolved_form.GetComponent<PokemonInput>().enabled = true;
-		Destroy(this.gameObject);
+		PhotonNetwork.Destroy(gameObject);
 		yield return null;
 	}
 	private IEnumerator ChangeToWhite(Material mat)
@@ -595,14 +805,14 @@ public class Pokemon : MonoBehaviour
 	}
 	private IEnumerator IncreaseFlare()
 	{
-		float increase = flare_grow_delay + Time.deltaTime;
-		while(evolve_flare.brightness < evolution_flare_size){
-			evolve_flare.brightness = evolve_flare.brightness + increase;
+		float increase = flareGrowDelay + Time.deltaTime;
+		while(evolveFalre.brightness < evolutionFlareSize){
+			evolveFalre.brightness = evolveFalre.brightness + increase;
 			yield return null;
 		}
-		float decrease = flare_die_delay + Time.deltaTime;
-		while(evolve_flare.brightness > 0f){
-			evolve_flare.brightness = evolve_flare.brightness - decrease;
+		float decrease = flareDieDelay + Time.deltaTime;
+		while(evolveFalre.brightness > 0f){
+			evolveFalre.brightness = evolveFalre.brightness - decrease;
 			yield return null;
 		}
 	}
@@ -616,6 +826,4 @@ public class Pokemon : MonoBehaviour
 			yield return null;
 		}
 	}
-	
-
 }

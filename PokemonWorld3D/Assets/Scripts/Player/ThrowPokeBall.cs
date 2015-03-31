@@ -1,119 +1,195 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ThrowPokeBall : MonoBehaviour
 {
-	public GameObject pokeball;
-	public GameObject empty_ball;
-	public AudioClip poke_ball_grow;
-	public AudioClip pokemon_out;
-	public GameObject poke_ball_prefab;
-	public GameObject empty_poke_ball_prefab;
+	public AudioClip pokeBallGrow;
+	public GameObject pokemonBall;
+	public GameObject emptyBall;
 	public GameObject grip;
 	public float throw_power;
 	public float max_angle_velocity;
-	public PlayerCharacter this_player;
-	public PlayerInput input;
+	public AudioClip pokemonOut;
 
-	public GameObject target;
+	private PlayerCharacter player;
+	private PlayerInput input;
+	private GameObject target;
 	private Animator anim;
-	private Transform my_transform;
 
 	void Start()
 	{
-		my_transform = transform;
-		anim = GetComponent<Animator>();
-		this_player = GetComponent<PlayerCharacter>();
+		player = GetComponent<PlayerCharacter>();
 		input = GetComponent<PlayerInput>();
+		anim = GetComponent<Animator>();
 	}
 
-	void Update()
+	[RPC]
+	public void NetworkStats(bool nIsCaptured, int trainer, string nTrainersName, string nNickName, bool nIsFromTrade, int nLevel, int nGender,
+	                         int nNature, int nCurHP, int nHPEV, int nATKEV, int nDEFEV, int nSPATKEV, int nSPDEFEV, int nSPDEV, int nHPIV, int nATKIV, int nDEFIV,
+	                         int nSPATKIV, int nSPDEFIV, int nSPDIV, int nCurEXP, string[] nMovesToLearnNames, string[] nKnownMovesNames, int nOrigin, int pokemonID)
 	{
-
-	}
-
-	public void CreateEmptyBall()
-	{
-		audio.PlayOneShot(poke_ball_grow);
-		empty_ball = Instantiate(empty_poke_ball_prefab, grip.transform.position, grip.transform.rotation) as GameObject;
-		empty_ball.GetComponent<EmptyPokeBall>().this_player = this_player;
-		empty_ball.transform.parent = grip.transform;
-		empty_ball.collider.enabled = false;
-		empty_ball.rigidbody.useGravity = false;
+		GameObject thePokemon = PhotonView.Find(pokemonID).gameObject;
+		Pokemon thisPokemon = thePokemon.GetComponent<Pokemon>();
+		GameObject thisTrainer = PhotonView.Find(trainer).gameObject;
+		thisPokemon.isCaptured = nIsCaptured;
+		thisPokemon.trainer = thisTrainer;
+		thisPokemon.trainersName = thisTrainer.GetComponent<PlayerCharacter>().playersName;
+		thisPokemon.nickName = nNickName;
+		thisPokemon.isFromTrade = nIsFromTrade;
+		thisPokemon.level = nLevel;
+		thisPokemon.gender = (Pokemon.Genders)nGender;
+		thisPokemon.nature = (Pokemon.Natures)nNature;
+		thisPokemon.curHP = nCurHP;
+		thisPokemon.hpEV = nHPEV;
+		thisPokemon.atkEV = nATKEV;
+		thisPokemon.defEV = nDEFEV;
+		thisPokemon.spatkEV = nSPATKEV;
+		thisPokemon.spdefEV = nSPDEFEV;
+		thisPokemon.spdEV = nSPDEV;
+		thisPokemon.hpIV = nHPIV;
+		thisPokemon.atkIV = nATKIV;
+		thisPokemon.defIV = nDEFIV;
+		thisPokemon.spatkIV = nSPATKIV;
+		thisPokemon.spdefIV = nSPDEFIV;
+		thisPokemon.spdIV = nSPDIV;
+		thisPokemon.currentEXP = nCurEXP;
+		List<string> MovesToLearnNames = new List<string>();
+		for(int i = 0; i < nMovesToLearnNames.Length; i++)
+		{
+			MovesToLearnNames.Add(nMovesToLearnNames[i]);
+		}
+		thisPokemon.MovesToLearnNames = MovesToLearnNames;
+		List<string> KnownMovesNames = new List<string>();
+		for(int i = 0; i < nKnownMovesNames.Length; i++)
+		{
+			KnownMovesNames.Add(nKnownMovesNames[i]);
+		}
+		thisPokemon.KnownMovesNames = KnownMovesNames;
+		thisPokemon.origin = nOrigin;
+		thePokemon.GetComponent<PhotonView>().RPC("SetupSetupPokemon", PhotonTargets.AllBuffered);
+		
 	}
 	public void CreatePokemonBall()
 	{
-		audio.PlayOneShot(poke_ball_grow);
-		pokeball = Instantiate(poke_ball_prefab, grip.transform.position, grip.transform.rotation) as GameObject;
-		pokeball.transform.parent = grip.transform;
-		pokeball.collider.enabled = false;
-		pokeball.rigidbody.useGravity = false;
-	}
-	public void ThrowEmptyBall()
-	{
-		empty_ball.transform.parent = null;
-		empty_ball.rigidbody.useGravity = true;
-		Vector3 target_pos = target.GetComponentInChildren<Renderer>().renderer.bounds.center;
-		Vector3 throw_speed = calculateBestThrowSpeed(empty_ball.transform.position, target_pos, 1.0f);
-		empty_ball.rigidbody.AddForce(throw_speed, ForceMode.VelocityChange);
-		empty_ball.collider.enabled = true;
+		audio.PlayOneShot(pokeBallGrow);
+		pokemonBall.rigidbody.useGravity = false;
+		pokemonBall.SetActive(true);
 	}
 	public void ThrowPokemonBall()
 	{
-		pokeball.transform.parent = null;
-		pokeball.rigidbody.useGravity = true;
-		pokeball.rigidbody.AddForce(transform.forward * 1000);
-		pokeball.collider.enabled = true;
-		pokeball.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * throw_power);
-		pokeball.GetComponent<Rigidbody>().AddTorque(10, 0, 0);
-		pokeball.GetComponent<Rigidbody>().maxAngularVelocity = max_angle_velocity;
+		pokemonBall.transform.parent = null;
+		pokemonBall.rigidbody.AddForce(transform.forward * 1000);
+		pokemonBall.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * throw_power);
+		pokemonBall.GetComponent<Rigidbody>().AddTorque(10, 0, 0);
+		pokemonBall.GetComponent<Rigidbody>().maxAngularVelocity = max_angle_velocity;
+	}
+	public void CreateEmptyBall()
+	{
+		audio.PlayOneShot(pokeBallGrow);
+		emptyBall.collider.enabled = false;
+		emptyBall.rigidbody.useGravity = false;
+		emptyBall.SetActive(true);
+	}
+	public void ThrowEmptyBall()
+	{
+		emptyBall.transform.parent = null;
+		emptyBall.rigidbody.useGravity = true;
+		Vector3 targetPos = target.GetComponentInChildren<Renderer>().renderer.bounds.center;
+		Vector3 throwSpeed = calculateBestThrowSpeed(emptyBall.transform.position, targetPos, 1.0f);
+		emptyBall.rigidbody.AddForce(throwSpeed, ForceMode.VelocityChange);
+		emptyBall.collider.enabled = true;
+	}
+	public void EndThrowingBall()
+	{
+		anim.SetBool("ThrowPokemonBall", false);
+		anim.SetBool("ThrowEmptyBall", false);
+	}
+	public void PauseReturn()
+	{
+		anim.SetBool("StartPokemonReturn", false);
+	}
+	public void EndReturn()
+	{
+		pokemonBall.SetActive(false);
+		anim.SetBool("FinishPokemonReturn", false);
 	}
 
 	private void OpenBall()
 	{
-		pokeball.animation["Open"].speed = 2;
-		pokeball.animation.Play("Open");
+		pokemonBall.GetComponent<Animator>().SetBool("Open", true);
 	}
 	private void CloseBall()
 	{
-		pokeball.animation["Close"].speed = -5f;
-		pokeball.animation["Close"].time = pokeball.animation["Close"].length;
-		pokeball.animation.Play("Close");
+		pokemonBall.GetComponent<Animator>().SetBool("Open", false);
 	}
 	private void HandOverStats(Pokemon pokemon, PlayerPokemonData data)
 	{
-		pokemon.is_setup = data.is_setup;
-		pokemon.is_captured = data.is_captured;
-		pokemon.trainer = this.gameObject;
-		pokemon.trainers_name = data.trainers_name;
-		pokemon.nick_name = data.nick_name;
-		pokemon.is_from_trade = data.is_from_trade;
-		pokemon.level = data.level;
-		pokemon.gender = data.gender;
-		pokemon.nature = data.nature;
-		pokemon.cur_hp = data.cur_hp;
-		pokemon.hp_ev = data.hp_ev;
-		pokemon.atk_ev = data.atk_ev;
-		pokemon.def_ev = data.def_ev;
-		pokemon.spatk_ev = data.spatk_ev;
-		pokemon.spdef_ev = data.spdef_ev;
-		pokemon.spd_ev = data.spd_ev;
-		pokemon.hp_iv = data.hp_iv;
-		pokemon.atk_iv = data.atk_iv;
-		pokemon.def_iv = data.def_iv;
-		pokemon.spatk_iv = data.spatk_iv;
-		pokemon.spdef_iv = data.spdef_iv;
-		pokemon.spd_iv = data.spd_iv;
-		pokemon.last_required_exp = data.last_required_exp;
-		pokemon.current_exp = data.current_exp;
-		pokemon.next_required_exp = data.next_required_exp;
-		pokemon.status_condition = data.status_condition;
-		pokemon.moves_to_learn_names = data.moves_to_learn;
-		pokemon.known_moves_names = data.known_moves;
-		pokemon.last_move_used = data.last_move_used;
-		pokemon.equipped_item = data.equipped_item;
-		pokemon.origin = data.origin;
-		pokemon.is_shiny = data.is_shiny;
+		bool isCaptured = data.isCaptured;
+		int trainerID = GetComponent<PhotonView>().viewID;
+		string trainersName = GetComponent<PlayerCharacter>().playersName;
+		string nickName = data.nickName;
+		bool isFromTrade = data.isFromTrade;
+		int level = data.level;
+		int gender = (int)data.gender;
+		int nature = (int)data.nature;
+		int curHP = data.curHP;
+		int hpEV = data.hpEV;
+		int atkEV = data.atkEV;
+		int defEV = data.defEV;
+		int spatkEV = data.spatkEV;
+		int spdefEV = data.spdefEV;
+		int spdEV = data.spdEV;
+		int hpIV = data.hpIV;
+		int atkIV = data.atkIV;
+		int defIV = data.defIV;
+		int spatkIV = data.spatkIV;
+		int spdefIV = data.spdefIV;
+		int spdIV = data.spdIV;
+		int curEXP = data.currentEXP;
+		string[] MovesToLearnNames = new string[data.MovesToLearnNames.Count];
+		for(int i = 0; i < data.MovesToLearnNames.Count; i++)
+		{
+			MovesToLearnNames[i] = data.MovesToLearnNames[i];
+		}
+		string[] KnownMovesNames = new string[data.KnownMovesNames.Count];
+		for(int i = 0; i < data.KnownMovesNames.Count; i++)
+		{
+			KnownMovesNames[i] = data.KnownMovesNames[i];
+		}
+		//string equippedItem = data.equippedItem.name;
+		int origin = data.origin;
+		int pokemonID = pokemon.gameObject.GetComponent<PhotonView>().viewID;
+		GetComponent<PhotonView>().RPC("NetworkStats", PhotonTargets.AllBuffered, isCaptured, trainerID, trainersName, nickName, isFromTrade, level, gender,
+		                               nature, curHP, hpEV, atkEV, defEV, spatkEV, spdefEV, spdEV, hpIV, atkIV, defIV, spatkIV, spdefIV, spdIV, curEXP,
+		                               MovesToLearnNames, KnownMovesNames, origin, pokemonID);
+	}
+	private void GetStatsBack(Pokemon pokemon, PlayerPokemonData data)
+	{
+		data.isCaptured = pokemon.isCaptured;
+		data.nickName = pokemon.nickName;
+		data.isFromTrade = pokemon.isFromTrade;
+		data.level = pokemon.level;
+		data.gender = pokemon.gender;
+		data.nature = pokemon.nature;
+		data.curHP = pokemon.maxHP;
+		data.hpEV = pokemon.hpEV;
+		data.atkEV = pokemon.atkEV;
+		data.defEV = pokemon.defEV;
+		data.spatkEV = pokemon.spatkEV;
+		data.spdefEV = pokemon.spdefEV;
+		data.spdEV = pokemon.spdEV;
+		data.hpIV = pokemon.hpIV;
+		data.atkIV = pokemon.atkIV;
+		data.defIV = pokemon.defIV;
+		data.spatkIV = pokemon.spatkIV;
+		data.spdefIV = pokemon.spdefIV;
+		data.spdIV = pokemon.spdIV;
+		data.currentEXP = pokemon.currentEXP;
+		data.MovesToLearnNames = pokemon.MovesToLearnNames;
+		data.KnownMovesNames = pokemon.KnownMovesNames;
+		//string equippedItem = data.equippedItem.name;
+		data.origin = pokemon.origin;
 	}
 	private Vector3 calculateBestThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget)
 	{
@@ -142,41 +218,62 @@ public class ThrowPokeBall : MonoBehaviour
 		return result;
 	}
 
-	public IEnumerator PokeBallGo()
-	{
-		target = GetComponent<PlayerInput>().target;
-		anim.SetTrigger("EmptyPokeBallThrow");
-		yield return null;
-	}
 	public IEnumerator PokemonGo(PlayerPokemonData data)
 	{
-		anim.SetTrigger("PokemonPokeBallThrow");
-		yield return new WaitForSeconds(1.0f);
-		while(Vector3.Distance(my_transform.position, pokeball.transform.position) < 10.0f)
+		anim.SetBool("ThrowPokemonBall", true);
+		yield return new WaitForSeconds(0.10f);
+		CreatePokemonBall();
+		while(Vector3.Distance(transform.position, pokemonBall.transform.position) < 5.0f)
 		{
 			yield return null;
 		}
-		pokeball.collider.enabled = false;
-		pokeball.rigidbody.Sleep();
-		pokeball.transform.LookAt(transform.forward);
+		pokemonBall.rigidbody.velocity = Vector3.zero;
+		pokemonBall.transform.LookAt(transform.forward);
 		OpenBall();
-		pokeball.audio.PlayOneShot(pokemon_out);
-		yield return new WaitForSeconds(pokemon_out.length);
-		GameObject pokemon_to_release = (GameObject)Resources.Load("Prefabs/" + data.pokemon_name.ToString());
-		float current_terrain_height = Terrain.activeTerrain.SampleHeight (pokeball.transform.position);
-		Vector3 here = new Vector3(pokeball.transform.position.x, current_terrain_height, pokeball.transform.position.z);
-		GameObject pokemon = Instantiate(pokemon_to_release, here, Quaternion.identity)as GameObject;
+		pokemonBall.audio.PlayOneShot(pokemonOut);
+		yield return new WaitForSeconds(pokemonOut.length);
+		float current_terrain_height = Terrain.activeTerrain.SampleHeight(pokemonBall.transform.position);
+		Vector3 here = new Vector3(pokemonBall.transform.position.x, current_terrain_height, pokemonBall.transform.position.z);
+		GameObject pokemon = PhotonNetwork.Instantiate(data.pokemonName.ToString(), here, Quaternion.identity, 0) as GameObject;
+		pokemon.GetComponent<WildPokemonAI>().enabled = false;
 		CloseBall();
-		Vector3 move_to = new Vector3(my_transform.position.x, my_transform.position.y, my_transform.position.z);
-		while(Vector3.Distance(pokeball.transform.position, move_to) > 1f){
-			pokeball.transform.position = Vector3.Lerp(pokeball.transform.position, move_to, 5f * Time.deltaTime);
+		while(Vector3.Distance(pokemonBall.transform.position, grip.transform.position) > 1f){
+			pokemonBall.transform.position = Vector3.Lerp(pokemonBall.transform.position, grip.transform.position, 5f * Time.deltaTime);
 			yield return null;
 		}
+		pokemonBall.transform.parent = grip.transform;
+		pokemonBall.transform.position = grip.transform.position;
+		pokemonBall.transform.rotation = grip.transform.rotation;
+		pokemonBall.SetActive(false);
 		HandOverStats(pokemon.GetComponent<Pokemon>(), data);
 		pokemon.GetComponent<Pokemon>().SetupSetupPokemon();
-		this_player.SetActivePokemon(pokemon);
-		Destroy(pokeball);
-		input.throw_coroutine_started = false;
+		pokemon.GetComponent<PokemonInput>().myCamera = GetComponent<PlayerInput>().myCamera;
+		player.SetActivePokemon(pokemon);
+		input.throwingPokeBall = false;
+		yield return null;
+	}
+	public IEnumerator PokemonReturn()
+	{
+		transform.LookAt(player.activePokemon.transform);
+		anim.SetBool("StartPokemonReturn", true);
+		CreatePokemonBall();
+		//ANIMATIONS AND EFFECTS GO HERE FOR BRINGING THE POKEMON BACK INTO THE BALL-------------!!!!!!!!!!!
+		Pokemon pokemon = player.activePokemon.GetComponent<Pokemon>();
+		int slot = pokemon.origin;
+		GetStatsBack(pokemon, player.pokemonRoster.pokemonRoster[slot]);
+		PhotonNetwork.Destroy(player.activePokemon);
+
+		yield return new WaitForSeconds(1f);
+		anim.SetBool("FinishPokemonReturn", true);
+		input.returningPokemon = false;
+		yield return null;
+	}
+	public IEnumerator PokeBallGo()
+	{
+		target = GetComponent<PlayerInput>().target;
+		anim.SetBool("ThrowEmptyBall", true);
+		yield return new WaitForEndOfFrame();
+		anim.SetBool("ThrowEmptyBall", false);
 		yield return null;
 	}
 }

@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class BattleCalculations{
+public class BattleCalculations : MonoBehaviour
+{
+	public static float[,] typeToTypeDamageRatios;
 
 	private int baseDamage;
 	private float stab1;
@@ -13,8 +15,6 @@ public class BattleCalculations{
 	private float modifier;
 	private float te1;
 	private float te2;
-
-	public static float[,] typeToTypeDamageRatios;
 
 	void Start()
 	{
@@ -402,21 +402,23 @@ public class BattleCalculations{
 #endregion
 	}
 
-	public int CalculateAttackDamage(Move usedMove, int level, int attack, int defense, PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02,
-	                                 PokemonTypes.Types targetType01, PokemonTypes.Types targetType02, int attackersBaseSPD){
-		baseDamage = usedMove.power;
-		SetModifier(usedMove.type, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, usedMove);
-		return (int)((((2 * level + 10) / (float)250) * ((float)attack / (float)defense) * baseDamage + 2) * modifier);
+	public int CalculateAttackDamage(int movePower, bool moveCrit, PokemonTypes.Types moveType, int level, int attackersATK, int targetsDEF,
+	                                 PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
+	                                 PokemonTypes.Types targetType02, int attackersBaseSPD)
+	{
+		baseDamage = movePower;
+		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, moveCrit);
+		return (int)((((2 * level + 10) / (float)250) * ((float)attackersATK / (float)targetsDEF) * baseDamage + 2) * modifier);
 	}
-
-	public int CalculateSpecialAttackDamage(Move usedMove, int level, int spAttack, int spDefense, PokemonTypes.Types attackersType01,
-	                                        PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01, PokemonTypes.Types targetType02,
-	                                        int attackersBaseSPD){
-		baseDamage = usedMove.power;
-		SetModifier(usedMove.type, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, usedMove);
-		return (int)((((2 * level + 10) / (float)250) * ((float)spAttack / (float)spDefense) * baseDamage + 2) * modifier);
+	
+	public int CalculateSpecialAttackDamage(int movePower, bool moveCrit, PokemonTypes.Types moveType, int level, int attackersSPATK, int targetsSPDEF,
+	                                        PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
+	                                        PokemonTypes.Types targetType02, int attackersBaseSPD)
+	{
+		baseDamage = movePower;
+		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, moveCrit);
+		return (int)((((2 * level + 10) / (float)250) * ((float)attackersSPATK / (float)targetsSPDEF) * baseDamage + 2) * modifier);
 	}
-
 	/*
 	public int CalculateConfusionDamage(int level, int attack, int defense){
 		baseDamage = 40;
@@ -506,52 +508,73 @@ public class BattleCalculations{
 */
 
 	
-	private void SetModifier(PokemonTypes.Types moveType, PokemonTypes.Types pkmnType01, PokemonTypes.Types pkmnType02, PokemonTypes.Types targetType01,
-	                         PokemonTypes.Types targetType02, int baseSPD, Move usedMove){
+	private void SetModifier(PokemonTypes.Types moveType, PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
+	                         PokemonTypes.Types targetType02, int attackersbaseSPD,
+	                         bool moveCrit)
+	{
 		//Other is dependant on equipped items, abilities, and field advantages.
-		stab1 = DetermineSTAB01(moveType, pkmnType01);
-		stab2 = DetermineSTAB02(moveType, pkmnType02);
+		stab1 = DetermineSTAB01(moveType, attackersType01);
+		stab2 = DetermineSTAB02(moveType, attackersType02);
 		te1 = DetermineTypeEffectiveness01(moveType, targetType01);
 		te2 = DetermineTypeEffectiveness02(moveType, targetType02);
-		if(DetermineCritical(baseSPD, usedMove)){
+		if(DetermineCritical(attackersbaseSPD, moveCrit))
+		{
 			crit = 1.5f;
-		}else{
+		}
+		else
+		{
 			crit = 1.0f;
 		}
 		modifier = ((stab1 * stab2) * (te1 * te2) * crit * /*other*/ Random.Range(0.85f, 1.0f));
 	}
-	private float DetermineSTAB01(PokemonTypes.Types moveType, PokemonTypes.Types pokemonType01){
-		if(moveType == pokemonType01){
+	private float DetermineSTAB01(PokemonTypes.Types moveType, PokemonTypes.Types pokemonType01)
+	{
+		if(moveType == pokemonType01)
+		{
 			return 1.5f;
-		}else{
+		}
+		else
+		{
 			return 1.0f;
 		}
 	}
-	private float DetermineSTAB02(PokemonTypes.Types moveType, PokemonTypes.Types pokemonType02){
-		if(moveType == pokemonType02){
+	private float DetermineSTAB02(PokemonTypes.Types moveType, PokemonTypes.Types pokemonType02)
+	{
+		if(moveType == pokemonType02)
+		{
 			return 1.5f;
-		}else{
+		}
+		else
+		{
 			return 1.0f;
 		}
 	}
-	private bool DetermineCritical(int baseSpeed, Move usedMove){
-		if(usedMove.high_crit_chance){
+	private bool DetermineCritical(int baseSpeed, bool highCritChance)
+	{
+		if(highCritChance)
+		{
 			chance = (baseSpeed / 64);
-		}else{
+		}
+		else
+		{
 			chance = (baseSpeed / 512);
 		}
 		float random = Random.Range(1, 101);
-		if(random <= chance){
-			Debug.Log ("CRITICAL HIT!");
+		if(random <= chance)
+		{
 			return  true;
-		}else{
+		}
+		else
+		{
 			return false;
 		}
 	}
-	private float DetermineTypeEffectiveness01(PokemonTypes.Types atkType, PokemonTypes.Types pkmnType01){
+	private float DetermineTypeEffectiveness01(PokemonTypes.Types atkType, PokemonTypes.Types pkmnType01)
+	{
 		return (float) (typeToTypeDamageRatios[(int)atkType, (int)pkmnType01]);
 	}
-	private float DetermineTypeEffectiveness02(PokemonTypes.Types atkType, PokemonTypes.Types pkmnType02){
+	private float DetermineTypeEffectiveness02(PokemonTypes.Types atkType, PokemonTypes.Types pkmnType02)
+	{
 		return (float) (typeToTypeDamageRatios[(int)atkType, (int)pkmnType02]);
 	}
 }

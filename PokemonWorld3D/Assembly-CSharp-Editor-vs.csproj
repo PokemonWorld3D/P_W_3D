@@ -94,6 +94,12 @@
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/Public/Documents/Unity Projects/PokemonWorld3D/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
  </Reference>
+ <Reference Include="I18N">
+ <HintPath>C:/Users/Public/Documents/Unity Projects/PokemonWorld3D/Assets/Plugins/I18N.dll</HintPath>
+ </Reference>
+ <Reference Include="I18N.West">
+ <HintPath>C:/Users/Public/Documents/Unity Projects/PokemonWorld3D/Assets/Plugins/I18N.West.dll</HintPath>
+ </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>C:/Users/Public/Documents/Unity Projects/PokemonWorld3D/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>

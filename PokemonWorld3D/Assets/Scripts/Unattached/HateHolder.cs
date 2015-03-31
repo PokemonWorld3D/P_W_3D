@@ -1,25 +1,26 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class HateHolder
 {
 	public GameObject pokemon;
-	public Pokemon this_pokemon;
-	public int amount_of_hate;
+	public Pokemon thisPokemon;
+	public int amountOfHate;
 
-	public HateHolder(GameObject new_pokemon, Pokemon new_this_pokemon, int new_hate_amount)
+	public HateHolder(GameObject thePokemon, Pokemon me, int theAmountOfHate)
 	{
-		pokemon = new_pokemon;
-		this_pokemon = new_this_pokemon;
-		amount_of_hate = new_hate_amount;
+		pokemon = thePokemon;
+		thisPokemon = me;
+		amountOfHate = theAmountOfHate;
 	}
 
-	private class HateComparer : IComparer<HateHolder>
+	private class HateAmountComparer : IComparer<HateHolder>
 	{
 		public int Compare(HateHolder x, HateHolder y)
 		{
-			return ((new CaseInsensitiveComparer()).Compare(((HateHolder)x).amount_of_hate, ((HateHolder)y).amount_of_hate));
+			return ((new CaseInsensitiveComparer()).Compare(((HateHolder)x).amountOfHate, ((HateHolder)y).amountOfHate));
 		}
 	}
 }

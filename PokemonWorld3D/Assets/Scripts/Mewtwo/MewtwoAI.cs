@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,7 +13,7 @@ public class MewtwoAI : MonoBehaviour
 	}
 	void Update()
 	{
-		Hate_List.Sort(delegate(HateHolder x, HateHolder y) { return x.amount_of_hate.CompareTo(y.amount_of_hate); });
+		Hate_List.Sort(delegate(HateHolder x, HateHolder y) { return x.amountOfHate.CompareTo(y.amountOfHate); });
 		target = Hate_List[0].pokemon;
 	}
 
@@ -23,7 +23,7 @@ public class MewtwoAI : MonoBehaviour
 		{
 			if(Hate_List[i].pokemon = pokemon)
 			{
-				Hate_List[i].amount_of_hate += hate_increase;
+				Hate_List[i].amountOfHate += hate_increase;
 				return;
 			}
 		}

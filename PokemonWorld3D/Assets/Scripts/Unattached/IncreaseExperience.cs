@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class IncreaseExperience {
-	
+public class IncreaseExperience
+{
 	private float a;
 	private float t;
 	private int baseEXP;
@@ -12,35 +12,50 @@ public class IncreaseExperience {
 	private float v;
 	private int s;
 
-	public int AddExperience(GameObject faintedPKMN, GameObject winningPKMN){
+	public int AddExperience(bool faintedIsCaptured, bool winningIsFromTrade, int faintedBaseEXP, bool winningLuckyEgg, int faintedLevel, int winningLevel,
+	                         int winningEvolveLevel)
+	{
 		//f = 1.2 if the pkmn calculating exp for has 2 or more affection hearts or 1 if less than 2 affection hearts
-		if(faintedPKMN.GetComponent<Pokemon>().trainers_name == string.Empty){
+		if(!faintedIsCaptured)
+		{
 			a = 1.0f;
-		}else{
+		}
+		else
+		{
 			a = 1.5f;
 		}
-		if(winningPKMN.GetComponent<Pokemon>().is_from_trade){
+		if(winningIsFromTrade)
+		{
 			t = 1.5f;
-		}else{
+		}
+		else
+		{
 			t = 1.0f;
 		}
-		baseEXP = faintedPKMN.GetComponent<Pokemon>().base_exp_yield;
-		if(winningPKMN.GetComponent<Pokemon>().equipped_item.name == "Lucky Egg"){
+		baseEXP = faintedBaseEXP;
+		if(winningLuckyEgg)
+		{
 			e = 1.5f; 
-		}else{
+		}
+		else
+		{
 			e = 1.0f;
 		}
-		level = faintedPKMN.GetComponent<Pokemon>().level;
-		if(winningPKMN.GetComponent<Pokemon>().level > winningPKMN.GetComponent<Pokemon>().evolve_level){
+		level = faintedLevel;
+		if(winningLevel > winningEvolveLevel)
+		{
 			v = 1.2f;
-		}else{
+		}
+		else
+		{
 			v = 1.0f;
 		}
 		s = 1;
 		return (int)Mathf.Abs (a * t * baseEXP * e * level * /*f * */v) / (7 * s);
 	}
 
-	public int AddExperienceShare(GameObject faintedPKMN, GameObject winningPKMN){
+	public int AddExperienceShare(GameObject faintedPKMN, GameObject winningPKMN)
+	{
 		 //f = 1.2 if the pkmn calculating exp for has 2 or more affection hearts or 1 if less than 2 affection hearts
 		s = 2;
 		if(faintedPKMN.CompareTag("WildPokemon")){
@@ -48,20 +63,20 @@ public class IncreaseExperience {
 		}else{
 			a = 1.5f;
 		}
-		if(winningPKMN.GetComponent<Pokemon>().is_from_trade){
+		if(winningPKMN.GetComponent<Pokemon>().isFromTrade){
 			t = 1.5f;
 		}else{
 			t = 1.0f;
 		}
-		baseEXP = faintedPKMN.GetComponent<Pokemon>().base_exp_yield;
-		if(winningPKMN.GetComponent<Pokemon>().equipped_item.name == "Lucky Egg"){
+		baseEXP = faintedPKMN.GetComponent<Pokemon>().baseEXPYield;
+		if(winningPKMN.GetComponent<Pokemon>().equippedItem.name == "Lucky Egg"){
 			e = 1.5f; 
 		}else{
 			e = 1.0f;
 		}
 		level = faintedPKMN.GetComponent<Pokemon>().level;
 		//f =
-		if(winningPKMN.GetComponent<Pokemon>().level > winningPKMN.GetComponent<Pokemon>().evolve_level){
+		if(winningPKMN.GetComponent<Pokemon>().level > winningPKMN.GetComponent<Pokemon>().evolveLevel){
 			v = 1.2f;
 		}else{
 			v = 1.0f;
