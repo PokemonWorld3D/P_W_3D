@@ -5,7 +5,7 @@ public class Slash : Move
 {
 	public TrailRenderer claws;
 	
-	public void StartSlashEffect()
+	public void StartSlash()
 	{
 		claws.enabled = true;
 	}

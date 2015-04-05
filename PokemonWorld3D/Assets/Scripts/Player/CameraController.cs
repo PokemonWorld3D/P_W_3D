@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
 
 	void Start()
 	{
-		target_renderer = target.GetComponentInChildren<Renderer>();
+		target_renderer = target.GetComponentInChildren<SkinnedMeshRenderer>();
 		target_height =  target_renderer.bounds.extents.y;
 		if(target_height < 1.0f)
 			target_height = 1.0f;
@@ -126,7 +126,7 @@ public class CameraController : MonoBehaviour
 	public void SetTarget(Transform new_target)
 	{
 		target = new_target;
-		target_renderer = target.GetComponentInChildren<Renderer>();
+		target_renderer = target.GetComponentInChildren<SkinnedMeshRenderer>();
 		target_height =  target_renderer.bounds.extents.y;
 		if(target_height < 1.0f)
 			target_height = 1.0f;

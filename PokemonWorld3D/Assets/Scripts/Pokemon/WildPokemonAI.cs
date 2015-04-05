@@ -175,7 +175,7 @@ public class WildPokemonAI : MonoBehaviour
 				}
 			}
 		}
-		float speed = rigidbody.velocity.normalized.magnitude * 2.0f;
+		float speed = rigidbody.velocity.magnitude * 2.0f;
 		anim.SetFloat("Speed", speed);
 	}
 	private void Dead()
@@ -272,7 +272,7 @@ public class WildPokemonAI : MonoBehaviour
 			posOrNeg = ! posOrNeg;
 			yield return null;
 		}
-		while(Vector3.Distance(transform.position, destination) > 0.1f)
+		while(Vector3.Distance(transform.position, destination) > 0.5f)
 		{
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(destination - transform.position), 10f * Time.smoothDeltaTime);
 			transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);

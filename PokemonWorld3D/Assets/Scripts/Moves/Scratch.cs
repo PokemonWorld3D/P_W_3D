@@ -6,7 +6,7 @@ public class Scratch : Move
 {
 	public TrailRenderer claws;
 	
-	public void StartScratchEffect()
+	public void StartScratch()
 	{
 		claws.enabled = true;
 	}

@@ -95,7 +95,7 @@ public class ThrowPokeBall : MonoBehaviour
 	{
 		emptyBall.transform.parent = null;
 		emptyBall.rigidbody.useGravity = true;
-		Vector3 targetPos = target.GetComponentInChildren<Renderer>().renderer.bounds.center;
+		Vector3 targetPos = target.GetComponentInChildren<SkinnedMeshRenderer>().renderer.bounds.center;
 		Vector3 throwSpeed = calculateBestThrowSpeed(emptyBall.transform.position, targetPos, 1.0f);
 		emptyBall.rigidbody.AddForce(throwSpeed, ForceMode.VelocityChange);
 		emptyBall.collider.enabled = true;

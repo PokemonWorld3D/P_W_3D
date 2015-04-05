@@ -5,26 +5,20 @@ public class Ember : Move
 {
 	public Transform instantiatePoint;
 
-	public void FinishEmber()
-	{
-		GetComponent<Animator>().SetBool(moveName, false);
-		GetComponent<PokemonInput>().NotAttacking();
-	}
-	private IEnumerator EmberEffect()
+	public void StartEmber()
 	{
 		if(GetComponent<PhotonView>().owner == PhotonNetwork.player)
 		{
-			GameObject embers = PhotonNetwork.Instantiate("EmberContainer", instantiatePoint.position, instantiatePoint.rotation, 0) as GameObject;
-			Vector3 target_pos = target.transform.position - embers.transform.position;
-			target_pos.Normalize();
-			embers.rigidbody.AddForce(target_pos * 300.0f);
-			while(Vector3.Distance(embers.transform.position, target.transform.position) > 0.1f)
-			{
-				yield return null;
-			}
-			//-------------Instantiate the explosion here.---------------------------------//
-			PhotonNetwork.Destroy(embers);
+			GameObject embers = PhotonNetwork.Instantiate("Ember", instantiatePoint.position, instantiatePoint.rotation, 0) as GameObject;
+			Vector3 targetPos = target.GetComponentInChildren<SkinnedMeshRenderer>().bounds.center - embers.transform.position;
+			embers.GetComponent<EmberEffect>().target = target;
+			embers.rigidbody.AddForce(targetPos * 50.0f);
 		}
+	}
+	public void FinishEmber()
+	{
 		MoveResults();
+		GetComponent<Animator>().SetBool(moveName, false);
+		GetComponent<PokemonInput>().NotAttacking();
 	}
 }

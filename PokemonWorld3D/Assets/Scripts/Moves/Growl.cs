@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Growl : Move
 {
+	public void StartGrowl()
+	{
+
+	}
 	public void FinishGrowl()
 	{
 		MoveResults();

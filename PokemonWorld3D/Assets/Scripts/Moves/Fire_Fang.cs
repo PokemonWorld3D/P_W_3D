@@ -3,16 +3,16 @@ using System.Collections;
 
 public class Fire_Fang : Move
 {
-	public GameObject fireFangs;
+	public ParticleSystem fireFang;
 
 	public void StartFireFang()
 	{
-		fireFangs.SetActive(true);
+		fireFang.Play();
 	}
 	public void FinishFireFang()
 	{
 		MoveResults();
-		fireFangs.SetActive(false);
+		fireFang.Stop();
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
 	}

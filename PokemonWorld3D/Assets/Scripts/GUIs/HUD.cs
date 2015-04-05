@@ -91,6 +91,8 @@ public class HUD : MonoBehaviour
 			HandlePlayerPokemonGUI();
 		if(targetPokemonPortrait.activeInHierarchy)
 			HandleTargetGUI();
+		if(targetPokemon == null || targetPokemon.Equals(null))
+			NoTargetPokemon();
 	}
 
 	public void Save()

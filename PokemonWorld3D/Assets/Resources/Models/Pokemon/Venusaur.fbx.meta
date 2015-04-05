@@ -1,0 +1,2634 @@
+fileFormatVersion: 2
+guid: ed36376848f273f43a3a10c3be22677b
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: chest
+    100002: chest_001
+    100004: chest_002
+    100006: foot_L
+    100008: foot_R
+    100010: footF_L
+    100012: footF_R
+    100014: head
+    100016: hips
+    100018: metarig
+    100020: mouth
+    100022: polygon0_000
+    100024: shin_L
+    100026: shin_R
+    100028: shinF_L
+    100030: shinF_R
+    100032: spine
+    100034: thigh_L
+    100036: thigh_R
+    100038: thighF_L
+    100040: thighF_R
+    100042: tip_L
+    100044: tip_R
+    100046: tipB
+    100048: tipF
+    100050: tiptip_L
+    100052: tiptip_R
+    100054: tiptipB_L
+    100056: tiptipB_R
+    100058: tiptipcontrol_L
+    100060: tiptipcontrol_R
+    100062: tiptipF_L
+    100064: tiptipF_R
+    100066: tongue
+    100068: //RootNode
+    100070: vineend001_L
+    100072: vineend001_R
+    100074: vineend_L
+    100076: vineend_R
+    100078: vinemid_L
+    100080: vinemid_R
+    100082: vinestart_L
+    100084: vinestart_R
+    400000: chest
+    400002: chest_001
+    400004: chest_002
+    400006: foot_L
+    400008: foot_R
+    400010: footF_L
+    400012: footF_R
+    400014: head
+    400016: hips
+    400018: metarig
+    400020: mouth
+    400022: polygon0_000
+    400024: shin_L
+    400026: shin_R
+    400028: shinF_L
+    400030: shinF_R
+    400032: spine
+    400034: thigh_L
+    400036: thigh_R
+    400038: thighF_L
+    400040: thighF_R
+    400042: tip_L
+    400044: tip_R
+    400046: tipB
+    400048: tipF
+    400050: tiptip_L
+    400052: tiptip_R
+    400054: tiptipB_L
+    400056: tiptipB_R
+    400058: tiptipcontrol_L
+    400060: tiptipcontrol_R
+    400062: tiptipF_L
+    400064: tiptipF_R
+    400066: tongue
+    400068: //RootNode
+    400070: vineend001_L
+    400072: vineend001_R
+    400074: vineend_L
+    400076: vineend_R
+    400078: vinemid_L
+    400080: vinemid_R
+    400082: vinestart_L
+    400084: vinestart_R
+    4300000: polygon0_000
+    7400000: Battle_Idle
+    7400002: Default_Pose
+    7400004: Faint
+    7400006: Falling
+    7400008: Growl
+    7400010: Growth
+    7400012: Idle_World
+    7400014: Jump
+    7400016: KnockBack
+    7400018: Landing
+    7400020: Razor_Leaf
+    7400022: Run
+    7400024: Seed
+    7400026: Powder
+    7400028: Sleeping
+    7400030: Solarbeam
+    7400032: Tackle
+    7400034: Takedown
+    7400036: To_Sleep
+    7400038: Vine_Whip
+    7400040: Wake_Up
+    7400042: Walk
+    9500000: //RootNode
+    13700000: polygon0_000
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Battle_Idle
+      takeName: Battle_Idle
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Default_Pose
+      takeName: Default_Pose
+      firstFrame: 0
+      lastFrame: .100000001
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Faint
+      takeName: Faint
+      firstFrame: 0
+      lastFrame: 64
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Falling
+      takeName: Falling
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Growl
+      takeName: Growl
+      firstFrame: 0
+      lastFrame: 54
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Growth
+      takeName: Growth
+      firstFrame: 0
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_World
+      takeName: Idle
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Jump
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: KnockBack
+      takeName: KnockBack
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Landing
+      takeName: Landing
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Razor_Leaf
+      takeName: Razor_Leaf
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Run
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Seed
+      takeName: Seed
+      firstFrame: 0
+      lastFrame: 94
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Powder
+      takeName: Sleep_powder
+      firstFrame: 0
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sleeping
+      takeName: Sleeping
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Solarbeam
+      takeName: Solarbeam
+      firstFrame: 0
+      lastFrame: 94
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Tackle
+      takeName: tackle
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Takedown
+      takeName: Takedown
+      firstFrame: 0
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: To_Sleep
+      takeName: To_sleep
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Vine_Whip
+      takeName: Vine_Whip
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Wake_Up
+      takeName: Wake_Up
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/chest_001
+        weight: 1
+      - path: metarig/chest_001/hips
+        weight: 1
+      - path: metarig/chest_001/hips/spine
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipB_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_L/tiptipF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipB_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/chest_002/tiptipcontrol_R/tiptipF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/head/mouth/tongue
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tip_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipB
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/tipF
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vineend_L/vineend001_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_L/vinemid_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vineend_R/vineend001_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/chest/vinestart_R/vinemid_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_L/shinF_L/footF_L
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R
+        weight: 1
+      - path: metarig/chest_001/hips/spine/thighF_R/shinF_R/footF_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R
+        weight: 1
+      - path: metarig/chest_001/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: polygon0_000
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

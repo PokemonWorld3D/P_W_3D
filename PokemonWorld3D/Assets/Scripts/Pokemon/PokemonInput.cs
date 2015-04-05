@@ -34,12 +34,17 @@ public class PokemonInput : MonoBehaviour
 	}
 	void Update()
 	{
+		if(attacking)
+			return;
 		Attack();
-		if(!grounded && rigidbody.velocity.y > -0.04f && rigidbody.velocity.y < 0.04f)
+		if(falling || !grounded)
 		{
-			falling = false;
-			anim.SetBool("Falling", falling);
-			grounded = true;
+			if(rigidbody.velocity.y > -0.04f && rigidbody.velocity.y < 0.04f)
+			{
+				falling = false;
+				anim.SetBool("Falling", falling);
+				grounded = true;
+			}
 		}
 		if(Mathf.Abs(rigidbody.velocity.y) > jumpPower * 0.75f)
 		{
@@ -50,7 +55,7 @@ public class PokemonInput : MonoBehaviour
 		forward.y = 0f;
 		forward = forward.normalized;
 		right = new Vector3(forward.z, 0f, -forward.x);
-		float speed = rigidbody.velocity.normalized.magnitude;
+		float speed = rigidbody.velocity.magnitude;
 		if(Input.GetButton("Walk"))
 		{
 			speed *= 1.0f;
@@ -74,6 +79,15 @@ public class PokemonInput : MonoBehaviour
 			RaycastHit[] hits = Physics.RaycastAll(ray);
 			foreach(RaycastHit hit in hits) //Loop through all the hits
 			{
+				if(hit.transform.gameObject.CompareTag("Pokemon") && hit.transform.gameObject == gameObject)
+				{
+					//You hit a target!
+					DeselectTarget(); //Deselect the old target
+					target = hit.transform.gameObject;
+					targetPokemon = target.GetComponent<Pokemon>();
+					SelectTarget(targetPokemon); //Select the new target
+					break; //Break out because we don't need to check anymore
+				}
 				if(hit.transform.gameObject.CompareTag("Pokemon") && hit.transform.gameObject != gameObject)
 				{
 					//You hit a target!
@@ -81,9 +95,18 @@ public class PokemonInput : MonoBehaviour
 					target = hit.transform.gameObject;
 					targetPokemon = target.GetComponent<Pokemon>();
 					SelectTarget(targetPokemon); //Select the new target
-					hud.wildPokemonPanel.SetActive(true);
-					hud.wildPokemonPanel.transform.position = Input.mousePosition;
-					break; //Break out because we don't need to check anymore
+					if(!targetPokemon.isCaptured)
+					{
+						hud.wildPokemonPanel.SetActive(true);
+						hud.wildPokemonPanel.transform.position = Input.mousePosition;
+						break; //Break out because we don't need to check anymore
+					}
+					else
+					{
+						hud.otherTrainerPanel.SetActive(true);
+						hud.otherTrainerPanel.transform.position = Input.mousePosition;
+						break;
+					}
 				}
 			}
 		}
@@ -92,6 +115,8 @@ public class PokemonInput : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
+		if(attacking)
+			return;
 		if(grounded)
 		{
 			horizontal = Input.GetAxis("Horizontal");

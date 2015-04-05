@@ -6,20 +6,35 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Move : MonoBehaviour
 {
-	private Pokemon thisPokemon;
-	private int level;
-	private int attack;
-	private int specialAttack;
-	private float acc;
-	private int baseSpeed;
-	private PokemonTypes.Types typeOne;
-	private PokemonTypes.Types typeTwo;
-	private int targetDefense;
-	private int targetSpecialDefense;
-	private float targetEva;
-	private PokemonTypes.Types targetTypeOne;
-	private PokemonTypes.Types targetTypeTwo;
+	[HideInInspector]
+	public Pokemon thisPokemon;
+	[HideInInspector]
+	public int level;
+	[HideInInspector]
+	public int attack;
+	[HideInInspector]
+	public int specialAttack;
+	[HideInInspector]
+	public float acc;
+	[HideInInspector]
+	public int baseSpeed;
+	[HideInInspector]
+	public PokemonTypes.Types typeOne;
+	[HideInInspector]
+	public PokemonTypes.Types typeTwo;
+	[HideInInspector]
+	public int targetDefense;
+	[HideInInspector]
+	public int targetSpecialDefense;
+	[HideInInspector]
+	public float targetEva;
+	[HideInInspector]
+	public PokemonTypes.Types targetTypeOne;
+	[HideInInspector]
+	public PokemonTypes.Types targetTypeTwo;
 	public bool aoe;
+	public bool selfTargeting;
+	public bool allyTargeting;
 	public string moveName;
 	public string description;
 	public int levelLearned;
@@ -50,7 +65,6 @@ public class Move : MonoBehaviour
 	public float animationSpeed;
 	public float chanceToHit;
 	public bool hit;
-	public bool canTargetAlly;
 	public GameObject floatingDmg;
 
 	public GameObject target;
@@ -104,7 +118,7 @@ public class Move : MonoBehaviour
 			if(thisPokemon.Enemies.Contains(col.gameObject))
 				Targets.Add(col.gameObject);
 		}
-		if(target == gameObject && !canTargetAlly)
+		if(target == gameObject && !selfTargeting)
 		{
 			return;
 		}
@@ -114,16 +128,16 @@ public class Move : MonoBehaviour
 		}
 		else
 		{
+			pokemon.transform.LookAt(target.transform);
 			input.attacking = true;
 			if(!aoe)
 			{
-				if(!canTargetAlly)
+				if(!allyTargeting && !selfTargeting)
 				{
 					if(target != gameObject)//Also add something here to check if target's a team member.
 					{
 						if(category == MoveCategoriesList.PHYSICAL)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
 							                                       targetTypeTwo, baseSpeed);
@@ -136,7 +150,6 @@ public class Move : MonoBehaviour
 						}
 						if(category == MoveCategoriesList.SPECIAL)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							damage = dmgCalc.CalculateSpecialAttackDamage(power, highCritChance, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
 							                                              targetTypeOne, targetTypeTwo, baseSpeed);
@@ -150,7 +163,6 @@ public class Move : MonoBehaviour
 						}
 						if(category == MoveCategoriesList.STATUS)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
@@ -161,13 +173,12 @@ public class Move : MonoBehaviour
 						}
 					}
 				}
-				if(canTargetAlly)
+				if(allyTargeting || selfTargeting)
 				{
 					if(target == gameObject)//Also add something here to check if target's a team member.
 					{
 						if(category == MoveCategoriesList.PHYSICAL)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
 							                                       targetTypeTwo, baseSpeed);
@@ -180,7 +191,6 @@ public class Move : MonoBehaviour
 						}
 						if(category == MoveCategoriesList.SPECIAL)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							damage = dmgCalc.CalculateSpecialAttackDamage(power, highCritChance, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
 							                                              targetTypeOne, targetTypeTwo, baseSpeed);
@@ -194,7 +204,6 @@ public class Move : MonoBehaviour
 						}
 						if(category == MoveCategoriesList.STATUS)
 						{
-							pokemon.transform.LookAt(target.transform);
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
@@ -286,7 +295,7 @@ public class Move : MonoBehaviour
 		{
 			foreach(GameObject thisTarget in Targets)
 			{
-				if(!canTargetAlly)
+				if(!allyTargeting && !selfTargeting)
 				{
 					if(thisTarget != gameObject)//Also add something here to check if target's a team member.
 					{
@@ -364,7 +373,7 @@ public class Move : MonoBehaviour
 					if(!targetPokemon.isCaptured)
 						target.GetComponent<PhotonView>().RPC("IncreaseHate", PhotonTargets.AllBuffered, pokemon, 10);
 				}
-				if(canTargetAlly)
+				if(allyTargeting || selfTargeting)
 				{
 					if(thisTarget == gameObject)//Also add something here to check if target's a team member.
 					{

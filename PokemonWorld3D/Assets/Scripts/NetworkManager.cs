@@ -26,7 +26,7 @@ public class NetworkManager : MonoBehaviour
 	}
 	private void SpawnMyPlayer()
 	{
-		GameObject myPlayer = PhotonNetwork.Instantiate("Trainer_Male", Vector3.zero, Quaternion.identity, 0) as GameObject;
+		GameObject myPlayer = PhotonNetwork.Instantiate("Trainer_Male", transform.position, Quaternion.identity, 0) as GameObject;
 		myPlayer.GetComponent<PlayerInput>().enabled = true;
 		myPlayer.GetComponent<AudioListener>().enabled = true;
 		myPlayer.GetComponent<PlayerCharacter>().hud = hud.GetComponent<HUD>();

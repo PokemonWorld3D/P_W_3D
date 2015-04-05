@@ -3,17 +3,24 @@ using System.Collections;
 
 public class Tackle : Move
 {
-	public TrailRenderer tackle;
+	public GameObject tackle;
 
-	public void StartTackleEffect()
+	public void StartTackle()
 	{
-		tackle.enabled = true;
-		rigidbody.AddForce((target.transform.position - transform.position) * 5.0f * Time.smoothDeltaTime);
+		tackle.SetActive(true);
 	}
-	public void FinishTackle()
+	public IEnumerator FinishTackle()
 	{
+		rigidbody.velocity = Vector3.zero;
+		Vector3 position = target.GetComponent<CapsuleCollider>().ClosestPointOnBounds(transform.position);;
+		position.y = target.transform.position.y;
+		while(Vector3.Distance(transform.position, position) > 0.5f)
+		{
+			transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 10);
+			yield return null;
+		}
 		MoveResults();
-		tackle.enabled = false;
+		tackle.SetActive(false);
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
 	}
