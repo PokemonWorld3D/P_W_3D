@@ -4,15 +4,12 @@ using System.Collections;
 public class CalculateCapture
 {
 	private bool captured;
-	private int catchRate;
-	private int pokemonCurHP;
-	private int pokemonMaxHP;
 	private _PokeBall.PokeBallTypes pokeBallType;
 	private float ballBonus;
 	private float statusBonus;
 	private int modifiedCatchRate;
 	
-	public bool AttemptCapture(Pokemon.StatusConditions statusCondition, _PokeBall.PokeBallTypes pokeBallType, int pokemonCurHP, int pokemonMaxHP, int catchRate)
+	public bool AttemptCapture(Pokemon pokemon, _PokeBall.PokeBallTypes pokeBallType)
 	{
 		if(pokeBallType == _PokeBall.PokeBallTypes.POKEBALL)
 		{
@@ -30,37 +27,43 @@ public class CalculateCapture
 		{
 			ballBonus = 255f;
 		}
-		if(statusCondition == Pokemon.StatusConditions.SLEEPING)
-		{
-			statusBonus = 2f;
-		}
-		else if(statusCondition == Pokemon.StatusConditions.BURNED)
-		{
-			statusBonus = 1.5f;
-		}
-		else if(statusCondition == Pokemon.StatusConditions.FROZEN)
-		{
-			statusBonus = 2f;
-		}
-		else if(statusCondition == Pokemon.StatusConditions.PARALYZED)
-		{
-			statusBonus = 1.5f;
-		}
-		else if(statusCondition == Pokemon.StatusConditions.POISONED)
-		{
-			statusBonus = 1.5f;
-		}
-		else
-		{
-			statusBonus = 1f;
-		}
-		modifiedCatchRate = (int)(((3 * pokemonMaxHP - 2 * pokemonCurHP) * catchRate * ballBonus) / (3 * pokemonMaxHP) * statusBonus);
+		statusBonus = StatusBonus(pokemon);
+		modifiedCatchRate = (int)(((3 * pokemon.maxHP - 2 * pokemon.curHP) * pokemon.captureRate * ballBonus) / (3 * pokemon.maxHP) * statusBonus);
 		int i = Random.Range(0, 255);
 		if(i <= modifiedCatchRate)
 		{
 			return true;
-		}else{
+		}
+		else
+		{
 			return false;
+		}
+	}
+	private float StatusBonus(Pokemon pokemon)
+	{
+		if(pokemon.sleeping)
+		{
+			return 2f;
+		}
+		else if(pokemon.burned)
+		{
+			return 1.5f;
+		}
+		else if(pokemon.frozen)
+		{
+			return 2f;
+		}
+		else if(pokemon.paralyzed)
+		{
+			return 1.5f;
+		}
+		else if(pokemon.poisoned)
+		{
+			return 1.5f;
+		}
+		else
+		{
+			return 1f;
 		}
 	}
 }

@@ -49,13 +49,6 @@ public class Pokemon : MonoBehaviour
 	public int curSPD;
 	public float evasion;
 	public float accuracy;
-	public int atkStage;
-	public int defStage;
-	public int spatkStage;
-	public int spdefStage;
-	public int spdStage;
-	public int evasionStage;
-	public int accuracyStage;
 	public int hpEV;
 	public int atkEV;
 	public int defEV;
@@ -81,7 +74,14 @@ public class Pokemon : MonoBehaviour
 	public int spdEVYield;
 	public int baseFriendship;
 	public int captureRate;
-	public StatusConditions statusCondition;
+	public List<StatusEffect> StatusEffect;
+	public float effectTicker;
+	public bool badlyPoisoned;
+	public bool burned;
+	public bool frozen;
+	public bool paralyzed;
+	public bool poisoned;
+	public bool sleeping;
 	public float badlyPoisonedTimer;
 	public float sleepTimer;
 	public bool confused;
@@ -102,6 +102,7 @@ public class Pokemon : MonoBehaviour
 	public bool perishSonged;
 	public float perishSongCountDown;
 	public bool seeded;
+	public GameObject seededBy;
 	public bool taunted;
 	public float tauntTimer;
 	public bool telekinecticallyLevitating;
@@ -146,14 +147,14 @@ public class Pokemon : MonoBehaviour
 	public GameObject mesh;
 	public List<GameObject> Enemies;
 	public List<int> PokemonToGiveEXPTo;
+	public GameObject overHeadInfo;
 	
 	public enum Genders { NONE, FEMALE, MALE }
 	public enum Natures { ADAMANT, BASHFUL, BOLD, BRAVE, CALM, CAREFUL, DOCILE, GENTLE, HARDY, HASTY, IMPISH, JOLLY, LAX, LONELY, MILD, MODEST, NAIVE, NAUGHTY,
 		QUIET, QUIRKY, RASH, RELAXED, SASSY, SERIOUS, TIMID }
 	public enum LevelingRates { ERRATIC, FAST, FLUCTUATING, MEDIUM_FAST, MEDIUM_SLOW, SLOW }
-	public enum StatusConditions { NONE, BADLY_POISONED, BURNED, FROZEN, PARALYZED, POISONED, SLEEPING }
-	public enum Stats { HITPOINTS, POWERPOINTS, ATTACK, DEFENSE, SPECIALATTACK, SPECIALDEFENSE, SPEED }
-	public enum AccEva { EVASION, ACCURACY }
+	public enum StatusConditions { NONE, BADLY_POISONED, BURNED, FROZEN, PARALYZED, POISONED, SEEDED, SLEEPING }
+	public enum BuffsAndDebuffs { NONE, ATK_UP, ATK_DWN, DEF_UP, DEF_DWN, SPATK_UP, SPATK_DWN, SPDEF_UP, SPDEF_DWN, SPD_UP, SPD_DWN, ACC_UP, ACC_DWN, EVA_UP, EVA_DWN, }
 	
 	private StatCalculations statCalculationsScript = new StatCalculations();
 	private CalculateXP calculateEXPScript = new CalculateXP();
@@ -162,14 +163,75 @@ public class Pokemon : MonoBehaviour
 	private bool evolving;
 	private Animator anim;
 	private Pokemon target;
+	private int thisPokemonsID;
 	#endregion
 	
 	void Start()
 	{
 		anim = GetComponent<Animator>();
+		thisPokemonsID = GetComponent<PhotonView>().viewID;
 		InvokeRepeating("RegeneratePP", 1.0f, 1.0f);
  	}
-
+	void Update()
+	{
+		effectTicker += Time.deltaTime;
+		for(int i = 0; i < StatusEffect.Count; i++)
+		{
+			StatusEffect[i].duration -= Time.deltaTime;
+			if(StatusEffect[i].duration <= 0.0f)
+			{
+				RemoveBuffDebuff(StatusEffect[i].buffOrDebuff, StatusEffect[i].percentage);
+				StatusEffect.RemoveAt(i);
+			}
+		}
+		if(poisoned)
+		{
+			if(effectTicker >= 10.0f)
+			{
+				int amount = (int)((float)curHP * 0.125f);
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+			}
+		}
+		if(seeded)
+		{
+			if(effectTicker >= 10.0f)
+			{
+				int amount = (int)((float)curHP * 0.125f);
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+				seededBy.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, amount, "current", thisPokemonsID, false);
+			}
+		}
+		if(sleeping)
+		{
+			sleepTimer -= Time.deltaTime;
+			if(sleepTimer <= 0.0f)
+			{
+				AdjustStatusCondition(StatusConditions.SLEEPING, false, thisPokemonsID);
+				WakeUp();
+			}
+		}
+		if(effectTicker >= 10.0f)
+			effectTicker = 0.0f;
+	}
+	public void Sleep()
+	{
+		GetComponent<PokemonInput>().enabled = false;
+		GetComponent<WildPokemonAI>().state = WildPokemonAI.State.DontMove;
+		anim.SetBool("Sleep", sleeping);
+		sleepTimer = 30.0f;
+	}
+	public void WakeUp()
+	{
+		anim.SetBool("Sleep", sleeping);
+		if(isCaptured)
+		{
+			GetComponent<PokemonInput>().enabled = true;
+		}
+		else
+		{
+			GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Battle;
+		}
+	}
 	[RPC]
 	public void StartWildPokemonBattle(int opponent)
 	{
@@ -197,173 +259,272 @@ public class Pokemon : MonoBehaviour
 		target = null;
 	}
 	[RPC]
-	public void AdjustCurrentMaxHP(int adj, int attacker)
+	public void AdjustHP(int adj, string currentOrMax, int attacker, bool critical)
 	{
-		curMaxHP += adj;
+		if(currentOrMax == "max")
+		{
+			curMaxHP += adj;
+			if(curMaxHP < 0)
+			{
+				curMaxHP = 0;
+			}
+			if(curMaxHP > maxHP)
+			{
+				curMaxHP = maxHP;
+			}
+		}
+		if(currentOrMax == "current")
+		{
+			curHP += adj;
+			Vector3 here = overHeadInfo.transform.position;
+			GameObject floatDmg = PhotonNetwork.Instantiate("Floating_Damage", here, Quaternion.identity, 0) as GameObject;
+			if(adj < 0)
+			{
+				floatDmg.GetComponent<FloatingDamage>().color = Color.red;
+				floatDmg.GetComponent<FloatingDamage>().amount = Mathf.Abs((float)adj).ToString();
+				floatDmg.GetComponent<FloatingDamage>().crit = critical;
+				if(sleeping)
+				{
+					AdjustStatusCondition(StatusConditions.SLEEPING, false, attacker);
+				}
+			}
+			if(adj > 0)
+			{
+				floatDmg.GetComponent<FloatingDamage>().color = Color.green;
+				floatDmg.GetComponent<FloatingDamage>().amount = adj.ToString();
+				floatDmg.GetComponent<FloatingDamage>().crit = critical;
+			}
+			if(curHP < 0){
+				curHP = 0;
+			}
+			if(curHP > curMaxHP){
+				curHP = curMaxHP;
+			}
+			if(curHP == 0)
+			{
+				StartCoroutine(Faint());
+			}
+		}
 		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
 		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
 		{
 			PokemonToGiveEXPTo.Add(attacker);
 		}
-		if(curMaxHP < 0)
+		overHeadInfo.GetComponent<OverHeadInformation>().AdjustHP((float)curHP, (float)curMaxHP);
+	}
+	[RPC]
+	public void AdjustPP(int adj, string currentOrMax, int attacker)
+	{
+		if(currentOrMax == "max")
 		{
-			curMaxHP = 0;
+			curMaxPP += adj;
+			GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+			if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+			{
+				PokemonToGiveEXPTo.Add(attacker);
+			}
+			if(curMaxPP < 0){
+				curMaxPP = 0;
+			}
+			if(curMaxPP > maxPP){
+				curMaxPP = maxPP;
+			}
 		}
-		if(curMaxHP > maxHP)
+		if(currentOrMax == "current")
 		{
-			curMaxHP = maxHP;
+			curPP += adj;
+			GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+			if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+			{
+				PokemonToGiveEXPTo.Add(attacker);
+			}
+			if(curPP < 0){
+				curPP = 0;
+			}
+			if(curPP > curMaxPP){
+				curPP = curMaxPP;
+			}
 		}
 	}
 	[RPC]
-	public void AdjustCurrentHP(int adj, int attacker)
+	public void AddStatusEffect(StatusConditions statusCondition, float statusConditionSuccessRate, BuffsAndDebuffs buffAndDebuff, float percentage, float duration,
+	                            int attacker)
 	{
-		curHP += adj;
+		AdjustStatusCondition(statusCondition, true, attacker);
+		AdjustCurrentStat(buffAndDebuff, percentage);
+		StatusEffect.Add(new StatusEffect(statusCondition, statusConditionSuccessRate, buffAndDebuff, percentage, duration));
 		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
 		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
 		{
 			PokemonToGiveEXPTo.Add(attacker);
 		}
-		if(curHP < 0){
-			curHP = 0;
-		}
-		if(curHP > curMaxHP){
-			curHP = curMaxHP;
-		}
-		if(curHP == 0)
-		{
-			StartCoroutine(Faint());
-		}
 	}
-	[RPC]
-	public void AdjustCurrentMaxPP(int adj, int attacker)
+	public void AdjustCurrentStat(BuffsAndDebuffs stat, float percentage)
 	{
-		curMaxPP += adj;
-		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
-		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		if(stat == BuffsAndDebuffs.NONE)
+			return;
+		if(stat == BuffsAndDebuffs.ACC_DWN)
 		{
-			PokemonToGiveEXPTo.Add(attacker);
+			accuracy = accuracy - percentage;
 		}
-		if(curMaxPP < 0){
-			curMaxPP = 0;
+		if(stat == BuffsAndDebuffs.ACC_UP)
+		{
+			accuracy = accuracy + percentage;
 		}
-		if(curMaxPP > maxPP){
-			curMaxPP = maxPP;
+		
+		if(stat == BuffsAndDebuffs.EVA_DWN)
+		{
+			evasion = evasion - percentage;
+		}
+		if(stat == BuffsAndDebuffs.EVA_UP)
+		{
+			evasion = evasion + percentage;
+		}
+		if(stat == BuffsAndDebuffs.ATK_DWN)
+		{
+			curATK = (int)(curATK - ((float)maxATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.ATK_UP)
+		{
+			curATK = (int)(curATK + ((float)maxATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.DEF_DWN)
+		{
+			curDEF = (int)(curDEF - ((float)maxDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.DEF_UP)
+		{
+			curDEF = (int)(curDEF + ((float)maxDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPATK_DWN)
+		{
+			curSPATK = (int)(curSPATK - ((float)maxSPATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPATK_UP)
+		{
+			curSPATK = (int)(curSPATK + ((float)maxSPATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPDEF_DWN)
+		{
+			curSPDEF = (int)(curSPDEF - ((float)maxSPDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPDEF_UP)
+		{
+			curSPDEF = (int)(curSPDEF + ((float)maxSPDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPD_DWN)
+		{
+			curSPD = (int)(curSPD - ((float)maxSPD * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPD_UP)
+		{
+			curSPD = (int)(curSPD + ((float)maxSPD * percentage));
 		}
 	}
-	[RPC]
-	public void AdjustCurrentPP(int adj, int attacker)
+	public void RemoveBuffDebuff(BuffsAndDebuffs stat, float percentage)
 	{
-		curPP += adj;
-		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
-		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		if(stat == BuffsAndDebuffs.ACC_DWN)
 		{
-			PokemonToGiveEXPTo.Add(attacker);
+			accuracy = accuracy + percentage;
 		}
-		if(curPP < 0){
-			curPP = 0;
+		if(stat == BuffsAndDebuffs.ACC_UP)
+		{
+			accuracy = accuracy - percentage;
 		}
-		if(curPP > curMaxPP){
-			curPP = curMaxPP;
+		if(stat == BuffsAndDebuffs.ACC_DWN)
+		{
+			evasion = evasion + percentage;
+		}
+		if(stat == BuffsAndDebuffs.ACC_UP)
+		{
+			evasion = evasion - percentage;
+		}
+		if(stat == BuffsAndDebuffs.ATK_DWN)
+		{
+			curATK = (int)(curATK + ((float)maxATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.ATK_UP)
+		{
+			curATK = (int)(curATK - ((float)maxATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.DEF_DWN)
+		{
+			curDEF = (int)(curDEF + ((float)maxDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.DEF_UP)
+		{
+			curDEF = (int)(curDEF - ((float)maxDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPATK_DWN)
+		{
+			curSPATK = (int)(curSPATK + ((float)maxSPATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPATK_UP)
+		{
+			curSPATK = (int)(curSPATK - ((float)maxSPATK * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPDEF_DWN)
+		{
+			curSPDEF = (int)(curSPDEF + ((float)maxSPDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPDEF_UP)
+		{
+			curSPDEF = (int)(curSPDEF - ((float)maxSPDEF * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPD_DWN)
+		{
+			curSPD = (int)(curSPD + ((float)maxSPD * percentage));
+		}
+		if(stat == BuffsAndDebuffs.SPD_UP)
+		{
+			curSPD = (int)(curSPD - ((float)maxSPD * percentage));
 		}
 	}
 	[RPC]
-	public void AdjustCurrentStat(Stats stat, int adj, int attacker)
+	public void AdjustStatusCondition(StatusConditions condition, bool trueOrFalse, int attacker)
 	{
-		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
-		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
+		if(condition == StatusConditions.NONE)
 		{
-			PokemonToGiveEXPTo.Add(attacker);
+			return;
 		}
-		if(stat == Stats.ATTACK)
+		if(condition == StatusConditions.BADLY_POISONED)
 		{
-			atkStage += adj;
-			if(atkStage < -6){
-				atkStage = -6;
-			}
-			if(atkStage > 6){
-				atkStage = 6;
-			}
-			curATK = ChangeStatTo(atkStage, maxATK);
+			badlyPoisoned = trueOrFalse;
 		}
-		if(stat == Stats.DEFENSE)
+		if(condition == StatusConditions.BURNED)
 		{
-			defStage += adj;
-			if(defStage < -6){
-				defStage = -6;
-			}
-			if(defStage > 6){
-				defStage = 6;
-			}
-			curDEF = ChangeStatTo(defStage, maxDEF);
+			burned = trueOrFalse;
 		}
-		if(stat == Stats.SPECIALATTACK)
+		if(condition == StatusConditions.FROZEN)
 		{
-			spatkStage += adj;
-			if(spatkStage < -6){
-				spatkStage = -6;
-			}
-			if(spatkStage > 6){
-				spatkStage = 6;
-			}
-			curSPATK = ChangeStatTo(spatkStage, maxSPATK);
+			frozen = trueOrFalse;
 		}
-		if(stat == Stats.SPECIALDEFENSE)
+		if(condition == StatusConditions.PARALYZED)
 		{
-			spdefStage += adj;
-			if(spdefStage < -6){
-				spdefStage = -6;
-			}
-			if(spdefStage > 6){
-				spdefStage = 6;
-			}
-			curSPDEF = ChangeStatTo(spdefStage, maxSPDEF);
+			paralyzed = trueOrFalse;
 		}
-		if(stat == Stats.SPEED)
+		if(condition == StatusConditions.POISONED)
 		{
-			spdStage += adj;
-			if(spdStage < -6){
-				spdStage = -6;
-			}
-			if(spdStage > 6){
-				spdStage = 6;
-			}
-			curSPD = ChangeStatTo(spdStage, maxSPD);
+			poisoned = trueOrFalse;
 		}
-	}
-	[RPC]
-	public void AdjustCurrentAccEva(AccEva stat, int adj, int attacker){
-		if(stat == AccEva.ACCURACY)
+		if(condition == StatusConditions.SEEDED)
 		{
-			accuracyStage += adj;
-			if(accuracyStage < -6){
-				accuracyStage = -6;
-			}
-			if(accuracyStage > 6){
-				accuracyStage = 6;
-			}
-			accuracy = ChangeAccEvaTo(accuracyStage);
+			seeded = true;
+			GameObject enemy = PhotonView.Find(attacker).gameObject;
+			seededBy = enemy;
 		}
-		if(stat == AccEva.EVASION)
+		if(condition == StatusConditions.SLEEPING)
 		{
-			evasionStage += adj;
-			if(evasionStage < -6){
-				evasionStage = -6;
+			sleeping = trueOrFalse;
+			if(trueOrFalse)
+			{
+				Sleep();
 			}
-			if(evasionStage > 6){
-				evasionStage = 6;
+			else
+			{
+				WakeUp();
 			}
-			evasion = ChangeAccEvaTo(evasionStage);
 		}
-	}
-	[RPC]
-	public void AdjustStatusCondition(StatusConditions condition, int attacker)
-	{
-		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
-		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
-		{
-			PokemonToGiveEXPTo.Add(attacker);
-		}
-		statusCondition = condition;
 	}
 	[RPC]
 	public void AdjustCurrentEXP(bool faintedIsCaptured, int faintedBaseEXP, int faintedLevel)
@@ -375,36 +536,9 @@ public class Pokemon : MonoBehaviour
 		}
 		int increase = increaseEXPScript.AddExperience(faintedIsCaptured, isFromTrade, faintedBaseEXP, luckyEgg, faintedLevel, level, evolveLevel);
 		StartCoroutine(IncreaseEXP(increase));
-		if(level == evolveLevel && !evolving)
-		{
-			evolving = true;
-			StartCoroutine(Evolve());
-		}
+
 	}
-	[RPC]
-	public void SetupPokemonFirstTime()
-	{
-		Enemies = new List<GameObject>();
-		PokemonToGiveEXPTo = new List<int>();
-		SetupIV();
-		SetupShininess();
-		SetupGender();
-		SetupNature();
-		SetupNewStats();
-		SetupMoves();
-		isAlive = true;
-		isSetup = true;
-	}
-	[RPC]
-	public void SetupSetupPokemon()
-	{
-		Enemies = new List<GameObject>();
-		PokemonToGiveEXPTo = new List<int>();
-		SetupExistingStats();
-		SetupMoves();
-		isAlive = true;
-		isSetup = true;
-	}
+
 	[RPC]
 	public void SetDead()
 	{
@@ -419,9 +553,39 @@ public class Pokemon : MonoBehaviour
 	
 	private void RegeneratePP()
 	{
-		curPP += 1;
+		int increase = (int)((float)curMaxPP * 0.05f);
+		if(increase > 10)
+			increase = 10;
+		curPP += increase;
 		if(curPP > curMaxPP)
 			curPP = curMaxPP;
+	}
+	#region SETUP
+	[RPC]
+	public void SetupPokemonFirstTime()
+	{
+		Enemies = new List<GameObject>();
+		PokemonToGiveEXPTo = new List<int>();
+		SetupIV();
+		SetupShininess();
+		SetupGender();
+		SetupNature();
+		SetupNewStats();
+		SetupMoves();
+		isAlive = true;
+		isSetup = true;
+		overHeadInfo.SetActive(true);
+	}
+	[RPC]
+	public void SetupSetupPokemon()
+	{
+		Enemies = new List<GameObject>();
+		PokemonToGiveEXPTo = new List<int>();
+		SetupExistingStats();
+		SetupMoves();
+		isAlive = true;
+		isSetup = true;
+		overHeadInfo.SetActive(true);
 	}
 	private void SetupIV()
 	{
@@ -551,155 +715,15 @@ public class Pokemon : MonoBehaviour
 		}
 
 	}
-	private int ChangeStatTo(int statStage, int maxStat)
-	{
-		if(statStage <= -6)
-		{
-			return (int)((float)maxStat * 0.25f);
-		}
-		else if(statStage == -5)
-		{
-			return (int)((float)maxStat * 0.2857142857f);
-		}
-		else if(statStage == -4)
-		{
-			return (int)((float)maxStat * 0.3333333333f);
-		}
-		else if(statStage == -3)
-		{
-			return (int)((float)maxStat * 0.4f);
-		}
-		else if(statStage == -2)
-		{
-			return (int)((float)maxStat * 0.5f);
-		}
-		else if(statStage == -1)
-		{
-			return (int)((float)maxStat * 0.6666666667f);
-		}
-		else if(statStage == 1)
-		{
-			return (int)((float)maxStat * 1.5f);
-		}
-		else if(statStage == 2)
-		{
-			return (int)((float)maxStat * 2f);
-		}
-		else if(statStage == 3)
-		{
-			return (int)((float)maxStat * 2.5f);
-		}
-		else if(statStage == 4)
-		{
-			return (int)((float)maxStat * 3f);
-		}
-		else if(statStage == 5)
-		{
-			return (int)((float)maxStat * 3.5f);
-		}
-		else if(statStage >= 6)
-		{
-			return (int)((float)maxStat * 4f);
-		}
-		else
-		{
-			return (int)((float)maxStat * 1f);
-		}	
-	}
-	private float ChangeAccEvaTo(int statStage)
-	{
-		if(statStage <= -6)
-		{
-			return 0.3333333333f;
-		}
-		else if(statStage == -5)
-		{
-			return 0.375f;
-		}
-		else if(statStage == -4)
-		{
-			return 0.4285714286f;
-		}
-		else if(statStage == -3)
-		{
-			return 0.5f;
-		}
-		else if(statStage == -2)
-		{
-			return 0.6f;
-		}
-		else if(statStage == -1)
-		{
-			return 0.75f;
-		}
-		else if(statStage == 1)
-		{
-			return 1.3333333333f;
-		}
-		else if(statStage == 2)
-		{
-			return 1.6666666667f;
-		}
-		else if(statStage == 3)
-		{
-			return 2f;
-		}
-		else if(statStage == 4)
-		{
-			return 2.3333333333f;
-		}
-		else if(statStage == 5)
-		{
-			return 2.6666666667f;
-		}
-		else if(statStage == 6)
-		{
-			return 3f;
-		}else
-		{
-			return 1f;
-		}
-	}
-	private void GiveStatsToEvolvedForm(bool thisIsSetup, bool thisIsCaptured, GameObject thisTrainer, string thisTrainersName, string thisNickName,
-	                                    bool thisIsFromTrade, int thisLevel, Genders thisGender, Natures thisNature, int thisHPIV, int thisATKIV,
-	                                    int thisDEFIV, int thisSPATKIV, int thisSPDEFIV, int thisSPDIV, int thisHPEV, int thisATKEV, int thisDEFEV,
-	                                    int thisSPATKEV, int thisSPDEFEV, int thisSPDEV, List<string> ThisKnownMoves, Move thisLastMoveUsed,
-	                                    _Item thisEquippedItem, bool thisIsInBattle, int thisOrigin, bool thisIsShiny)
-	{
-		isSetup = thisIsSetup;
-		isCaptured = thisIsCaptured;
-		trainer = thisTrainer;
-		trainersName = thisTrainersName;
-		nickName = thisNickName;
-		isFromTrade = thisIsFromTrade;
-		level = thisLevel;
-		gender = thisGender;
-		nature = thisNature;
-		hpIV = thisHPIV;
-		atkIV = thisATKIV;
-		defIV = thisDEFIV;
-		spatkIV = thisSPATKIV;
-		spdefIV = thisSPDEFIV;
-		spdIV = thisSPDIV;
-		hpEV = thisHPEV;
-		atkEV = thisATKEV;
-		defEV = thisDEFEV;
-		spatkEV = thisSPATKEV;
-		spdefEV = thisSPDEFEV;
-		spdEV = thisSPDEV;
-		KnownMovesNames = ThisKnownMoves;
-		lastMoveUsed = thisLastMoveUsed;
-		equippedItem = thisEquippedItem;
-		isInBattle = thisIsInBattle;
-		origin = thisOrigin;
-		isShiny = thisIsShiny;
-	}
+	#endregion
+
+
 	private IEnumerator IncreaseEXP(int increase)
 	{
 		int target = currentEXP + increase;
-		while(currentEXP < target)
+		while(currentEXP != target)
 		{
-			currentEXP += 1;
+			currentEXP = (int)Mathf.Lerp(currentEXP, target, Time.deltaTime);
 			if(currentEXP >= nextRequiredEXP)
 			{
 				level += 1;
@@ -715,12 +739,18 @@ public class Pokemon : MonoBehaviour
 				maxSPDEF = statCalculationsScript.CalculateStat (baseSPDEF, level, spdefIV, spdefEV, nature, StatCalculations.StatTypes.SPECIALDEFENSE);
 				maxSPD = statCalculationsScript.CalculateStat (baseSPD, level, spdIV, spdEV, nature, StatCalculations.StatTypes.SPEED);
 				SetupMoves();
+				if(level == evolveLevel && !evolving)
+				{
+					evolving = true;
+					StartCoroutine(Evolve());
+				}
 			}
 			yield return null;
 		}
 	}
 	private IEnumerator Faint()
 	{
+		GetComponent<PokemonInput>().enabled = false;
 		GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Dead;
 		anim.SetBool("Fainting", true);
 		foreach(int pokemon in PokemonToGiveEXPTo)
@@ -729,7 +759,7 @@ public class Pokemon : MonoBehaviour
 			if(thePokemon.GetComponent<PhotonView>().owner == PhotonNetwork.player)
 				thePokemon.GetComponent<PhotonView>().RPC("AdjustCurrentEXP", PhotonTargets.AllBuffered, isCaptured, baseEXPYield, level);
 		}
-		yield return new WaitForSeconds(5.0f);
+		yield return new WaitForSeconds(3.0f);
 		if(!isCaptured)
 		{
 			GetComponent<PhotonView>().RPC("SetDead", PhotonTargets.AllBuffered);
@@ -739,10 +769,10 @@ public class Pokemon : MonoBehaviour
 		else
 		{
 			GetComponent<PokemonInput>().SwapToPlayer();
-			target.gameObject.GetComponent<PhotonView>().RPC("EndWildPokemonBattle", PhotonTargets.AllBuffered);
 		}
 		yield return null;
 	}
+	#region EVOLUTION
 	private IEnumerator Evolve()
 	{
 		GetComponent<PokemonInput>().enabled = false;
@@ -826,4 +856,39 @@ public class Pokemon : MonoBehaviour
 			yield return null;
 		}
 	}
+	private void GiveStatsToEvolvedForm(bool thisIsSetup, bool thisIsCaptured, GameObject thisTrainer, string thisTrainersName, string thisNickName,
+	                                    bool thisIsFromTrade, int thisLevel, Genders thisGender, Natures thisNature, int thisHPIV, int thisATKIV,
+	                                    int thisDEFIV, int thisSPATKIV, int thisSPDEFIV, int thisSPDIV, int thisHPEV, int thisATKEV, int thisDEFEV,
+	                                    int thisSPATKEV, int thisSPDEFEV, int thisSPDEV, List<string> ThisKnownMoves, Move thisLastMoveUsed,
+	                                    _Item thisEquippedItem, bool thisIsInBattle, int thisOrigin, bool thisIsShiny)
+	{
+		isSetup = thisIsSetup;
+		isCaptured = thisIsCaptured;
+		trainer = thisTrainer;
+		trainersName = thisTrainersName;
+		nickName = thisNickName;
+		isFromTrade = thisIsFromTrade;
+		level = thisLevel;
+		gender = thisGender;
+		nature = thisNature;
+		hpIV = thisHPIV;
+		atkIV = thisATKIV;
+		defIV = thisDEFIV;
+		spatkIV = thisSPATKIV;
+		spdefIV = thisSPDEFIV;
+		spdIV = thisSPDIV;
+		hpEV = thisHPEV;
+		atkEV = thisATKEV;
+		defEV = thisDEFEV;
+		spatkEV = thisSPATKEV;
+		spdefEV = thisSPDEFEV;
+		spdEV = thisSPDEV;
+		KnownMovesNames = ThisKnownMoves;
+		lastMoveUsed = thisLastMoveUsed;
+		equippedItem = thisEquippedItem;
+		isInBattle = thisIsInBattle;
+		origin = thisOrigin;
+		isShiny = thisIsShiny;
+	}
+	#endregion
 }

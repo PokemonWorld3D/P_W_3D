@@ -3,19 +3,18 @@ using System.Collections;
 
 public class Smokescreen : Move
 {
-	public Transform instantiatePoint;
-
+	public ParticleSystem smoke;
+	
 	public void StartSmokescreen()
 	{
-		if(GetComponent<PhotonView>().owner == PhotonNetwork.player)
-		{
-			PhotonNetwork.Instantiate("Smokescreen", instantiatePoint.position, instantiatePoint.rotation, 0);
-		}
+		smoke.Play();
 	}
 	public void FinishSmokescreen()
 	{
+		smoke.Stop();
 		MoveResults();
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
+		GetComponent<WildPokemonAI>().usingMove = false;
 	}
 }

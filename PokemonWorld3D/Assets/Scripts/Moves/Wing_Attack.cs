@@ -33,6 +33,7 @@ public class Wing_Attack : Move
 		wingAttackTwo.SetActive(false);
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
+		GetComponent<WildPokemonAI>().usingMove = false;
 	}
 
 	private float CalculateJumpVerticalSpeed()

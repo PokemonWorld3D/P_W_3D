@@ -80,6 +80,9 @@ public class HUD : MonoBehaviour
 	public GameObject wildPokemonPanel;
 	public GameObject otherTrainerPanel;
 	public GameObject battleRequestPanel;
+	public GameObject toolTipPanel;
+	public Image toolTipImage;
+	public Text toolTipText;
 
 	public PhotonPlayer otherPlayer;
 	public GameObject requestingTrainer;
@@ -94,7 +97,17 @@ public class HUD : MonoBehaviour
 		if(targetPokemon == null || targetPokemon.Equals(null))
 			NoTargetPokemon();
 	}
-
+	public void DisplayToolTip(int moveNumber)
+	{
+		toolTipPanel.SetActive(true);
+		toolTipImage.sprite = activePokemon.KnownMoves[moveNumber].icon;
+		toolTipText.text = activePokemon.KnownMoves[moveNumber].moveName + "\n\n" + activePokemon.KnownMoves[moveNumber].description + "\n\n" + "RECAST TIME  "
+			+ activePokemon.KnownMoves[moveNumber].coolDown.ToString() + "s     PP COST  " + activePokemon.KnownMoves[moveNumber].ppCost.ToString();
+	}
+	public void HideToolTip()
+	{
+		toolTipPanel.SetActive(false);
+	}
 	public void Save()
 	{
 		owner.GetComponent<PlayerCharacter>().Save();
@@ -253,7 +266,7 @@ public class HUD : MonoBehaviour
 			move_five.SetActive(true);
 			move_five_icon.color = icon_color;
 			move_five_icon.sprite = activePokemon.KnownMoves[4].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_five_timer.fillAmount = activePokemon.KnownMoves[4].coolingDown / activePokemon.KnownMoves[4].coolDown;
 			move_five_pp.text = activePokemon.KnownMoves[4].ppCost.ToString();
 		}
 		else
@@ -266,7 +279,7 @@ public class HUD : MonoBehaviour
 			move_six.SetActive(true);
 			move_six_icon.color = icon_color;
 			move_six_icon.sprite = activePokemon.KnownMoves[5].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_six_timer.fillAmount = activePokemon.KnownMoves[5].coolingDown / activePokemon.KnownMoves[5].coolDown;
 			move_six_pp.text = activePokemon.KnownMoves[5].ppCost.ToString();
 		}
 		else
@@ -279,7 +292,7 @@ public class HUD : MonoBehaviour
 			move_seven.SetActive(true);
 			move_seven_icon.color = icon_color;
 			move_seven_icon.sprite = activePokemon.KnownMoves[6].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_seven_timer.fillAmount = activePokemon.KnownMoves[6].coolingDown / activePokemon.KnownMoves[6].coolDown;
 			move_seven_pp.text = activePokemon.KnownMoves[6].ppCost.ToString();
 		}
 		else
@@ -292,7 +305,7 @@ public class HUD : MonoBehaviour
 			move_eight.SetActive(true);
 			move_eight_icon.color = icon_color;
 			move_eight_icon.sprite = activePokemon.KnownMoves[7].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_eight_timer.fillAmount = activePokemon.KnownMoves[7].coolingDown / activePokemon.KnownMoves[7].coolDown;
 			move_eight_pp.text = activePokemon.KnownMoves[7].ppCost.ToString();
 		}
 		else
@@ -305,7 +318,7 @@ public class HUD : MonoBehaviour
 			move_nine.SetActive(true);
 			move_nine_icon.color = icon_color;
 			move_nine_icon.sprite = activePokemon.KnownMoves[8].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_nine_timer.fillAmount = activePokemon.KnownMoves[8].coolingDown / activePokemon.KnownMoves[8].coolDown;
 			move_nine_pp.text = activePokemon.KnownMoves[8].ppCost.ToString();
 		}
 		else
@@ -318,7 +331,7 @@ public class HUD : MonoBehaviour
 			move_ten.SetActive(true);
 			move_ten_icon.color = icon_color;
 			move_ten_icon.sprite = activePokemon.KnownMoves[9].icon;
-			//		move_one_timer = active_pokemon.known_moves[0]. ...
+			move_ten_timer.fillAmount = activePokemon.KnownMoves[9].coolingDown / activePokemon.KnownMoves[9].coolDown;
 			move_ten_pp.text = activePokemon.KnownMoves[9].ppCost.ToString();
 		}
 		else

@@ -35,7 +35,6 @@ public class PlayerPokemonData : ISerializable
 	public int spdefIV;
 	public int spdIV;
 	public int currentEXP;
-	public Pokemon.StatusConditions statusCondition;
 	[XmlArray]
 	public List<string> MovesToLearnNames;
 	[XmlArray]
@@ -51,7 +50,7 @@ public class PlayerPokemonData : ISerializable
 	public PlayerPokemonData(bool newIsCaptured, string newPokemonName, string newNickName, bool newIsFromTrade,
 	                          int newLevel, Pokemon.Genders newSex, Pokemon.Natures newNature, int newCurHP, int newHpEV, int newAtkEV, int newDefEV,
 	                          int newSpatkEV, int newSpdefEV, int newSpdEV, int newHpIV, int newAtkIV, int newDefIV, int newSpatkIV, int newSpdefIV, int newSpdIV,
-	                          int newCurrentXP, Pokemon.StatusConditions newStatusCondition,
+	                          int newCurrentXP,
 	                          List<string> newMovesToLearn, List<string> newPokemonsMoves, string newEquippedItemName, int newOrigin)
 	{
 		isCaptured = newIsCaptured;
@@ -76,7 +75,6 @@ public class PlayerPokemonData : ISerializable
 		spdefIV = newSpdefIV;
 		spdIV = newSpdIV;
 		currentEXP = newCurrentXP;
-		statusCondition = newStatusCondition;
 		MovesToLearnNames = newMovesToLearn;
 		KnownMovesNames = newPokemonsMoves;
 		equippedItemName = newEquippedItemName;
@@ -107,7 +105,6 @@ public class PlayerPokemonData : ISerializable
 		spdefIV = info.GetInt32("spdefIV");
 		spdIV = info.GetInt32("spdIV");
 		currentEXP = info.GetInt32("currentEXP");
-		statusCondition = (Pokemon.StatusConditions)info.GetByte("statusCondition");
 		//MovesToLearnNames = info.get
 		//pokemonsMoves = info.
 		equippedItemName = info.GetString("equippedItemName");
@@ -137,7 +134,6 @@ public class PlayerPokemonData : ISerializable
 		info.AddValue("spdefIV", spdefIV);
 		info.AddValue("spdIV", spdIV);
 		info.AddValue("currentEXP", currentEXP);
-		info.AddValue("statusCondition", statusCondition);
 		info.AddValue("MovesToLearnNames", MovesToLearnNames);
 		info.AddValue("KnownMovesNames", KnownMovesNames);
 		info.AddValue("equippedItemName", equippedItemName);

@@ -8,10 +8,13 @@ public class WildPokemonAI : MonoBehaviour
 	public List<HateHolder> HateList;
 	public GameObject target;
 	public bool canAttackTarget = false;
+	public bool usingMove = false;
 	public float idleTime = 15.0f;
 	public float idleTimer = 0.0f;
 	public float deadTime = 10.0f;
 	public float deadTimer = 0.0f;
+	public float battleTime = 10.0f;
+	public float battleTimer = 0.0f;
 	public float mapSize = 0.0f;
 	public bool movingToDestination;
 	public bool respawning;
@@ -27,7 +30,7 @@ public class WildPokemonAI : MonoBehaviour
 	public State state;
 	private Vector3 respawnPoint;
 
-	public enum State{ Setup, Init, Idle, Battle, Dead }
+	public enum State{ Setup, Init, Idle, Battle, Dead, DontMove }
 
 	void Awake()
 	{
@@ -53,6 +56,9 @@ public class WildPokemonAI : MonoBehaviour
 				break;
 			case State.Dead:
 				Dead();
+				break;
+			case State.DontMove:
+				DontMove();
 				break;
 			}
 			yield return null;
@@ -140,41 +146,63 @@ public class WildPokemonAI : MonoBehaviour
 		forward.y = 0f;
 		forward = forward.normalized;
 		right = new Vector3(forward.z, 0f, -forward.x);
-		if(thisPokemon.isInBattle && HateList.Count > 0)
+		if(!usingMove)
 		{
-			if(target != null)
+			if(thisPokemon.isInBattle)
 			{
-				canAttackTarget = false;
-				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position),
-				                                      10f * Time.smoothDeltaTime);
-				transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
-				float distance = Vector3.Distance(transform.position, target.transform.position);
-				for(int m = thisPokemon.KnownMoves.Count; m > 0; m--)
+				if(target == null || target.Equals(null))
 				{
-					if(thisPokemon.KnownMoves[m - 1].range >= distance && thisPokemon.curPP >= thisPokemon.KnownMoves[m -1].ppCost
-					   && thisPokemon.KnownMoves[m -1].coolingDown == 0.0f)
+					battleTimer += Time.deltaTime;
+					if(battleTimer >= battleTime)
 					{
-						canAttackTarget = true;
-						thisPokemon.KnownMoves[m - 1].UseMove(gameObject, target);
+						GetComponent<PhotonView>().RPC("EndWildPokemonBattle", PhotonTargets.AllBuffered);
+						battleTimer = 0.0f;
 					}
+					return;
 				}
-				if(!canAttackTarget)
-				{
-					if(distance > 1.0f)
+					if(CheckTarget(target))
 					{
-						Vector3 targetVelocity = (0.0f * right + 1.0f * forward) * 2.0f;
-						
-						// Apply a force that attempts to reach our target velocity
-						Vector3 velocity = rigidbody.velocity;
-						Vector3 velocityChange = (targetVelocity - velocity);
-						velocityChange.x = Mathf.Clamp(velocityChange.x, -10.0f, 10.0f);
-						velocityChange.z = Mathf.Clamp(velocityChange.z, -10.0f, 10.0f);
-						velocityChange.y = 0;
-						rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+						canAttackTarget = false;
+						transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position),
+						                                      10f * Time.smoothDeltaTime);
+						transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+						Vector3 targetPosition = target.GetComponent<CapsuleCollider>().ClosestPointOnBounds(transform.position);
+						targetPosition.y = target.transform.position.y;
+						Vector3 myPosition = GetComponent<CapsuleCollider>().ClosestPointOnBounds(target.transform.position);
+						myPosition.y = transform.position.y;
+						float distance = Vector3.Distance(myPosition, targetPosition);
+						for(int m = thisPokemon.KnownMoves.Count; m > 0; m--)
+						{
+							if(thisPokemon.KnownMoves[m - 1].range >= distance && thisPokemon.curPP >= thisPokemon.KnownMoves[m -1].ppCost
+							   && thisPokemon.KnownMoves[m -1].coolingDown == 0.0f)
+							{
+								canAttackTarget = true;
+								thisPokemon.KnownMoves[m - 1].UseMove(gameObject, target);
+								usingMove = true;
+							}
+						}
+						if(!canAttackTarget)
+						{
+							if(distance > 1.0f)
+							{
+								Vector3 targetVelocity = (0.0f * right + 1.0f * forward) * 2.0f;
+								
+								// Apply a force that attempts to reach our target velocity
+								Vector3 velocity = rigidbody.velocity;
+								Vector3 velocityChange = (targetVelocity - velocity);
+								velocityChange.x = Mathf.Clamp(velocityChange.x, -10.0f, 10.0f);
+								velocityChange.z = Mathf.Clamp(velocityChange.z, -10.0f, 10.0f);
+								velocityChange.y = 0;
+								rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+							}
+						}
+					}
+					else
+					{
+						return;
 					}
 				}
 			}
-		}
 		float speed = rigidbody.velocity.magnitude * 2.0f;
 		anim.SetFloat("Speed", speed);
 	}
@@ -189,6 +217,10 @@ public class WildPokemonAI : MonoBehaviour
 				StartCoroutine("Respawn");
 			}
 		}
+	}
+	private void DontMove()
+	{
+
 	}
 	private bool IsInvalidSpawnPoint(Vector3 position)
 	{
@@ -213,6 +245,26 @@ public class WildPokemonAI : MonoBehaviour
 		{
 			return Mathf.Infinity;
 		}
+	}
+	private bool CheckTarget(GameObject targetPokemon)
+	{
+		if(target.GetComponent<Pokemon>().curHP == 0)
+		{
+			HateHolder theTarget = HateList.Find(h => h.pokemon == targetPokemon);
+			HateList.Remove(theTarget);
+			if(HateList.Count > 0)
+			{
+				HateList.Sort(delegate(HateHolder x, HateHolder y) { return x.amountOfHate.CompareTo(y.amountOfHate); });
+				target = HateList[0].pokemon;
+				return true;
+			}
+			else
+			{
+				target = null;
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private IEnumerator Respawn()

@@ -61,35 +61,35 @@ ModelImporter:
     400054: Thigh_R
     4300000: Kamex
     7400000: Default Take
-    7400002: At_Aqua_tail
-    7400004: At_Bite
-    7400006: At_Bubble2
+    7400002: Bite
+    7400004: At_Aqua_tail
+    7400006: Bubble
     7400008: At_HydroPump_old_
-    7400010: At_HydroPump2
-    7400012: At_Protect_In
-    7400014: At_Protect_InAndOut
-    7400016: At_RainDance
-    7400018: At_RapidSpin3_2turns
+    7400010: Hydro_Pump
+    7400012: Into_Shell
+    7400014: Into_Shell_And_Out
+    7400016: Rain_Dance
+    7400018: Rapid_Spin
     7400020: At_RapidSpin3_2turnsdown
     7400022: At_RapidSpin4_1turn
-    7400024: At_SkullBash
-    7400026: At_tackle
-    7400028: At_TailWhip2
-    7400030: At_Watergun
-    7400032: At_WaterPulse
-    7400034: Default_Pose
+    7400024: Skull_Bash
+    7400026: Tackle
+    7400028: Tail_Whip
+    7400030: Water_Gun
+    7400032: Water_Pulse
+    7400034: Default
     7400036: Faint
-    7400038: Falling
+    7400038: Fall
     7400040: Idle_Battle
     7400042: Idle_World
     7400044: Jump
     7400046: Knockback
-    7400048: Landing
-    7400050: Run5__last_
+    7400048: Land
+    7400050: Run
     7400052: Sleeping
     7400054: To_Sleep
     7400056: Wake_up
-    7400058: walk
+    7400058: Walk
     9500000: //RootNode
     13700000: Kamex
   materials:
@@ -107,7 +107,2057 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bite
+      takeName: At_Bite
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Bubble
+      takeName: At_Bubble2
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Hydro_Pump
+      takeName: At_HydroPump2
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Into_Shell
+      takeName: At_Protect_In
+      firstFrame: 0
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Into_Shell_And_Out
+      takeName: At_Protect_InAndOut
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Rain_Dance
+      takeName: At_RainDance
+      firstFrame: 0
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Rapid_Spin
+      takeName: At_RapidSpin3_2turns
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Skull_Bash
+      takeName: At_SkullBash
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Tackle
+      takeName: At_tackle
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Tail_Whip
+      takeName: At_TailWhip2
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Water_Gun
+      takeName: At_Watergun
+      firstFrame: 0
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Water_Pulse
+      takeName: At_WaterPulse
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Default
+      takeName: Default_Pose
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Faint
+      takeName: Faint
+      firstFrame: 0
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Fall
+      takeName: Falling
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_Battle
+      takeName: Idle_Battle
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle_World
+      takeName: Idle_World
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Jump
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Knockback
+      takeName: Knockback
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Land
+      takeName: Landing
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Run
+      takeName: Run5__last_
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Sleeping
+      takeName: Sleeping
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: To_Sleep
+      takeName: To_Sleep
+      firstFrame: 0
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Wake_up
+      takeName: Wake_up
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ArmObject
+        weight: 1
+      - path: ArmObject/Control
+        weight: 1
+      - path: ArmObject/Control/Shell
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_L/ForeArm_L/Hand_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Arm_R/ForeArm_R/Hand_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Ear_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Head/Mouth
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_L/Cannon_L/Cannontip_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Overcannon_R/Cannon_R/Cannontip_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Tail
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_L/Leg_L/Foot_L
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R
+        weight: 1
+      - path: ArmObject/Control/Shell/Thigh_R/Leg_R/Foot_R
+        weight: 1
+      - path: Kamex
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

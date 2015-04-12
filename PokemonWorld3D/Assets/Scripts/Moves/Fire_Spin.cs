@@ -14,5 +14,6 @@ public class Fire_Spin : Move
 		MoveResults();
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
+		GetComponent<WildPokemonAI>().usingMove = false;
 	}
 }

@@ -106,8 +106,7 @@ public class EmptyPokeBall : MonoBehaviour
 		animation["Trying_To_Catch"].speed = 2;
 		animation.Play("Trying_To_Catch");
 		yield return new WaitForSeconds(attemptingCapture.length+1);
-		bool tryToCapture = calculateCaptureScript.AttemptCapture(thisPokemon.statusCondition, thisPokeBallType, thisPokemon.curHP,
-		                                                          thisPokemon.curMaxHP, thisPokemon.captureRate);
+		bool tryToCapture = calculateCaptureScript.AttemptCapture(thisPokemon, thisPokeBallType);
 		if(tryToCapture){
 			thisPokemon.isCaptured = true;
 			thisPokemon.trainersName = thisPlayer.playersName;
@@ -116,7 +115,7 @@ public class EmptyPokeBall : MonoBehaviour
 			                                                              temp.isFromTrade, temp.level, temp.gender, temp.nature, temp.curHP, temp.hpEV, temp.atkEV,
 			                                                              temp.defEV, temp.spatkEV, temp.spdefEV, temp.spdEV, temp.hpIV, temp.atkIV, temp.defIV,
 			                                                              temp.spatkIV, temp.spdefIV, temp.spdIV, temp.currentEXP,
-			                                                              temp.statusCondition, temp.MovesToLearnNames, temp.KnownMovesNames,
+			                                                              temp.MovesToLearnNames, temp.KnownMovesNames,
 			                                                              temp.equippedItem.name, temp.origin);
 			if(thisPlayer.pokemonRoster.pokemonRoster.Count < 6)
 			{

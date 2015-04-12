@@ -19,9 +19,10 @@ public class Flare_Blitz : Move
 			transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime * 10);
 			yield return null;
 		}
+		GetComponent<Animator>().SetBool(moveName, false);
 		MoveResults();
 		flareBlitz.Stop();
-		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
+		GetComponent<WildPokemonAI>().usingMove = false;
 	}
 }

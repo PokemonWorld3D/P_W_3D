@@ -54,18 +54,15 @@ public class Move : MonoBehaviour
 	public bool affectedByMagicCoat;
 	public bool affectedBySnatch;
 	public bool affectedByKingsRock;
-	public Pokemon.StatusConditions statusCondition;
-	public float statusConditionSuccessRate;
 	public List<StatusEffect> StatusEffects = new List<StatusEffect>();
 	public Sprite icon;
 	public float range;
 	public int damage;
 	public float coolDown;
 	public float coolingDown;
-	public float animationSpeed;
 	public float chanceToHit;
 	public bool hit;
-	public GameObject floatingDmg;
+	public bool critHit;
 
 	public GameObject target;
 	private List<GameObject> Targets;
@@ -104,7 +101,15 @@ public class Move : MonoBehaviour
 	public void UseMove(GameObject pokemon, GameObject theTarget)
 	{
 		hit = false;
-		target = theTarget;
+		critHit = false;
+		if(selfTargeting)
+		{
+			target = gameObject;
+		}
+		else
+		{
+			target = theTarget;
+		}
 		targetPokemon = theTarget.GetComponent<Pokemon>();
 		targetDefense = targetPokemon.curDEF;
 		targetSpecialDefense = targetPokemon.curSPDEF;
@@ -122,7 +127,7 @@ public class Move : MonoBehaviour
 		{
 			return;
 		}
-		else if(!thisPokemon.Enemies.Contains(target))
+		else if(!thisPokemon.Enemies.Contains(target) && !selfTargeting && !allyTargeting)
 		{
 			return;
 		}
@@ -139,8 +144,9 @@ public class Move : MonoBehaviour
 						if(category == MoveCategoriesList.PHYSICAL)
 						{
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
-							damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
-							                                       targetTypeTwo, baseSpeed);
+							critHit = dmgCalc.DetermineCritical(baseSpeed, highCritChance);
+							damage = dmgCalc.CalculateAttackDamage(power, critHit, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
+							                                       targetTypeTwo);
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
 							if(chanceToHit >= hit_or_miss)
@@ -151,8 +157,9 @@ public class Move : MonoBehaviour
 						if(category == MoveCategoriesList.SPECIAL)
 						{
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
-							damage = dmgCalc.CalculateSpecialAttackDamage(power, highCritChance, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
-							                                              targetTypeOne, targetTypeTwo, baseSpeed);
+							critHit = dmgCalc.DetermineCritical(baseSpeed, highCritChance);
+							damage = dmgCalc.CalculateSpecialAttackDamage(power, critHit, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
+							                                              targetTypeOne, targetTypeTwo);
 
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
@@ -180,8 +187,8 @@ public class Move : MonoBehaviour
 						if(category == MoveCategoriesList.PHYSICAL)
 						{
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
-							damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
-							                                       targetTypeTwo, baseSpeed);
+							damage = dmgCalc.CalculateAttackDamage(power, critHit, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
+							                                       targetTypeTwo);
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
 							if(chanceToHit >= hit_or_miss)
@@ -192,8 +199,8 @@ public class Move : MonoBehaviour
 						if(category == MoveCategoriesList.SPECIAL)
 						{
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
-							damage = dmgCalc.CalculateSpecialAttackDamage(power, highCritChance, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
-							                                              targetTypeOne, targetTypeTwo, baseSpeed);
+							damage = dmgCalc.CalculateSpecialAttackDamage(power, critHit, type, level, specialAttack, targetSpecialDefense, typeOne, typeTwo,
+							                                              targetTypeOne, targetTypeTwo);
 							
 							chanceToHit = accuracy * (acc / targetEva);
 							float hit_or_miss = Random.Range(0.0f, 1.0f);
@@ -205,12 +212,7 @@ public class Move : MonoBehaviour
 						if(category == MoveCategoriesList.STATUS)
 						{
 							pokemon.GetComponent<Animator>().SetBool(moveName, true);
-							chanceToHit = accuracy * (acc / targetEva);
-							float hit_or_miss = Random.Range(0.0f, 1.0f);
-							if(chanceToHit >= hit_or_miss)
-							{
-								hit = true;
-							}
+							hit = true;
 						}
 					}
 				}
@@ -229,64 +231,27 @@ public class Move : MonoBehaviour
 		{
 			if(hit)
 			{
+				if(selfTargeting)
+				{
+					target = gameObject;
+				}
 				if(category == MoveCategoriesList.PHYSICAL || category == MoveCategoriesList.SPECIAL)
 				{
-					target.GetComponent<PhotonView>().RPC("AdjustCurrentHP", PhotonTargets.AllBuffered, -damage, pokemon);
-					if(statusCondition != Pokemon.StatusConditions.NONE)
-					{
-						float statusChance = Random.Range(0.0f, 1.0f);
-						if(statusConditionSuccessRate > statusChance)
-						{
-							target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-						}
-					}
+					target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 					foreach(StatusEffect effect in StatusEffects)
 					{
-						float chanceToApply = Random.Range(0.0f, 1.0f);
-						if(effect.successRate >= chanceToApply)
-						{
-							if(effect.changeStat)
-							{
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange, effect.stagestoChange,
-								                                      pokemon);
-							}
-							if(effect.changeAccOrEva)
-							{
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva, effect.stagestoChange,
-								                                      pokemon);
-							}
-						}
+						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+						                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage, effect.duration, pokemon);
 					}
 				}
 				if(category == MoveCategoriesList.STATUS)
 				{
-					if(statusCondition != Pokemon.StatusConditions.NONE)
-					{
-						float statusChance = Random.Range(0.0f, 1.0f);
-						if(statusConditionSuccessRate > statusChance)
-						{
-							target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-						}
-					}
 					foreach(StatusEffect effect in StatusEffects)
 					{
-						float chanceToApply = Random.Range(0.0f, 1.0f);
-						if(effect.successRate >= chanceToApply)
-						{
-							if(effect.changeStat)
-							{
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange, effect.stagestoChange,
-								                                      pokemon);
-							}
-							if(effect.changeAccOrEva)
-							{
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva, effect.stagestoChange,
-								                                      pokemon);
-							}
-						}
+						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+						                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage, effect.duration, pokemon);
 					}
 				}
-				//SpawnDamage(target.transform.position.x, target.transform.position.y, damage);
 			}
 			if(!targetPokemon.isCaptured)
 				target.GetComponent<PhotonView>().RPC("IncreaseHate", PhotonTargets.AllBuffered, pokemon, 10);
@@ -310,62 +275,24 @@ public class Move : MonoBehaviour
 							targetTypeTwo = targetPokemon.typeTwo;
 							if(category == MoveCategoriesList.PHYSICAL || category == MoveCategoriesList.SPECIAL)
 							{
-								damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
-								                                       targetTypeTwo, baseSpeed);
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentHP", PhotonTargets.AllBuffered, -damage, pokemon);
-								if(statusCondition != Pokemon.StatusConditions.NONE)
-								{
-									float status_chance = Random.Range(0.0f, 1.0f);
-									if(statusConditionSuccessRate > status_chance)
-									{
-										target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-									}
-								}
+								damage = dmgCalc.CalculateAttackDamage(power, critHit, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
+								                                       targetTypeTwo);
+								target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									float chance_to_apply = Random.Range(0.0f, 1.0f);
-									if(effect.successRate >= chance_to_apply)
-									{
-										if(effect.changeStat)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange,
-											                                      effect.stagestoChange, pokemon);
-										}
-										if(effect.changeAccOrEva)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva,
-											                                      effect.stagestoChange, pokemon);
-										}
-									}
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									                                       effect.duration, pokemon);
 								}
 								
 							}
 							if(category == MoveCategoriesList.STATUS)
 							{
-								if(statusCondition != Pokemon.StatusConditions.NONE)
-								{
-									float statusChance = Random.Range(0.0f, 1.0f);
-									if(statusConditionSuccessRate > statusChance)
-									{
-										target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-									}
-								}
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									float chanceToApply = Random.Range(0.0f, 1.0f);
-									if(effect.successRate >= chanceToApply)
-									{
-										if(effect.changeStat)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange,
-											                                      effect.stagestoChange, pokemon);
-										}
-										if(effect.changeAccOrEva)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva,
-											                                      effect.stagestoChange, pokemon);
-										}
-									}
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									                                       effect.duration, pokemon);
 								}
 							}
 						}
@@ -388,62 +315,24 @@ public class Move : MonoBehaviour
 							targetTypeTwo = targetPokemon.typeTwo;
 							if(category == MoveCategoriesList.PHYSICAL || category == MoveCategoriesList.SPECIAL)
 							{
-								damage = dmgCalc.CalculateAttackDamage(power, highCritChance, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
-								                                       targetTypeTwo, baseSpeed);
-								target.GetComponent<PhotonView>().RPC("AdjustCurrentHP", PhotonTargets.AllBuffered, -damage, pokemon);
-								if(statusCondition != Pokemon.StatusConditions.NONE)
-								{
-									float status_chance = Random.Range(0.0f, 1.0f);
-									if(statusConditionSuccessRate > status_chance)
-									{
-										target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-									}
-								}
+								damage = dmgCalc.CalculateAttackDamage(power, critHit, type, level, attack, targetDefense, typeOne, typeTwo, targetTypeOne,
+								                                       targetTypeTwo);
+								target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									float chance_to_apply = Random.Range(0.0f, 1.0f);
-									if(effect.successRate >= chance_to_apply)
-									{
-										if(effect.changeStat)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange,
-											                                      effect.stagestoChange, pokemon);
-										}
-										if(effect.changeAccOrEva)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva,
-											                                      effect.stagestoChange, pokemon);
-										}
-									}
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									                                       effect.duration, pokemon);
 								}
 								
 							}
 							if(category == MoveCategoriesList.STATUS)
 							{
-								if(statusCondition != Pokemon.StatusConditions.NONE)
-								{
-									float statusChance = Random.Range(0.0f, 1.0f);
-									if(statusConditionSuccessRate > statusChance)
-									{
-										target.GetComponent<PhotonView>().RPC("AdjustStatusCondition", PhotonTargets.AllBuffered, statusCondition, pokemon);
-									}
-								}
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									float chanceToApply = Random.Range(0.0f, 1.0f);
-									if(effect.successRate >= chanceToApply)
-									{
-										if(effect.changeStat)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentStat", PhotonTargets.AllBuffered, effect.statToChange,
-											                                      effect.stagestoChange, pokemon);
-										}
-										if(effect.changeAccOrEva)
-										{
-											target.GetComponent<PhotonView>().RPC("AdjustCurrentAccEva", PhotonTargets.AllBuffered, effect.accOrEva,
-											                                      effect.stagestoChange, pokemon);
-										}
-									}
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
+									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									                                       effect.duration, pokemon);
 								}
 							}
 						}
@@ -454,14 +343,7 @@ public class Move : MonoBehaviour
 			}
 		}
 		coolingDown = coolDown;
-		GetComponent<PhotonView>().RPC("AdjustCurrentPP", PhotonTargets.AllBuffered, -ppCost, pokemon);
-	}
-	private void SpawnDamage(float x, float y, int damageAmount)
-	{
-		x = Mathf.Clamp(x, 0.05f, 0.95f); // clamp position to screen to ensure
-		y = Mathf.Clamp(y, 0.05f, 0.9f);  // the string will be visible
-		GameObject damage = Instantiate(floatingDmg, new Vector3(x, y, 0.0f), Quaternion.identity) as GameObject;
-		damage.guiText.text = damageAmount.ToString();
+		GetComponent<PhotonView>().RPC("AdjustPP", PhotonTargets.AllBuffered, -ppCost, "current", pokemon);
 	}
 	public bool Equals (Move other)
 	{
@@ -474,9 +356,8 @@ public class Move : MonoBehaviour
 	public Move(string this_name, string this_description, int this_level_learned, PokemonTypes.Types this_type, MoveCategoriesList this_category,
 	            ContestTypesList this_contest_type, int this_pp_cost, int this_power, float this_accuracy, bool this_recoil, float this_recoil_damage,
 	            bool this_high_crit_chance, bool this_flinch, int this_flinch_chance, bool this_makes_contact, bool this_affected_by_protect,
-	            bool this_affected_by_magic_coat, bool this_affected_by_snatch, bool this_affected_by_kings_rock, Pokemon.StatusConditions this_status_condition,
-	            int this_status_condition_success_rate, List<StatusEffect> this_status_effects, Sprite this_icon,
-	            float this_range, int this_damage, float this_cool_down, float this_cooling_down, float this_animation_speed)
+	            bool this_affected_by_magic_coat, bool this_affected_by_snatch, bool this_affected_by_kings_rock, List<StatusEffect> this_status_effects,
+	            Sprite this_icon, float this_range, int this_damage, float this_cool_down, float this_cooling_down)
 	{
 		moveName = this_name;
 		description = this_description;
@@ -497,14 +378,11 @@ public class Move : MonoBehaviour
 		affectedByMagicCoat = this_affected_by_magic_coat;
 		affectedBySnatch = this_affected_by_snatch;
 		affectedByKingsRock = this_affected_by_kings_rock;
-		statusCondition = this_status_condition;
-		statusConditionSuccessRate = this_status_condition_success_rate;
 		StatusEffects = this_status_effects;
 		icon = this_icon;
 		range = this_range;
 		damage = this_damage;
 		coolDown = this_cool_down;
 		coolingDown = this_cooling_down;
-		animationSpeed = this_animation_speed;
 	}
 }

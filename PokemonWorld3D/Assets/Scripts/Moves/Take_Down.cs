@@ -3,17 +3,8 @@ using System.Collections;
 
 public class Take_Down : Move
 {
-	public TrailRenderer takeDownOne;
-	public TrailRenderer takeDownTwo;
-	public TrailRenderer takeDownThree;
-	public TrailRenderer takeDownFour;
-	
 	public IEnumerator StartTakeDown()
 	{
-		takeDownOne.enabled = true;
-		takeDownTwo.enabled = true;
-		takeDownThree.enabled = true;
-		takeDownFour.enabled = true;
 		rigidbody.velocity = Vector3.zero;
 		rigidbody.velocity = Vector3.zero;
 		Vector3 position = target.GetComponent<CapsuleCollider>().ClosestPointOnBounds(transform.position);;
@@ -27,10 +18,6 @@ public class Take_Down : Move
 	public void FinishTakeDown()
 	{
 		MoveResults();
-		takeDownOne.enabled = false;
-		takeDownTwo.enabled = false;
-		takeDownThree.enabled = false;
-		takeDownFour.enabled = false;
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
 	}

@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Tackle : Move
 {
-	public GameObject tackle;
-
-	public void StartTackle()
-	{
-		tackle.SetActive(true);
-	}
-	public IEnumerator FinishTackle()
+//	public GameObject tackle;
+//
+//	public void StartTackle()
+//	{
+//		tackle.SetActive(true);
+//	}
+	public IEnumerator StartTackle()
 	{
 		rigidbody.velocity = Vector3.zero;
 		Vector3 position = target.GetComponent<CapsuleCollider>().ClosestPointOnBounds(transform.position);;
@@ -20,7 +20,7 @@ public class Tackle : Move
 			yield return null;
 		}
 		MoveResults();
-		tackle.SetActive(false);
+//		tackle.SetActive(false);
 		GetComponent<Animator>().SetBool(moveName, false);
 		GetComponent<PokemonInput>().NotAttacking();
 	}

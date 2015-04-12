@@ -402,21 +402,21 @@ public class BattleCalculations : MonoBehaviour
 #endregion
 	}
 
-	public int CalculateAttackDamage(int movePower, bool moveCrit, PokemonTypes.Types moveType, int level, int attackersATK, int targetsDEF,
+	public int CalculateAttackDamage(int movePower, bool critHit, PokemonTypes.Types moveType, int level, int attackersATK, int targetsDEF,
 	                                 PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
-	                                 PokemonTypes.Types targetType02, int attackersBaseSPD)
+	                                 PokemonTypes.Types targetType02)
 	{
 		baseDamage = movePower;
-		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, moveCrit);
+		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, critHit);
 		return (int)((((2 * level + 10) / (float)250) * ((float)attackersATK / (float)targetsDEF) * baseDamage + 2) * modifier);
 	}
 	
-	public int CalculateSpecialAttackDamage(int movePower, bool moveCrit, PokemonTypes.Types moveType, int level, int attackersSPATK, int targetsSPDEF,
+	public int CalculateSpecialAttackDamage(int movePower, bool critHit, PokemonTypes.Types moveType, int level, int attackersSPATK, int targetsSPDEF,
 	                                        PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
-	                                        PokemonTypes.Types targetType02, int attackersBaseSPD)
+	                                        PokemonTypes.Types targetType02)
 	{
 		baseDamage = movePower;
-		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, attackersBaseSPD, moveCrit);
+		SetModifier(moveType, attackersType01, attackersType02, targetType01, targetType02, critHit);
 		return (int)((((2 * level + 10) / (float)250) * ((float)attackersSPATK / (float)targetsSPDEF) * baseDamage + 2) * modifier);
 	}
 	/*
@@ -509,15 +509,14 @@ public class BattleCalculations : MonoBehaviour
 
 	
 	private void SetModifier(PokemonTypes.Types moveType, PokemonTypes.Types attackersType01, PokemonTypes.Types attackersType02, PokemonTypes.Types targetType01,
-	                         PokemonTypes.Types targetType02, int attackersbaseSPD,
-	                         bool moveCrit)
+	                         PokemonTypes.Types targetType02, bool critHit)
 	{
 		//Other is dependant on equipped items, abilities, and field advantages.
 		stab1 = DetermineSTAB01(moveType, attackersType01);
 		stab2 = DetermineSTAB02(moveType, attackersType02);
 		te1 = DetermineTypeEffectiveness01(moveType, targetType01);
 		te2 = DetermineTypeEffectiveness02(moveType, targetType02);
-		if(DetermineCritical(attackersbaseSPD, moveCrit))
+		if(critHit)
 		{
 			crit = 1.5f;
 		}
@@ -549,7 +548,7 @@ public class BattleCalculations : MonoBehaviour
 			return 1.0f;
 		}
 	}
-	private bool DetermineCritical(int baseSpeed, bool highCritChance)
+	public bool DetermineCritical(int baseSpeed, bool highCritChance)
 	{
 		if(highCritChance)
 		{
