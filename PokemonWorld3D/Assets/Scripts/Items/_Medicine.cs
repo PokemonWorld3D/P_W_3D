@@ -9,11 +9,10 @@ public class _Medicine : _Item
 	public GameObject model;
 	public int hpRestoreAmount;
 	public int ppRestoreAmount;
-	public List<Pokemon.StatusConditions> statusesToHeal = new List<Pokemon.StatusConditions>();
 
 
 	public _Medicine(string newName, string newDescription, int newHP, int newPP, int newCost, int newWorth,
-	                List<Pokemon.StatusConditions> newStatuses, _Item.ItemTypes newType){
+	                _Item.ItemTypes newType){
 		name = newName;
 		description = newDescription;
 		icon = Resources.Load<Sprite>("Sprites/Medicines/" + name);
@@ -21,7 +20,6 @@ public class _Medicine : _Item
 		ppRestoreAmount = newPP;
 		cost = newCost;
 		worth = newWorth;
-		statusesToHeal = newStatuses;
 		type = newType;
 	}
 

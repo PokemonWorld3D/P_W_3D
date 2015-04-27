@@ -9,15 +9,6 @@ public class NetworkPokemon : Photon.MonoBehaviour
 	private AudioClip updateAudio;
 	private Animator anim;
 	private float speed = 0.0f;
-//	private bool jumping = false;
-//	private bool falling = false;
-//	private bool inBattle = false;
-//	private bool fainting = false;
-//	private bool evolving = false;
-//	private bool scratch = false;
-//	private bool growl = false;
-//	private bool ember = false;
-//	private bool smokescreen = false;
 	public string[] AnimBools;
 	public bool[] AnimBoolValues;
 
@@ -45,15 +36,6 @@ public class NetworkPokemon : Photon.MonoBehaviour
 			{
 				anim.SetBool(AnimBools[i], AnimBoolValues[i]);
 			}
-//			anim.SetBool("Jumping", jumping);
-//			anim.SetBool("Falling", falling);
-//			anim.SetBool("InBattle", inBattle);
-//			anim.SetBool("Fainting", fainting);
-//			anim.SetBool("Evolving", evolving);
-//			anim.SetBool("Scratch", scratch);
-//			anim.SetBool("Growl", growl);
-//			anim.SetBool("Ember", ember);
-//			anim.SetBool("Smokescreen", smokescreen);
 		}
 	}
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -68,15 +50,6 @@ public class NetworkPokemon : Photon.MonoBehaviour
 			{
 				stream.SendNext(anim.GetBool(AnimBools[i]));
 			}
-//			stream.SendNext(anim.GetBool("Jumping"));
-//			stream.SendNext(anim.GetBool("Falling"));
-//			stream.SendNext(anim.GetBool("InBattle"));
-//			stream.SendNext(anim.GetBool("Fainting"));
-//			stream.SendNext(anim.GetBool("Evolving"));
-//			stream.SendNext(anim.GetBool("Scratch"));
-//			stream.SendNext(anim.GetBool("Growl"));
-//			stream.SendNext(anim.GetBool("Ember"));
-//			stream.SendNext(anim.GetBool("Smokescreen"));
 		}
 		else
 		{
@@ -88,15 +61,6 @@ public class NetworkPokemon : Photon.MonoBehaviour
 			{
 				AnimBoolValues[i] = (bool)stream.ReceiveNext();
 			}
-//			jumping = (bool)stream.ReceiveNext();
-//			falling = (bool)stream.ReceiveNext();
-//			inBattle = (bool)stream.ReceiveNext();
-//			fainting = (bool)stream.ReceiveNext();
-//			evolving = (bool)stream.ReceiveNext();
-//			scratch = (bool)stream.ReceiveNext();
-//			growl = (bool)stream.ReceiveNext();
-//			ember = (bool)stream.ReceiveNext();
-//			smokescreen = (bool)stream.ReceiveNext();
 		}
 	}
 }

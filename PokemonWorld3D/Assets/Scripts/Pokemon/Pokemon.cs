@@ -113,7 +113,6 @@ public class Pokemon : MonoBehaviour
 	public bool bracing;
 	public bool centerOfAttention;
 	public bool defenseCurling;
-	public bool glowing;
 	public bool rooting;
 	public bool magicallyCoated;
 	public bool magneticallyLevitating;
@@ -125,9 +124,6 @@ public class Pokemon : MonoBehaviour
 	public bool hasAStubstitute;
 	public GameObject substitute;
 	public bool takingAim;
-	public bool takingInSunlight;
-	public bool withdrawing;
-	public bool whippingUpAWhirlwind;
 	public List<string> MovesToLearnNames;
 	public List<Move> MovesToLearn;
 	public List<string> KnownMovesNames;
@@ -148,13 +144,14 @@ public class Pokemon : MonoBehaviour
 	public List<GameObject> Enemies;
 	public List<int> PokemonToGiveEXPTo;
 	public GameObject overHeadInfo;
+	public HUD hud;
 	
 	public enum Genders { NONE, FEMALE, MALE }
 	public enum Natures { ADAMANT, BASHFUL, BOLD, BRAVE, CALM, CAREFUL, DOCILE, GENTLE, HARDY, HASTY, IMPISH, JOLLY, LAX, LONELY, MILD, MODEST, NAIVE, NAUGHTY,
 		QUIET, QUIRKY, RASH, RELAXED, SASSY, SERIOUS, TIMID }
 	public enum LevelingRates { ERRATIC, FAST, FLUCTUATING, MEDIUM_FAST, MEDIUM_SLOW, SLOW }
-	public enum StatusConditions { NONE, BADLY_POISONED, BURNED, FROZEN, PARALYZED, POISONED, SEEDED, SLEEPING }
-	public enum BuffsAndDebuffs { NONE, ATK_UP, ATK_DWN, DEF_UP, DEF_DWN, SPATK_UP, SPATK_DWN, SPDEF_UP, SPDEF_DWN, SPD_UP, SPD_DWN, ACC_UP, ACC_DWN, EVA_UP, EVA_DWN, }
+	public enum BuffsAndDebuffs { NONE, ACC_DWN, ACC_UP, ATK_DWN, ATK_UP, BURNED, CONFUSED, DEF_DWN, DEF_UP, EVA_DWN, EVA_UP, FROZEN, PARALYZED, POISONED,
+		SEEDED, SLEEPING, SPATK_DWN, SPATK_UP, SPDEF_DWN, SPDEF_UP, SPD_DWN, SPD_UP }
 	
 	private StatCalculations statCalculationsScript = new StatCalculations();
 	private CalculateXP calculateEXPScript = new CalculateXP();
@@ -180,38 +177,104 @@ public class Pokemon : MonoBehaviour
 			StatusEffect[i].duration -= Time.deltaTime;
 			if(StatusEffect[i].duration <= 0.0f)
 			{
-				RemoveBuffDebuff(StatusEffect[i].buffOrDebuff, StatusEffect[i].percentage);
+				RemoveBuffDebuff(StatusEffect[i].buffOrDebuff, StatusEffect[i].percentage, 0.0f, null);
 				StatusEffect.RemoveAt(i);
 			}
 		}
-		if(poisoned)
+		if(paralyzed)
 		{
-			if(effectTicker >= 10.0f)
+			anim.SetBool("Default", false);
+			float chance = Random.Range(0.0f, 1.0f);
+			if(chance <= 0.25f)
 			{
-				int amount = (int)((float)curHP * 0.125f);
-				AdjustHP(-amount, "current", thisPokemonsID, false);
+				anim.SetBool("Default", true);
 			}
+
 		}
-		if(seeded)
+		if(perishSonged)
 		{
-			if(effectTicker >= 10.0f)
-			{
-				int amount = (int)((float)curHP * 0.125f);
-				AdjustHP(-amount, "current", thisPokemonsID, false);
-				seededBy.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, amount, "current", thisPokemonsID, false);
-			}
+			perishSongCountDown -= Time.deltaTime;
+			if(perishSongCountDown <= 0.0f)
+				AdjustHP(-curHP, "current", thisPokemonsID, false);
 		}
 		if(sleeping)
 		{
 			sleepTimer -= Time.deltaTime;
 			if(sleepTimer <= 0.0f)
 			{
-				AdjustStatusCondition(StatusConditions.SLEEPING, false, thisPokemonsID);
-				WakeUp();
+				RemoveBuffDebuff(BuffsAndDebuffs.SLEEPING, 0.0f, 0.0f, null);
 			}
 		}
 		if(effectTicker >= 10.0f)
+		{
+			if(aquaRinged)
+			{
+				int amount = (int)((float)curHP * 0.0625f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(amount, "current", thisPokemonsID, false);
+			}
+			if(burned)
+			{
+				int amount = (int)((float)curHP * 0.125f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+			}
+			if(cursed)
+			{
+				int amount = (int)((float)curHP * 0.25f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+			}
+			if(nightmared)
+			{
+				int amount = (int)((float)curHP * 0.25f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+			}
+			if(poisoned)
+			{
+				int amount = (int)((float)curHP * 0.125f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+			}
+			if(rooting)
+			{
+				int amount = (int)((float)curHP * 0.0625f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(amount, "current", thisPokemonsID, false);
+			}
+			if(seeded)
+			{
+				int amount = (int)((float)curHP * 0.125f);
+				if(amount < 1)
+					amount = 1;
+				AdjustHP(-amount, "current", thisPokemonsID, false);
+				seededBy.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, amount, "current", thisPokemonsID, false);
+			}
 			effectTicker = 0.0f;
+		}
+	}
+	public void Frozen()
+	{
+		GetComponent<PokemonInput>().enabled = false;
+		GetComponent<WildPokemonAI>().state = WildPokemonAI.State.DontMove;
+	}
+	public void Thawed()
+	{
+		if(isCaptured)
+		{
+			GetComponent<PokemonInput>().enabled = true;
+		}
+		else
+		{
+			GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Battle;
+		}
 	}
 	public void Sleep()
 	{
@@ -223,6 +286,8 @@ public class Pokemon : MonoBehaviour
 	public void WakeUp()
 	{
 		anim.SetBool("Sleep", sleeping);
+		if(nightmared)
+			nightmared = false;
 		if(isCaptured)
 		{
 			GetComponent<PokemonInput>().enabled = true;
@@ -231,6 +296,11 @@ public class Pokemon : MonoBehaviour
 		{
 			GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Battle;
 		}
+	}
+	[RPC]
+	public void Flinch()
+	{
+		StartCoroutine("Flinching");
 	}
 	[RPC]
 	public void StartWildPokemonBattle(int opponent)
@@ -275,6 +345,12 @@ public class Pokemon : MonoBehaviour
 		}
 		if(currentOrMax == "current")
 		{
+			if(adj < 0 && adj >= -curHP)
+			{
+				if(bracing)
+					adj = (-curHP + 1);
+				bracing = false;
+			}
 			curHP += adj;
 			Vector3 here = overHeadInfo.transform.position;
 			GameObject floatDmg = PhotonNetwork.Instantiate("Floating_Damage", here, Quaternion.identity, 0) as GameObject;
@@ -285,7 +361,7 @@ public class Pokemon : MonoBehaviour
 				floatDmg.GetComponent<FloatingDamage>().crit = critical;
 				if(sleeping)
 				{
-					AdjustStatusCondition(StatusConditions.SLEEPING, false, attacker);
+					RemoveBuffDebuff(BuffsAndDebuffs.SLEEPING, 0.0f, 0.0f, null);
 				}
 			}
 			if(adj > 0)
@@ -347,183 +423,188 @@ public class Pokemon : MonoBehaviour
 		}
 	}
 	[RPC]
-	public void AddStatusEffect(StatusConditions statusCondition, float statusConditionSuccessRate, BuffsAndDebuffs buffAndDebuff, float percentage, float duration,
-	                            int attacker)
+	public void AddStatusEffect(BuffsAndDebuffs buffAndDebuff, float percentage, float duration, int attacker)
 	{
-		AdjustStatusCondition(statusCondition, true, attacker);
-		AdjustCurrentStat(buffAndDebuff, percentage);
-		StatusEffect.Add(new StatusEffect(statusCondition, statusConditionSuccessRate, buffAndDebuff, percentage, duration));
 		GameObject attackingPokemon = PhotonView.Find(attacker).gameObject;
+		StatusEffect effect = new StatusEffect(buffAndDebuff, percentage, duration);
+		hud.playerPokemonPortrait.SpawnStatusEffectIcon(effect);
+		AddBuffDebuff(buffAndDebuff, percentage, duration, attackingPokemon);
+		StatusEffect.Add(effect);
 		if(attackingPokemon != gameObject && attackingPokemon.GetComponent<Pokemon>().isCaptured && !PokemonToGiveEXPTo.Contains(attacker))
 		{
 			PokemonToGiveEXPTo.Add(attacker);
 		}
 	}
-	public void AdjustCurrentStat(BuffsAndDebuffs stat, float percentage)
+	public void AddBuffDebuff(BuffsAndDebuffs buffOrDebuff, float percentage, float duration, GameObject attacker)
 	{
-		if(stat == BuffsAndDebuffs.NONE)
+		if(buffOrDebuff == BuffsAndDebuffs.NONE)
 			return;
-		if(stat == BuffsAndDebuffs.ACC_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_DWN)
 		{
 			accuracy = accuracy - percentage;
 		}
-		if(stat == BuffsAndDebuffs.ACC_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_UP)
 		{
 			accuracy = accuracy + percentage;
 		}
-		
-		if(stat == BuffsAndDebuffs.EVA_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.EVA_DWN)
 		{
 			evasion = evasion - percentage;
 		}
-		if(stat == BuffsAndDebuffs.EVA_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.EVA_UP)
 		{
 			evasion = evasion + percentage;
 		}
-		if(stat == BuffsAndDebuffs.ATK_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.ATK_DWN)
 		{
 			curATK = (int)(curATK - ((float)maxATK * percentage));
 		}
-		if(stat == BuffsAndDebuffs.ATK_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.ATK_UP)
 		{
 			curATK = (int)(curATK + ((float)maxATK * percentage));
 		}
-		if(stat == BuffsAndDebuffs.DEF_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.DEF_DWN)
 		{
 			curDEF = (int)(curDEF - ((float)maxDEF * percentage));
 		}
-		if(stat == BuffsAndDebuffs.DEF_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.DEF_UP)
 		{
 			curDEF = (int)(curDEF + ((float)maxDEF * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPATK_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.SPATK_DWN)
 		{
 			curSPATK = (int)(curSPATK - ((float)maxSPATK * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPATK_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.SPATK_UP)
 		{
 			curSPATK = (int)(curSPATK + ((float)maxSPATK * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPDEF_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.SPDEF_DWN)
 		{
 			curSPDEF = (int)(curSPDEF - ((float)maxSPDEF * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPDEF_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.SPDEF_UP)
 		{
 			curSPDEF = (int)(curSPDEF + ((float)maxSPDEF * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPD_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.SPD_DWN)
 		{
 			curSPD = (int)(curSPD - ((float)maxSPD * percentage));
 		}
-		if(stat == BuffsAndDebuffs.SPD_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.SPD_UP)
 		{
 			curSPD = (int)(curSPD + ((float)maxSPD * percentage));
 		}
-	}
-	public void RemoveBuffDebuff(BuffsAndDebuffs stat, float percentage)
-	{
-		if(stat == BuffsAndDebuffs.ACC_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.BURNED)
 		{
-			accuracy = accuracy + percentage;
+			burned = true;
 		}
-		if(stat == BuffsAndDebuffs.ACC_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.FROZEN)
 		{
-			accuracy = accuracy - percentage;
+			frozen = true;
 		}
-		if(stat == BuffsAndDebuffs.ACC_DWN)
+		if(buffOrDebuff == BuffsAndDebuffs.PARALYZED)
 		{
-			evasion = evasion + percentage;
+			paralyzed = true;
 		}
-		if(stat == BuffsAndDebuffs.ACC_UP)
+		if(buffOrDebuff == BuffsAndDebuffs.POISONED)
 		{
-			evasion = evasion - percentage;
+			poisoned = true;
 		}
-		if(stat == BuffsAndDebuffs.ATK_DWN)
-		{
-			curATK = (int)(curATK + ((float)maxATK * percentage));
-		}
-		if(stat == BuffsAndDebuffs.ATK_UP)
-		{
-			curATK = (int)(curATK - ((float)maxATK * percentage));
-		}
-		if(stat == BuffsAndDebuffs.DEF_DWN)
-		{
-			curDEF = (int)(curDEF + ((float)maxDEF * percentage));
-		}
-		if(stat == BuffsAndDebuffs.DEF_UP)
-		{
-			curDEF = (int)(curDEF - ((float)maxDEF * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPATK_DWN)
-		{
-			curSPATK = (int)(curSPATK + ((float)maxSPATK * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPATK_UP)
-		{
-			curSPATK = (int)(curSPATK - ((float)maxSPATK * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPDEF_DWN)
-		{
-			curSPDEF = (int)(curSPDEF + ((float)maxSPDEF * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPDEF_UP)
-		{
-			curSPDEF = (int)(curSPDEF - ((float)maxSPDEF * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPD_DWN)
-		{
-			curSPD = (int)(curSPD + ((float)maxSPD * percentage));
-		}
-		if(stat == BuffsAndDebuffs.SPD_UP)
-		{
-			curSPD = (int)(curSPD - ((float)maxSPD * percentage));
-		}
-	}
-	[RPC]
-	public void AdjustStatusCondition(StatusConditions condition, bool trueOrFalse, int attacker)
-	{
-		if(condition == StatusConditions.NONE)
-		{
-			return;
-		}
-		if(condition == StatusConditions.BADLY_POISONED)
-		{
-			badlyPoisoned = trueOrFalse;
-		}
-		if(condition == StatusConditions.BURNED)
-		{
-			burned = trueOrFalse;
-		}
-		if(condition == StatusConditions.FROZEN)
-		{
-			frozen = trueOrFalse;
-		}
-		if(condition == StatusConditions.PARALYZED)
-		{
-			paralyzed = trueOrFalse;
-		}
-		if(condition == StatusConditions.POISONED)
-		{
-			poisoned = trueOrFalse;
-		}
-		if(condition == StatusConditions.SEEDED)
+		if(buffOrDebuff == BuffsAndDebuffs.SEEDED)
 		{
 			seeded = true;
-			GameObject enemy = PhotonView.Find(attacker).gameObject;
-			seededBy = enemy;
+			seededBy = attacker;
 		}
-		if(condition == StatusConditions.SLEEPING)
+		if(buffOrDebuff == BuffsAndDebuffs.SLEEPING)
 		{
-			sleeping = trueOrFalse;
-			if(trueOrFalse)
-			{
-				Sleep();
-			}
-			else
-			{
-				WakeUp();
-			}
+			sleeping = true;
+			Sleep();
+		}
+	}
+	public void RemoveBuffDebuff(BuffsAndDebuffs buffOrDebuff, float percentage, float duration, GameObject attacker)
+	{
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_DWN)
+		{
+			accuracy = accuracy + percentage;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_UP)
+		{
+			accuracy = accuracy - percentage;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_DWN)
+		{
+			evasion = evasion + percentage;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.ACC_UP)
+		{
+			evasion = evasion - percentage;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.ATK_DWN)
+		{
+			curATK = (int)(curATK + ((float)maxATK * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.ATK_UP)
+		{
+			curATK = (int)(curATK - ((float)maxATK * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.DEF_DWN)
+		{
+			curDEF = (int)(curDEF + ((float)maxDEF * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.DEF_UP)
+		{
+			curDEF = (int)(curDEF - ((float)maxDEF * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPATK_DWN)
+		{
+			curSPATK = (int)(curSPATK + ((float)maxSPATK * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPATK_UP)
+		{
+			curSPATK = (int)(curSPATK - ((float)maxSPATK * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPDEF_DWN)
+		{
+			curSPDEF = (int)(curSPDEF + ((float)maxSPDEF * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPDEF_UP)
+		{
+			curSPDEF = (int)(curSPDEF - ((float)maxSPDEF * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPD_DWN)
+		{
+			curSPD = (int)(curSPD + ((float)maxSPD * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SPD_UP)
+		{
+			curSPD = (int)(curSPD - ((float)maxSPD * percentage));
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.BURNED)
+		{
+			burned = false;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.FROZEN)
+		{
+			frozen = false;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.PARALYZED)
+		{
+			paralyzed = false;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.POISONED)
+		{
+			poisoned = false;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SEEDED)
+		{
+			seeded = false;
+			seededBy = null;
+		}
+		if(buffOrDebuff == BuffsAndDebuffs.SLEEPING)
+		{
+			sleeping = false;
+			WakeUp();
 		}
 	}
 	[RPC]
@@ -624,6 +705,8 @@ public class Pokemon : MonoBehaviour
 		{
 			gender = Genders.FEMALE;
 		}
+		if(genderRatio == 0)
+			gender = Genders.NONE;
 	}
 	private void SetupNature()
 	{
@@ -752,7 +835,7 @@ public class Pokemon : MonoBehaviour
 	{
 		GetComponent<PokemonInput>().enabled = false;
 		GetComponent<WildPokemonAI>().state = WildPokemonAI.State.Dead;
-		anim.SetBool("Fainting", true);
+		anim.SetBool("Faint", true);
 		foreach(int pokemon in PokemonToGiveEXPTo)
 		{
 			GameObject thePokemon = PhotonView.Find(pokemon).gameObject;
@@ -771,6 +854,12 @@ public class Pokemon : MonoBehaviour
 			GetComponent<PokemonInput>().SwapToPlayer();
 		}
 		yield return null;
+	}
+	private IEnumerator Flinching()
+	{
+		anim.SetBool("Default", true);
+		yield return new WaitForSeconds(3.0f);
+		anim.SetBool("Default", false);
 	}
 	#region EVOLUTION
 	private IEnumerator Evolve()
@@ -804,7 +893,8 @@ public class Pokemon : MonoBehaviour
 			material.SetFloat("_Blend", 1f);
 		}
 		evolved_form.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-		trainer.GetComponent<PlayerCharacter>().SetActivePokemon(evolved_form);
+		int poke = evolved_form.GetComponent<PhotonView>().viewID;
+		GetComponent<PhotonView>().RPC("SetActivePokemon", PhotonTargets.AllBuffered, poke);
 		GetComponent<PokemonInput>().myCamera.GetComponent<CameraController>().SetTarget(evolved_form.transform);
 		SkinnedMeshRenderer componenets = GetComponentInChildren<SkinnedMeshRenderer>();
 		componenets.enabled = false;

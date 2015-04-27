@@ -9,11 +9,8 @@ public class NetworkPlayer : Photon.MonoBehaviour
 	private AudioClip updateAudio;
 	private Animator anim;
 	private float speed = 0.0f;
-	private bool jumping = false;
-	private bool falling = false;
-	private bool inBattle = false;
-	private bool throwPokemonBall = false;
-	private bool throwEmptyBall = false;
+	public string[] AnimBools;
+	public bool[] AnimBoolValues;
 
 	void Start()
 	{
@@ -35,11 +32,10 @@ public class NetworkPlayer : Photon.MonoBehaviour
 			transform.rotation = Quaternion.Lerp(transform.rotation, updateRot, 0.1f);
 			audio.PlayOneShot(updateAudio);
 			anim.SetFloat("Speed", speed);
-			anim.SetBool("Jumping", jumping);
-			anim.SetBool("Falling", falling);
-			anim.SetBool("InBattle", inBattle);
-			anim.SetBool("ThrowPokemonBall", throwPokemonBall);
-			anim.SetBool("ThrowEmptyBall", throwEmptyBall);
+			for(int i = 0; i < AnimBools.Length; i++)
+			{
+				anim.SetBool(AnimBools[i], AnimBoolValues[i]);
+			}
 		}
 	}
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -50,11 +46,10 @@ public class NetworkPlayer : Photon.MonoBehaviour
 			stream.SendNext(transform.rotation);
 			stream.SendNext(currentAudio);
 			stream.SendNext(anim.GetFloat("Speed"));
-			stream.SendNext(anim.GetBool("Jumping"));
-			stream.SendNext(anim.GetBool("Falling"));
-			stream.SendNext(anim.GetBool("InBattle"));
-			stream.SendNext(anim.GetBool("ThrowPokemonBall"));
-			stream.SendNext(anim.GetBool("ThrowEmptyBall"));
+			for(int i = 0; i < AnimBools.Length; i++)
+			{
+				stream.SendNext(anim.GetBool(AnimBools[i]));
+			}
 		}
 		else
 		{
@@ -62,11 +57,10 @@ public class NetworkPlayer : Photon.MonoBehaviour
 			updateRot = (Quaternion)stream.ReceiveNext();
 			updateAudio = (AudioClip)stream.ReceiveNext();
 			speed = (float)stream.ReceiveNext();
-			jumping = (bool)stream.ReceiveNext();
-			falling = (bool)stream.ReceiveNext();
-			inBattle = (bool)stream.ReceiveNext();
-			throwPokemonBall = (bool)stream.ReceiveNext();
-			throwEmptyBall = (bool)stream.ReceiveNext();
+			for(int i = 0; i < AnimBoolValues.Length; i++)
+			{
+				AnimBoolValues[i] = (bool)stream.ReceiveNext();
+			}
 		}
 	}
 }

@@ -18,7 +18,7 @@ public class PlayerCharacter : MonoBehaviour
 	public GameObject opponent;
 	public GameObject activePokemon;
 	public bool isInParty;
-	public PlayerCharacter[] PartyMembers = new PlayerCharacter[6];
+	public List<PlayerCharacter> PartyMembers;
 	public HUD hud;
 	
 	public enum Genders
@@ -53,8 +53,8 @@ public class PlayerCharacter : MonoBehaviour
 	[RPC]
 	public void BattleRequest(PhotonPlayer requestingPlayer, int requester)
 	{
-		hud.otherPlayer = requestingPlayer;
-		hud.requestingTrainer = PhotonView.Find(requester).gameObject;
+		hud.battlePlayer = requestingPlayer;
+		hud.battleTrainer = PhotonView.Find(requester).gameObject;
 		hud.battleRequestPanel.SetActive(true);
 	}
 	[RPC]
@@ -78,6 +78,33 @@ public class PlayerCharacter : MonoBehaviour
 		GetComponent<Animator>().SetBool("InBattle", isInBattle);
 		opponent = null;
 
+	}
+	[RPC]
+	public void PartyRequest(PhotonPlayer requestingPlayer, int requester)
+	{
+		hud.partyPlayer = requestingPlayer;
+		hud.partyTrainer = PhotonView.Find(requester).gameObject;
+		hud.partyRequestPanel.gameObject.SetActive(true);
+		hud.partyRequestPanel.Setup(hud.partyTrainer.GetComponent<PlayerCharacter>().playersName);
+	}
+	[RPC]
+	public void StartParty(int player)
+	{
+		isInParty = true;
+		GameObject trainer = PhotonView.Find(player).gameObject;
+		PartyMembers.Add(trainer.GetComponent<PlayerCharacter>());
+
+	}
+	[RPC]
+	public void AddToParty(int player)
+	{
+		isInParty = true;
+		GameObject trainer = PhotonView.Find(player).gameObject;
+		PartyMembers.Add(trainer.GetComponent<PlayerCharacter>());
+		if(GetComponent<PhotonView>().owner == PhotonNetwork.player)
+		{
+			hud.AddPartyMemberSlot(trainer.GetComponent<PlayerCharacter>());
+		}
 	}
 	public void Save()
 	{
@@ -108,6 +135,11 @@ public class PlayerCharacter : MonoBehaviour
 		}
 		GetComponent<PhotonView>().RPC("NetworkPlayer", PhotonTargets.AllBuffered, playersName, (int)gender, funds, lastZone, lastPosition, canBattle);
 	}
+	public void Quit()
+	{
+		Save();
+		Application.Quit();
+	}
 	[RPC]
 	public void NetworkPlayer(string theName, int theGender, int theFunds, string theLastZone, Vector3 theLastPosition, bool theCanBattle)
 	{
@@ -118,19 +150,28 @@ public class PlayerCharacter : MonoBehaviour
 		lastPosition = theLastPosition;
 		canBattle = theCanBattle;
 	}
-	public void Quit()
+	[RPC]
+	public void SetActivePokemon(int pokemon)
 	{
-		Save();
-		Application.Quit();
-	}
-	public void SetActivePokemon(GameObject theActivePokemon)
-	{
+		GameObject theActivePokemon = PhotonView.Find(pokemon).gameObject;
+		theActivePokemon.GetComponent<Pokemon>().hud = hud;
 		activePokemon = theActivePokemon;
-		hud.SetActivePokemon(activePokemon.GetComponent<Pokemon>());
+		if(GetComponent<PhotonView>().owner == PhotonNetwork.player)
+		{
+			hud.activePokemon = activePokemon.GetComponent<Pokemon>();
+			hud.playerPokemonPortrait.SetActivePokemon(activePokemon);
+		}
+		if(isInParty)
+		{
+			foreach(PlayerCharacter trainer in PartyMembers)
+			{
+				trainer.hud.partyPanel.transform.FindChild(playersName.ToString()).GetComponent<PartyMemberSlot>().Setup(this);
+			}
+		}
 	}
 	public void RemoveActivePokemon()
 	{
 		activePokemon = null;
-		hud.RemoveActivePokemon();
+		hud.playerPokemonPortrait.RemoveActivePokemon();
 	}
 }

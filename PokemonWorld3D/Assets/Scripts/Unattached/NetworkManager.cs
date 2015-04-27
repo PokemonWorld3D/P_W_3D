@@ -31,6 +31,7 @@ public class NetworkManager : MonoBehaviour
 		myPlayer.GetComponent<PlayerInput>().enabled = true;
 		myPlayer.GetComponent<AudioListener>().enabled = true;
 		myPlayer.GetComponent<PlayerCharacter>().hud = hud.GetComponent<HUD>();
+		//hud.transform.GetChild(0).GetComponent<PhotonView>().RequestOwnership();
 		if(!forceNewGame)
 			myPlayer.GetComponent<PlayerCharacter>().Load();
 		GameObject myCamera = myPlayer.transform.Find("Camera").gameObject;

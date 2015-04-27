@@ -32,39 +32,63 @@ public class Move : MonoBehaviour
 	public PokemonTypes.Types targetTypeOne;
 	[HideInInspector]
 	public PokemonTypes.Types targetTypeTwo;
+	[HideInInspector]
 	public bool aoe;
+	[HideInInspector]
 	public bool selfTargeting;
+	[HideInInspector]
 	public bool allyTargeting;
+	[HideInInspector]
 	public string moveName;
+	[HideInInspector]
 	public string description;
-	public int levelLearned;
+	[HideInInspector]
 	public PokemonTypes.Types type;
+	[HideInInspector]
 	public MoveCategoriesList category;
+	[HideInInspector]
 	public ContestTypesList contestCategory;
+	[HideInInspector]
 	public int ppCost;
+	[HideInInspector]
 	public int power;
+	[HideInInspector]
 	public float accuracy;
+	[HideInInspector]
 	public bool recoil;
+	[HideInInspector]
 	public float recoilDamage;
+	[HideInInspector]
 	public bool highCritChance;
+	[HideInInspector]
 	public bool flinch;
-	public float flinchChance;
+	[HideInInspector]
 	public bool makesContact;
+	[HideInInspector]
 	public bool affectedByProtect;
+	[HideInInspector]
 	public bool affectedByMagicCoat;
+	[HideInInspector]
 	public bool affectedBySnatch;
+	[HideInInspector]
 	public bool affectedByKingsRock;
-	public List<StatusEffect> StatusEffects = new List<StatusEffect>();
+	[HideInInspector]
+	public float coolDown;
+	[HideInInspector]
+	public bool disabled;
+
+	public int levelLearned;
+	public List<StatusEffect> StatusEffects;
 	public Sprite icon;
 	public float range;
-	public int damage;
-	public float coolDown;
-	public float coolingDown;
-	public float chanceToHit;
-	public bool hit;
-	public bool critHit;
 
-	public GameObject target;
+	public float coolingDown {get; private set;}
+	public GameObject target {get; private set;}
+
+	private float chanceToHit;
+	private bool hit;
+	private bool critHit;
+	private int damage;
 	private List<GameObject> Targets;
 	private Pokemon targetPokemon;
 	private BattleCalculations dmgCalc;
@@ -81,13 +105,6 @@ public class Move : MonoBehaviour
 	}
 	void Update()
 	{
-		level = thisPokemon.level;
-		attack = thisPokemon.curATK;
-		specialAttack = thisPokemon.curSPATK;
-		acc = thisPokemon.accuracy;
-		baseSpeed = thisPokemon.baseSPD;
-		typeOne = thisPokemon.typeOne;
-		typeTwo = thisPokemon.typeTwo;
 		if(coolingDown > 0.0f)
 		{
 			coolingDown -= Time.deltaTime;
@@ -100,6 +117,13 @@ public class Move : MonoBehaviour
 	}
 	public void UseMove(GameObject pokemon, GameObject theTarget)
 	{
+		level = thisPokemon.level;
+		attack = thisPokemon.curATK;
+		specialAttack = thisPokemon.curSPATK;
+		acc = thisPokemon.accuracy;
+		baseSpeed = thisPokemon.baseSPD;
+		typeOne = thisPokemon.typeOne;
+		typeTwo = thisPokemon.typeTwo;
 		hit = false;
 		critHit = false;
 		if(selfTargeting)
@@ -240,16 +264,16 @@ public class Move : MonoBehaviour
 					target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 					foreach(StatusEffect effect in StatusEffects)
 					{
-						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-						                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage, effect.duration, pokemon);
+						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
+						                                       effect.duration, pokemon);
 					}
 				}
 				if(category == MoveCategoriesList.STATUS)
 				{
 					foreach(StatusEffect effect in StatusEffects)
 					{
-						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-						                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage, effect.duration, pokemon);
+						target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
+						                                       effect.duration, pokemon);
 					}
 				}
 			}
@@ -280,8 +304,7 @@ public class Move : MonoBehaviour
 								target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
 									                                       effect.duration, pokemon);
 								}
 								
@@ -290,8 +313,7 @@ public class Move : MonoBehaviour
 							{
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
 									                                       effect.duration, pokemon);
 								}
 							}
@@ -320,8 +342,7 @@ public class Move : MonoBehaviour
 								target.GetComponent<PhotonView>().RPC("AdjustHP", PhotonTargets.AllBuffered, -damage, "current", pokemon, critHit);
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
 									                                       effect.duration, pokemon);
 								}
 								
@@ -330,8 +351,7 @@ public class Move : MonoBehaviour
 							{
 								foreach(StatusEffect effect in StatusEffects)
 								{
-									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.statusCondition,
-									                                       effect.statusConditionSuccessRate, effect.buffOrDebuff, effect.percentage,
+									target.GetComponent<PhotonView>().RPC ("AddStatusEffect", PhotonTargets.AllBuffered, effect.buffOrDebuff, effect.percentage,
 									                                       effect.duration, pokemon);
 								}
 							}
@@ -342,6 +362,7 @@ public class Move : MonoBehaviour
 				}
 			}
 		}
+		thisPokemon.lastMoveUsed = this;
 		coolingDown = coolDown;
 		GetComponent<PhotonView>().RPC("AdjustPP", PhotonTargets.AllBuffered, -ppCost, "current", pokemon);
 	}
@@ -351,11 +372,35 @@ public class Move : MonoBehaviour
 	}
 	public Move()
 	{
-		
+		aoe = false;
+		selfTargeting = false;
+		allyTargeting = false;
+		moveName = "";
+		description = "";
+		levelLearned = 0;
+		type = PokemonTypes.Types.NORMAL;
+		category = MoveCategoriesList.PHYSICAL;
+		contestCategory = ContestTypesList.BEAUTY;
+		ppCost = 0;
+		power = 0;
+		accuracy = 0.0f;
+		recoil = false;
+		recoilDamage = 0.0f;
+		highCritChance = false;
+		flinch = false;
+		makesContact = false;
+		affectedByProtect = false;
+		affectedByMagicCoat = false;
+		affectedBySnatch = false;
+		affectedByKingsRock = false;
+		StatusEffects = new List<StatusEffect>();
+		range = 1.0f;
+		coolDown = 1.0f;
+		disabled = false;
 	}
 	public Move(string this_name, string this_description, int this_level_learned, PokemonTypes.Types this_type, MoveCategoriesList this_category,
 	            ContestTypesList this_contest_type, int this_pp_cost, int this_power, float this_accuracy, bool this_recoil, float this_recoil_damage,
-	            bool this_high_crit_chance, bool this_flinch, int this_flinch_chance, bool this_makes_contact, bool this_affected_by_protect,
+	            bool this_high_crit_chance, bool this_flinch, bool this_makes_contact, bool this_affected_by_protect,
 	            bool this_affected_by_magic_coat, bool this_affected_by_snatch, bool this_affected_by_kings_rock, List<StatusEffect> this_status_effects,
 	            Sprite this_icon, float this_range, int this_damage, float this_cool_down, float this_cooling_down)
 	{
@@ -372,7 +417,6 @@ public class Move : MonoBehaviour
 		recoilDamage = this_recoil_damage;
 		highCritChance = this_high_crit_chance;
 		flinch = this_flinch;
-		flinchChance = this_flinch_chance;
 		makesContact = this_makes_contact;
 		affectedByProtect = this_affected_by_protect;
 		affectedByMagicCoat = this_affected_by_magic_coat;

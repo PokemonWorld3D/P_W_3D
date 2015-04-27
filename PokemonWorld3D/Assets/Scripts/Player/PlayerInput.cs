@@ -110,7 +110,7 @@ public class PlayerInput : MonoBehaviour
 		{
 			returningPokemon = true;
 			StartCoroutine(throwPokeBall.PokemonReturn());
-			hud.RemoveActivePokemon();
+			GetComponent<PlayerCharacter>().RemoveActivePokemon();
 		}
 	}
 	void FixedUpdate()

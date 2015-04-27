@@ -40,6 +40,7 @@ public class WildPokemonSpawner : MonoBehaviour
 				Quaternion wayToFace = Quaternion.Euler(0, Random.Range(0, 360), 0);
 				GameObject wildPokemon = PhotonNetwork.Instantiate(pokemon, spawnPoint, wayToFace, 0) as GameObject;
 				wildPokemon.GetComponent<Pokemon>().level = Random.Range(minLevel, maxLevel);
+				wildPokemon.GetComponent<WildPokemonAI>().enabled = true;
 				lastSpawnPoint = spawnPoint;
 			}
 		}

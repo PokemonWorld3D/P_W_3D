@@ -4,17 +4,12 @@ using System.Collections;
 [System.Serializable]
 public class StatusEffect
 {
-	public Pokemon.StatusConditions statusCondition;
-	public float statusConditionSuccessRate;
 	public Pokemon.BuffsAndDebuffs buffOrDebuff;
 	public float percentage;
 	public float duration;
 
-	public StatusEffect(Pokemon.StatusConditions _statusCondition, float _statusConditionSuccessRate, Pokemon.BuffsAndDebuffs _buffOrDebuff, float _percentage,
-	                    float _duration)
+	public StatusEffect(Pokemon.BuffsAndDebuffs _buffOrDebuff, float _percentage, float _duration)
 	{
-		statusCondition = _statusCondition;
-		statusConditionSuccessRate = _statusConditionSuccessRate;
 		buffOrDebuff = _buffOrDebuff;
 		percentage = _percentage;
 		duration = _duration;

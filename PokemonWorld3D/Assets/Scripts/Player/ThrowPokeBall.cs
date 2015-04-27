@@ -248,7 +248,8 @@ public class ThrowPokeBall : MonoBehaviour
 		HandOverStats(pokemon.GetComponent<Pokemon>(), data);
 		pokemon.GetComponent<Pokemon>().SetupSetupPokemon();
 		pokemon.GetComponent<PokemonInput>().myCamera = GetComponent<PlayerInput>().myCamera;
-		player.SetActivePokemon(pokemon);
+		int poke = pokemon.GetComponent<PhotonView>().viewID;
+		GetComponent<PhotonView>().RPC("SetActivePokemon", PhotonTargets.AllBuffered, poke);
 		input.throwingPokeBall = false;
 		yield return null;
 	}

@@ -23,7 +23,7 @@ public class PokemonInput : MonoBehaviour
 	private Vector3 forward;
 	private Vector3 right;
 	private Pokemon thisPokemon;
-	private HUD hud;
+	public HUD hud;											//HAS TO BE PUBLIC BECAUSE IT'S ACCESSED BY POKEMON SCRIPT!!!!
 	private Animator anim;
 
 	void Start()
@@ -42,14 +42,14 @@ public class PokemonInput : MonoBehaviour
 			if(rigidbody.velocity.y > -0.04f && rigidbody.velocity.y < 0.04f)
 			{
 				falling = false;
-				anim.SetBool("Falling", falling);
+				anim.SetBool("Fall", falling);
 				grounded = true;
 			}
 		}
 		if(Mathf.Abs(rigidbody.velocity.y) > jumpPower * 0.75f)
 		{
 			falling = true;
-			anim.SetBool("Falling", falling);
+			anim.SetBool("Fall", falling);
 		}
 		forward = myCamera.camera.transform.TransformDirection(Vector3.forward);
 		forward.y = 0f;
@@ -67,7 +67,7 @@ public class PokemonInput : MonoBehaviour
 		anim.SetFloat("Speed", speed);
 		if (Input.GetButtonDown("Jump") && grounded) {
 			jumping = true;
-			anim.SetBool("Jumping", jumping);
+			anim.SetBool("Jump", jumping);
 		}
 		if(Input.GetButtonDown("Swap"))
 		{
@@ -85,7 +85,7 @@ public class PokemonInput : MonoBehaviour
 					DeselectTarget(); //Deselect the old target
 					target = hit.transform.gameObject;
 					targetPokemon = target.GetComponent<Pokemon>();
-					SelectTarget(targetPokemon); //Select the new target
+					SelectTarget(); //Select the new target
 					break; //Break out because we don't need to check anymore
 				}
 				if(hit.transform.gameObject.CompareTag("Pokemon") && hit.transform.gameObject != gameObject)
@@ -94,7 +94,7 @@ public class PokemonInput : MonoBehaviour
 					DeselectTarget(); //Deselect the old target
 					target = hit.transform.gameObject;
 					targetPokemon = target.GetComponent<Pokemon>();
-					SelectTarget(targetPokemon); //Select the new target
+					SelectTarget(); //Select the new target
 					if(!targetPokemon.isCaptured)
 					{
 						hud.wildPokemonPanel.SetActive(true);
@@ -156,7 +156,7 @@ public class PokemonInput : MonoBehaviour
 	public void Jumping()
 	{
 		hasJumped = true;
-		anim.SetBool("Jumping", false);
+		anim.SetBool("Jump", false);
 	}
 	public void NotAttacking()
 	{
@@ -179,16 +179,16 @@ public class PokemonInput : MonoBehaviour
 		this.enabled = false;
 	}
 
-	private void SelectTarget(Pokemon target)
+	private void SelectTarget()
 	{
-		targetPokemon = target;
-		hud.SetTargetPokemon(targetPokemon);
+		hud.targetPokemon = target.GetComponent<Pokemon>();
+		hud.targetPokemonPortrait.SetTargetPokemon(target);
 	}
 	private void DeselectTarget()
 	{
 		target = null;
 		targetPokemon = null;
-		hud.NoTargetPokemon();
+		hud.targetPokemonPortrait.RemoveTargetPokemon();
 	}
 	private void TrackTarget()
 	{
